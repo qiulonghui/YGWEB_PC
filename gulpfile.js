@@ -14,10 +14,10 @@ gulp.task('sass', function () {
             remove: true, // 删除过时前缀，默认true
             flexbox: true // 为flexbox属性添加前缀，默认true
         }))
-        .pipe(gulp.dest('src/css'))
-        .pipe(browserSync.reload({
-            stream: true //每次修改会自动刷新浏览器
-        }))
+        .pipe(gulp.dest('src/css'));
+        // .pipe(browserSync.reload({
+        //     stream: true //每次修改会自动刷新浏览器
+        // }))
 });
 
 var browserSync = require('browser-sync');
@@ -25,7 +25,7 @@ var browserSync = require('browser-sync');
 gulp.task('browserSync', function () {
     browserSync({
         server: {
-            baseDir: 'src' //需要告知它，根目录在哪里
+            baseDir: 'dist' //需要告知它，根目录在哪里
         },
     })
 })
@@ -33,24 +33,14 @@ gulp.task('browserSync', function () {
 gulp.task('watch', function () {
     gulp.watch('src/scss/**/*.scss', ['sass']);
     // 当HTML或JS文件改变时，也重新加载浏览器
-    gulp.watch('src/*.html', browserSync.reload);
-    gulp.watch('src/js/**/*.js', browserSync.reload);
+    gulp.watch('src/**/*.html', ['prod']);
+    gulp.watch('src/js/**/*.js', ['prod']);
+    gulp.watch('src/css/**/*.css', ['prod']);
 })
 
-gulp.task('fileinclude', function() {
-    // 适配page中所有文件夹下的所有html，排除page下的include文件夹中html
-    gulp.src('src/*.html')
-        .pipe(fileinclude({
-          prefix: '@@',
-          basepath: '@file'
-        }))
-    .pipe(gulp.dest('src'));
-});
-
-gulp.task('default', [`sass`, `browserSync`,`fileinclude`, `watch`], function () {
+gulp.task('default', [ `browserSync`,`prod`,`image`, `watch`], function () {
     console.log('dev ok');
 })
-
 
 var useref = require('gulp-useref');
 var rev = require('gulp-rev');
@@ -81,7 +71,10 @@ gulp.task('prod', function () {
         .pipe(rev())
         .pipe(indexHtmlFilter.restore)
         .pipe(revReplace())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist'))
+        .pipe(browserSync.reload({
+            stream: true //每次修改会自动刷新浏览器
+        }));
 });
 
 gulp.task('image', function () {
