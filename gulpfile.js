@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
+var fileinclude  = require('gulp-file-include');
 
 // 将对styles.scss进行预处理后生成styles.css
 gulp.task('sass', function () {
@@ -36,8 +37,17 @@ gulp.task('watch', function () {
     gulp.watch('src/js/**/*.js', browserSync.reload);
 })
 
+gulp.task('fileinclude', function() {
+    // 适配page中所有文件夹下的所有html，排除page下的include文件夹中html
+    gulp.src('src/*.html')
+        .pipe(fileinclude({
+          prefix: '@@',
+          basepath: '@file'
+        }))
+    .pipe(gulp.dest('src'));
+});
 
-gulp.task('default', [`sass`, `browserSync`, `watch`], function () {
+gulp.task('default', [`sass`, `browserSync`,`fileinclude`, `watch`], function () {
     console.log('dev ok');
 })
 
@@ -49,12 +59,17 @@ var csso = require('gulp-csso');
 var uglify = require("gulp-uglify");
 var filter = require('gulp-filter');
 
-gulp.task('build', function () {
-   var jsFilter = filter('**/*.js', {restore: true});
+
+gulp.task('prod', function () {
+	var jsFilter = filter('**/*.js', {restore: true});
     var cssFilter = filter('**/*.css', {restore: true});
     var indexHtmlFilter = filter(['**/*', '!**/*.html'], {restore: true});
 
-    return gulp.src('src/*.html')
+	return gulp.src('src/*.html')
+		.pipe(fileinclude({
+			prefix: '@@',
+			basepath: '@file'
+		}))
         .pipe(useref())
         .pipe(jsFilter)
         .pipe(uglify())
@@ -68,3 +83,16 @@ gulp.task('build', function () {
         .pipe(revReplace())
         .pipe(gulp.dest('dist'));
 });
+
+gulp.task('image', function () {
+    //拷贝压缩过的图片
+    return gulp.src('src/img/**/*.{png,jpg,jpeg,gif,ico}')
+        //.pipe(imagemin({
+        //    optimizationLevel: 3 //0-7
+        //}))
+        .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('build', [`prod`, `image`], function () {
+    console.log('build ok');
+})
