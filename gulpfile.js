@@ -38,7 +38,7 @@ gulp.task('watch', function () {
     gulp.watch('src/css/**/*.css', ['prod']);
 })
 
-gulp.task('default', [ `browserSync`,`prod`,`image`, `watch`], function () {
+gulp.task('default', [`sass`,`browserSync`,`prod`,`image`, `watch`], function () {
     console.log('dev ok');
 })
 
