@@ -44,46 +44,18 @@ header {
     background-color: #282928;
     color: rgba(255, 255, 255, 0.6); }
     header .top .container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-         -moz-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-         -moz-box-align: center;
-          -ms-flex-align: center;
-              align-items: center; }
+      justify-content: space-between;
+      align-items: center; }
     header .top a {
       color: rgba(255, 255, 255, 0.6);
       font-size: 12px; }
     header .top .left {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-         -moz-box-align: center;
-          -ms-flex-align: center;
-              align-items: center; }
+      align-items: center; }
       header .top .left li {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-           -moz-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        align-items: center;
         font-size: 12px; }
         header .top .left li:before {
           content: "";
@@ -92,8 +64,7 @@ header {
           height: 16px;
           margin-right: 4px;
           background-repeat: no-repeat;
-          -webkit-background-size: 16px 16px;
-                  background-size: 16px;
+          background-size: 16px;
           background-position: center; }
         header .top .left li.szsy:before {
           background-image: url(../img/index/shouye-icon.png); }
@@ -104,35 +75,24 @@ header {
         header .top .left li.xz:before {
           width: 24px;
           height: 24px;
-          -webkit-background-size: 24px 24px;
-                  background-size: 24px;
+          background-size: 24px;
           background-image: url(../img/index/yonggaoxz.png); }
         header .top .left li.xz a {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -moz-box;
-          display: -ms-flexbox;
           display: flex;
-          -webkit-box-align: center;
-          -webkit-align-items: center;
-             -moz-box-align: center;
-              -ms-flex-align: center;
-                  align-items: center;
+          align-items: center;
           padding: 0 8px;
           line-height: 22px;
           height: 24px;
           color: #1A8CFF;
           border: 1px solid rgba(26, 140, 255, 0.6);
-          -webkit-border-radius: 4px;
-                  border-radius: 4px; }
+          border-radius: 4px; }
           header .top .left li.xz a:after {
             content: "";
             display: block;
             width: 16px;
             height: 16px;
             background-repeat: no-repeat;
-            -webkit-background-size: 16px 16px;
-                    background-size: 16px;
+            background-size: 16px;
             background-position: center;
             background-image: url(../img/index/xiazai-icon.png);
             margin-left: 7px; }
@@ -149,16 +109,8 @@ header {
     header .top .right li:nth-last-child(2) a {
       border-right: none; }
     header .top .right .all-game-btn {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-         -moz-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
+      align-items: center;
       margin-left: 16px;
       padding: 0 13px; }
       header .top .right .all-game-btn a {
@@ -170,8 +122,7 @@ header {
         width: 8px;
         height: 8px;
         background-repeat: no-repeat;
-        -webkit-background-size: 8px 8px;
-                background-size: 8px;
+        background-size: 8px;
         background-position: center;
         background-image: url(../img/index/xiangxia-icon.png);
         margin-left: 6px; }
@@ -179,24 +130,12 @@ header {
     width: 1200px;
     height: 84px;
     font-size: 14px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-       -moz-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
+    align-items: center; }
     header .main .brand {
       margin-right: 18px; }
     header .main ul {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-         -moz-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
+      flex: 1;
       line-height: 84px; }
       header .main ul li {
         float: left;
@@ -215,30 +154,22 @@ header {
           width: 84px;
           height: 4px;
           background-color: #146CFE;
-          -webkit-border-radius: 4px;
-                  border-radius: 4px;
+          border-radius: 4px;
           bottom: 0; }
     header .main .search-wrap {
       width: 170px;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-box;
-      display: -ms-flexbox;
       display: flex; }
       header .main .search-wrap .input {
         width: 136px;
-        -webkit-border-radius: 4px 0px 0px 4px;
-                border-radius: 4px 0px 0px 4px; }
+        border-radius: 4px 0px 0px 4px; }
       header .main .search-wrap .search-btn {
         width: 34px;
         height: 34px;
-        -webkit-border-radius: 0px 4px 4px 0px;
-                border-radius: 0px 4px 4px 0px;
+        border-radius: 0px 4px 4px 0px;
         background-color: #1A8CFF;
         background-image: url(../img/index/shousou-icon.png);
         background-repeat: no-repeat;
-        -webkit-background-size: 20px 20px;
-                background-size: 20px;
+        background-size: 20px;
         background-position: center; }
 
 footer {
@@ -246,10 +177,6 @@ footer {
   height: 340px;
   padding-top: 30px; }
   footer .top {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     padding-bottom: 23px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -258,16 +185,8 @@ footer {
       color: #CCCCCC;
       font-size: 12px; }
       footer .top .left .item {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-           -moz-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        align-items: center;
         margin-bottom: 20px; }
         footer .top .left .item:before {
           content: "";
@@ -276,8 +195,7 @@ footer {
           height: 30px;
           margin-right: 10px;
           background-repeat: no-repeat;
-          -webkit-background-size: 30px 30px;
-                  background-size: 30px;
+          background-size: 30px;
           background-position: center; }
         footer .top .left .item.qq-icon:before {
           background-image: url(../img/index/kefuqq-icon.png); }
@@ -290,10 +208,6 @@ footer {
       font-size: 12px;
       color: #666666; }
       footer .top .right .list {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
         display: flex;
         margin-bottom: 19px; }
         footer .top .right .list li {
@@ -303,14 +217,9 @@ footer {
         height: 40px;
         background-image: url(../img/index/hezuohuoban.png);
         background-repeat: no-repeat;
-        -webkit-background-size: contain;
-                background-size: contain;
+        background-size: contain;
         background-position: center; }
   footer .bottom {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     padding-top: 30px; }
     footer .bottom .left {
@@ -318,8 +227,7 @@ footer {
       height: 64px;
       background-image: url(../img/index/logo-bai.png);
       background-repeat: no-repeat;
-      -webkit-background-size: 196px 46px;
-              background-size: 196px 46px;
+      background-size: 196px 46px;
       background-position: left center; }
     footer .bottom .center {
       width: 570px;
@@ -329,10 +237,6 @@ footer {
       font-size: 12px;
       color: #666666; }
       footer .bottom .center .list {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
         display: flex;
         margin-bottom: 20px; }
         footer .bottom .center .list li {
@@ -346,17 +250,9 @@ footer {
       footer .bottom .center .tip {
         margin-bottom: 10px; }
     footer .bottom .right {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-         -moz-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
+      flex: 1;
       padding-left: 20px; }
       footer .bottom .right .list {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
         display: flex; }
         footer .bottom .right .list .item {
           margin-right: 25px; }
@@ -374,8 +270,7 @@ footer {
             height: 26px;
             margin-bottom: 8px;
             background-repeat: no-repeat;
-            -webkit-background-size: 26px 26px;
-                    background-size: 26px;
+            background-size: 26px;
             background-position: center; }
           footer .bottom .right .list .item.bz:before {
             background-image: url(../img/index/jishu-icon.png); }
@@ -385,3 +280,5 @@ footer {
             background-image: url(../img/index/gaoxiao-icon.png); }
         footer .bottom .right .list .item:last-child {
           margin-right: 0; }
+
+/*# sourceMappingURL=maps/common.css.map */
