@@ -190,29 +190,61 @@
 }
 
 .trans-info-area{
+    display: flex;
+    justify-content: space-between;
     margin-top: 22px;
     margin-bottom: 43px;
     .left{
         width: 894px;
         .info{
+            display: flex;
             height: 24px;
+            line-height: 24px;
             font-size: 12px;
             color: #666666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #E6E6E6;
+            &::before{
+                content: "";
+                display: block;
+                width: 60px;
+                height: 24px;
+                margin-right: 12px;
+                background-image:url('../img/index/yinliang-icon.png'),linear-gradient(-90deg,rgba(255,156,0,1) 0%,rgba(255,186,1,1) 100%);
+                border-radius:0px 20px 0px 0px;
+                background-repeat: no-repeat;
+                background-size: 18px, auto;
+                background-position: center;
+            }
         }
         .content{
             display: flex;
             background-color: #fff;
+            border-radius:4px;
             .item{
                 flex: 1;
                 .text-wrap{
                     margin: 30px 0;
                     font-size: 16px;
                     text-align: center;
+                    border-right: 1px solid #EBEBEB;
                     .tit{
                         line-height: 16px;
                         color: #333333;
                         margin-top: 0;
                         margin-bottom: 14px;
+                        font-weight: 400;
+                        &::before{
+                            content: "";
+                            display: inline-block;
+                            width: 14px;
+                            height: 14px;
+                            margin-right: 5px;
+                            background-image:url('../img/index/lixinjiangchi.png');
+                            background-repeat: no-repeat;
+                            background-size: 14px;
+                            background-position: center;
+                        }
                     }
                     .text{
                         font-size: 24px;
@@ -222,10 +254,45 @@
                         font-weight: 400;
                     }
                 }
+                &:last-child .text-wrap{
+                    border: none
+                }
             }
         }
     }
-    
+    .right{
+        width: 284px;
+        .tit{
+            line-height: 14px;
+            font-size: 14px;
+            font-weight:400;
+            color: #666666;
+            margin-bottom: 7px;
+        }
+        .content-wrap{
+            height: 126px;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius:4px;
+        }
+        .content{
+            height: 98px;
+            overflow: hidden;
+            margin: 14px;
+            .item{
+                display: flex;
+                justify-content: space-between;
+                height:22px;
+                font-size: 12px;
+                .name,.game{
+                    color: #999999;
+                }
+                .amount{
+                    color: #E83A3A;
+                }
+            }
+        }
+    }
 }
 
 .game-area{

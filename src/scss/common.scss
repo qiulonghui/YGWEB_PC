@@ -356,3 +356,94 @@ footer {
         }
     }
 }
+
+.site-tool-wrap{
+    position: fixed;
+    z-index: 99;
+    right: 0;
+    bottom: 5px;
+    width: 50px;
+    .tool-group{
+        li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 6px;
+            line-height: 16px;
+            font-size: 14px;
+            background-color: rgb(110, 110, 110);
+            color: rgb(209, 209, 209);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            &:hover{
+                background-image: none;
+                a,.to-top{
+                    display: block;
+                }
+            }
+            &:last-of-type{
+                margin-bottom: 0;
+            }
+            a,.to-top{
+                cursor: pointer;
+                display: none;
+            }
+        }
+        .sw{
+            background-image: url('../img/index/mianfeishiwan-default.png');
+        }
+        .qq{
+            background-image: url('../img/index/qqkefu-default.png')
+        }
+        .zx{
+            background-image: url('../img/index/zaixiankefu-default.png')
+        }
+        .dh{
+            background-image: url('../img/index/dianhua -default.png')
+        }
+        .db{
+            background-image: url('../img/index/dingbu-default.png')
+        }
+    }
+}
+
+.sidebar{
+    width: 210px;
+    margin-right: 20px;
+    padding-top: 30px;
+    background-color: #fff;
+    border-radius:4px;
+    .item{
+        line-height: 40px;
+        height: 40px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #333333;
+        font-weight: 400;
+        padding-left: 50px;
+        a{
+            display: flex;
+            align-items: center;
+        }
+        .icon{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #666;
+            margin-right: 9px;
+        }
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+        &.active{
+            background-color: #FAFAFB;
+            color: #FF701A;
+            border-left: 3px solid #1A8CFF;
+        }
+    }
+}
