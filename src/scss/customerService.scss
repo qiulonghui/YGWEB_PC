@@ -1,0 +1,25 @@
+.customer-service{
+	display: flex;
+    min-height: 806px;
+    margin-top: 20px;
+	margin-bottom: 60px;
+	.content{
+        flex: 1;
+        background-color: #fff;
+		border-radius:4px;
+		.title{
+            padding-left: 30px;
+            padding-top: 37px;
+            border-bottom: 1px solid #E6E6E6;
+            span{
+                display: inline-block;
+                line-height: 18px;
+                font-size: 18px;
+                font-weight:400;
+                color: #333;
+                padding-bottom: 6px;
+                border-bottom: 3px solid #1A8CFF;
+            }
+        }
+	}
+}

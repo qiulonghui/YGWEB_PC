@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="../../favicon.ico">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/customerService.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/customerService.css" rel="stylesheet">
+	<link href="css/passwordAppeal.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+</head>
+
+<body>
+	@@include('include/header.html')
+
+	<div class="container center-block customer-service">
+		<ul class="sidebar">
+			<li class="item active">
+				<a href=""><i class="icon"></i>密码申诉</a>
+			</li>
+			<li class="item">
+				<a href=""><i class="icon"></i>账号申诉</a>
+			</li>
+			<li class="item">
+				<a href=""><i class="icon"></i>充值帮助</a>
+			</li>
+			<li class="item">
+				<a href=""><i class="icon"></i>提现帮助</a>
+			</li>
+			<li class="item">
+				<a href=""><i class="icon"></i>用户协议</a>
+			</li>
+			<button class="service-btn"><a href="">在线客服</a></button>	
+			<button class="service-btn"><a href="">QQ客服</a></button>
+		</ul>
+
+		<div class="content password-appeal">
+			<div class="title"><span>密码申诉</span></div>
+			<div class="form-wrap">
+				<div class="item">
+					<label for="tel">申诉原因:</label>
+					<select style="color: #808080" id="reason">
+						<option class="placeholder" value='' disabled selected style='display:none;'>请选择申诉原因</option>
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</div>
+				<div class="item">
+					<label for="tel">永高账号:</label>
+					<input id="tel" type="text" placeholder="请输入永高账号">
+				</div>
+				<div class="item">
+					<label for="tel">预留手机号:</label>
+					<input id="tel" type="text" placeholder="请输入绑定的手机号码">
+				</div>
+				<div class="item">
+					<label for="verCode">验证码:</label>
+					<input id="verCode" type="number" placeholder="请输入验证码">
+					<button class="code-btn">获取验证码</button>
+				</div>
+				<button id="submit" class="primary">下一步</button>
+			</div>
+		</div>
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/customerService.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+</body>
+
+</html>

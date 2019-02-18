@@ -41,6 +41,29 @@
 body{
     background-color: #F2F3F4;
 }
+
+button {
+	background-color: #FFFFFF;
+	color: #000;
+	border:1px solid #CCCCCC;
+    outline: none;
+	border-radius:4px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+button.primary{
+	background-color: #1A8CFF;
+    color: #FFFFFF;
+    padding: 12px;
+    border: none;
+    outline: none;
+    border-radius:4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
 .container {
     width: 1200px;
 }
@@ -441,9 +464,21 @@ footer {
             margin-bottom: 0;
         }
         &.active{
+			padding-left: 47px;
             background-color: #FAFAFB;
             color: #FF701A;
             border-left: 3px solid #1A8CFF;
         }
     }
+}
+
+.customer-service button.service-btn{
+	display: block;
+	width:106px;
+	height:36px;
+	margin: 0 auto;
+	&:first-of-type{
+		margin-top: 67px; 
+		margin-bottom: 10px;
+	}
 }

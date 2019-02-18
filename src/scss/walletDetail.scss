@@ -10,7 +10,6 @@
         .title{
             padding-left: 30px;
             padding-top: 37px;
-            margin-bottom: 10px;
             border-bottom: 1px solid #E6E6E6;
             span{
                 display: inline-block;
@@ -22,29 +21,38 @@
                 border-bottom: 3px solid #1A8CFF;
             }
         }
-        .currency-list{
+        .balance-detail{
             width: 760px;
             margin: 0 auto;
             .item{
-                display: flex;
-                align-items: center;
-                height: 78px;
-                border-bottom: 1px solid #f0f0f0;
-                .currency{
-                    font-size:14px;
+                height: 90px;
+				border-bottom: 1px solid #f0f0f0;
+				padding: 22px 0;
+				div{
+					display: flex;
+					justify-content: space-between;
+					line-height: 1;
+					margin-bottom: 13px;
+					&:last-of-type{
+						margin-bottom: 0;
+					}
+				}
+                .type{
+                    font-size:16px;
                     color: #333;
-                }
+				}
+				.date{
+					font-size: 14px;
+					color: #999999;
+				}
                 .amount{
-                    flex:1;
-                    margin-right: 30px;
-                    text-align: right;
                     font-weight:bold;
                     font-size:16px;
                     color: #333;
                 }
-                .detail{
-                    font-size: 12px;
-                    color: #FF701A;
+                .over{
+                    font-size: 16px;
+                    color: #333333;
                 }
             }
         }

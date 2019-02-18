@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
+		<title>永高娱乐</title>
+		<meta name="viewport" content="width=1366, initial-scale=1">
+		<!-- build:css css/boundEmail.css -->
+		<link href="css/normalize.css" rel="stylesheet">
+		<link href="css/common.css" rel="stylesheet">
+		<link href="css/userCenter.css" rel="stylesheet">
+		<link href="css/boundPhone.css" rel="stylesheet">
+		<!-- endbuild -->
+		<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+	</head>
+
+	<body>
+		@@include('include/header.html')
+		
+		<div class="container center-block user-center">
+			<section class="user-info">
+				<div class="user-avatar-wrap">
+					<img src="" alt="">
+				</div>
+				<div class="info">
+					<div class="item"><span class="account">账号：18819456975</span><span class="time">上次登陆时间：2019-01-04 22:25:47</span></div>
+					<div class="item message"><i></i><span class="text">消息：</span><span class="num">(10)</span></div>
+					<div class="item level-wrap">
+						<span class="level">LV.01</span>
+						<span class="progress"></span>
+						<span class="text"><b>1</b> /5</span></div>
+					<div class="btn-group">
+						<button><a href="">我要充值</a></button>
+						<button><a href="">投注记录</a></button>
+						<button><a href=""></a>财务账单</a></button>
+						<button><a href=""></a>银行卡</a></button>
+					</div>
+				</div>
+			</section>
+			<section class="main">
+				@@include('include/userSidebar.html')
+
+				<div class="content ">
+					<div class="header">
+						<div class="title">绑定邮箱</div>
+					</div>
+					<div class="binding-email">
+						<div class="form-wrap">
+							<div class="item">
+								<label for="tel">邮箱:</label>
+								<input id="tel" type="text" placeholder="请输入您的邮箱">
+							</div>
+							<div class="item">
+								<label for="verCode">验证码:</label>
+								<input id="verCode" type="number" placeholder="请输入验证码">
+								<button class="code-btn">获取验证码</button>
+							</div>
+							<button id="submit" class="primary">确认</button>
+						</div>
+						<div class="tip">邮箱是你账户信息的重要认证。</div>
+						<div class="sub-tip">忘记密码时，您可以通过绑定的邮箱验证找回密码。</div>
+					</div>
+				</div>
+			</section>
+				
+		</div>
+		@@include('include/footer.html')
+        @@include('include/siteTool.html')
+
+		<!-- build:js js/boundEmail.js -->
+		<script src="lib/jquery.js"></script>
+        <script src="js/common.js"></script>
+		<!-- endbuild -->
+	</body>
+
+</html>
