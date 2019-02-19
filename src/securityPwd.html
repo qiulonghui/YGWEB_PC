@@ -9,11 +9,11 @@
 		<link rel="icon" href="../../favicon.ico">
 		<title>永高娱乐</title>
 		<meta name="viewport" content="width=1366, initial-scale=1">
-		<!-- build:css css/boundPhone.css -->
+		<!-- build:css css/securityPwd.css -->
 		<link href="css/normalize.css" rel="stylesheet">
 		<link href="css/common.css" rel="stylesheet">
 		<link href="css/userCenter.css" rel="stylesheet">
-		<link href="css/boundPhone.css" rel="stylesheet">
+		<link href="css/securityPwd.css" rel="stylesheet">
 		<!-- endbuild -->
 		<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
@@ -31,23 +31,21 @@
 
 				<div class="content ">
 					<div class="header">
-						<div class="title">绑定手机</div>
+						<div class="title">二级密码</div>
 					</div>
-					<div class="binding-phone">
-						<div class="form-wrap">
-							<div class="item">
-								<label for="tel">手机号:</label>
-								<input id="tel" type="text" placeholder="请输入您的手机号">
+					<div class="security-pwd">
+						<!-- 未设置 -->
+						<div class="not-set">
+							<div class="tip">
+								二级密码是为了保护玩家隐私及财产安全而推出的功能，玩家在进行部分操作时需要输入二级密码，才能够进行操作。<br>
+								二级密码可以防止玩家帐号被盗时引发的用户隐私泄漏等财产遭受额外损失。
 							</div>
-							<div class="item">
-								<label for="verCode">验证码:</label>
-								<input id="verCode" type="number" placeholder="请输入验证码">
-								<button class="code-btn">获取验证码</button>
+							<div class="cont-wrap">
+								<span class="text"><i class="spot"></i> 未设置</span>
+								<button id="submit" class="primary">马上设置</button>
 							</div>
-							<button id="submit" class="primary">确认</button>
 						</div>
-						<div class="tip">手机号码是您身份的重要认证。</div>
-						<div class="sub-tip">忘记密码时，您可以通过绑定的手机号码找回密码。</div>
+						<!-- 未设置END -->
 					</div>
 				</div>
 			</section>
@@ -56,7 +54,7 @@
 		@@include('include/footer.html')
         @@include('include/siteTool.html')
 
-		<!-- build:js js/boundPhone.js -->
+		<!-- build:js js/securityPwd.js -->
 		<script src="lib/jquery.js"></script>
         <script src="js/common.js"></script>
 		<!-- endbuild -->

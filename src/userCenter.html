@@ -23,25 +23,8 @@
 		@@include('include/header.html')
 		
 		<div class="container center-block user-center">
-			<section class="user-info">
-				<div class="user-avatar-wrap">
-					<img src="" alt="">
-				</div>
-				<div class="info">
-					<div class="item"><span class="account">账号：18819456975</span><span class="time">上次登陆时间：2019-01-04 22:25:47</span></div>
-					<div class="item message"><i></i><span class="text">消息：</span><span class="num">(10)</span></div>
-					<div class="item level-wrap">
-						<span class="level">LV.01</span>
-						<span class="progress"></span>
-						<span class="text"><b>1</b> /5</span></div>
-					<div class="btn-group">
-						<button><a href="">我要充值</a></button>
-						<button><a href="">投注记录</a></button>
-						<button><a href=""></a>财务账单</a></button>
-						<button><a href=""></a>银行卡</a></button>
-					</div>
-				</div>
-			</section>
+			@@include('include/userInfo.html')
+			
 			<section class="main">
 				@@include('include/userSidebar.html')
 

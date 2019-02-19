@@ -310,7 +310,8 @@ input::-webkit-inner-spin-button{
 
 button,
 select { /* 1 */
-    text-transform: none;
+	text-transform: none;
+	user-select:none;
 }
 
 /**

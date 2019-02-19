@@ -1,0 +1,55 @@
+.my-game{
+	padding: 0 30px;
+	color: #333333;
+	.hd{
+		display: flex;
+		height: 36px;
+		line-height: 36px;
+		span{
+			flex: 1;
+			text-align: center;
+			font-size: 12px;
+			border-right: 1px solid #fff;
+			background-color: #F2F2F2;
+		}
+	}
+	.item{
+		display: flex;
+		height: 96px;
+		font-size: 12px;
+		border-bottom: 1px solid #EBEBEB;
+		div{
+			display: flex;
+			align-items: center;
+			flex: 1;
+		}
+		.btn{
+			width: 96px;
+			height: 32px;
+			color: #FF701A;
+			margin-left: 63px;
+		}
+		.game-icon{
+			margin-left: 60px;
+			margin-right: 16px;
+		}
+		.game-status{
+			margin-left: 210px;
+			i{
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				margin-left: 9px;
+			}
+			.hot{
+				background-image: url('../img/H.png');
+			}
+			.new{
+				background-image: url('../img/N.png')
+			}
+		}
+	}
+}
