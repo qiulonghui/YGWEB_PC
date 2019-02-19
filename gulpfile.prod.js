@@ -8,7 +8,7 @@ var revReplace = require('gulp-rev-replace'); // html重写被gulp-rev重命名�
 var csso = require('gulp-csso'); // 压缩优化css
 var uglify = require("gulp-uglify"); // 压缩js
 var filter = require('gulp-filter'); // 在虚拟文件流中过滤文件
-
+console.log('我们不一样')
 module.exports = function prod() {
     gulp.task('prod', function () {
         var jsFilter = filter('**/*.js', {
