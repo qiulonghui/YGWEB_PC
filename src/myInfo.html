@@ -29,14 +29,33 @@
 			<section class="main">
 				@@include('include/userSidebar.html')
 
-				<div class="content ">
+				<div class="content">
 					<div class="header">
-						<div class="title">我的消息</div>
+						<div class="title">系统信息</div>
 					</div>
 					<div class="my-info">
 						<div class="btn-group">
-
+                            <label class="box-label"><input class="yg-checkbox" type="checkbox"/>全选</label>
+                            <button class="del-msg">删除</button>
 						</div>
+                        <ul class="msg-list">
+                            <li class="item selected">
+                                <input class="yg-checkbox" type="checkbox">
+                                <div class="msg-wrap">
+                                    <div class="time">2019年01月26日</div>
+                                    <div class="text">首次充值，高达送1000元大礼包，邀请好友，充值即可9折优惠，赶紧行动吧。</div>
+                                </div>
+                                <a class="go-detail" href="">查看详情 ></a>
+                            </li>
+                            <li class="item">
+                                <input class="yg-checkbox" type="checkbox">
+                                <div class="msg-wrap">
+                                    <div class="time">2019年01月26日</div>
+                                    <div class="text">首次充值，高达送1000元大礼包，邀请好友，充值即可9折优惠，赶紧行动吧。</div>
+                                </div>
+                                <a class="go-detail" href="">查看详情 ></a>
+                            </li>
+                        </ul>
 					</div>
 				</div>
 			</section>
