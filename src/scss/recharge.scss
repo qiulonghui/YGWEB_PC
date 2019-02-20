@@ -1,0 +1,187 @@
+.recharge {
+	position: relative;
+	.title {
+		display: flex;
+		justify-content: space-between;
+		padding-right: 30px;
+
+		.record {
+			font-size: 14px;
+			color: #1A8CFF;
+		}
+	}
+
+	.pay-type-wrap {
+		display: flex;
+		justify-content: center;
+		height: 50px;
+		line-height: 50px;
+
+		.item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 160px;
+			border: 1px solid #F5F5F5;
+			text-align: center;
+			font-size: 14px;
+			user-select: none;
+			cursor: pointer;
+
+			&.active {
+				border-color: #FF701A;
+				color: #FF701A;
+			}
+
+			.pay-icon {
+				display: block;
+				width: 30px;
+				height: 30px;
+				margin-right: 6px;
+				background-repeat: no-repeat;
+				background-size: contain;
+
+				&.wx {
+					background-image: url('../img/weixin-icon.png');
+				}
+
+				&.zfb {
+					background-image: url('../img/zhifubao-icon.png');
+				}
+
+				&.wing {
+					background-image: url('../img/wing-icon.png');
+				}
+
+				&.card {
+					background-image: url('../img/yinghangka.png');
+				}
+			}
+		}
+	}
+
+	.wx-pay {
+		margin-left: 166px;
+		margin-top: 55px;
+
+		.item {
+			margin-bottom: 20px;
+
+			.input-box {
+				margin-left: 30px;
+				width: 264px;
+				height: 36px;
+				border-radius: 4px;
+				font-size: 12px;
+			}
+		}
+
+		.amount-wrap {
+			margin-top: 36px;
+			display: flex;
+
+			.list {
+				width: 520px;
+				margin-left: 30px;
+
+				.box {
+					float: left;
+					width: 160px;
+					height: 40px;
+					line-height: 38px;
+					margin-right: 20px;
+					margin-bottom: 14px;
+					text-align: center;
+					border: 1px solid #E6E6E6;
+					border-radius: 4px;
+					user-select: none;
+					cursor: pointer;
+
+					&:nth-of-type(3n) {
+						margin-right: 0;
+					}
+
+					&.active {
+						border-color: #FF701A;
+						background: url("../img/jinekuang.png") no-repeat;
+						background-size: 22px 22px;
+						background-position: right bottom;
+					}
+
+					&.other {
+						display: flex;
+						align-items: center;
+
+						input {
+							width: 103px;
+							height: 26px;
+							margin-left: 8px;
+							margin-right: 10px;
+							font-size: 12px;
+							border-radius: 4px;
+							outline: none;
+						}
+					}
+				}
+			}
+		}
+
+		.to-amount-tip {
+			margin-top: 40px;
+			margin-bottom: 10px;
+			margin-left: 208px;
+			font-size: 14px;
+
+			.text {
+				color: #333333;
+			}
+
+			.amount {
+				color: #3CBE00;
+				font-weight: bold;
+			}
+
+			.cost {
+				color: #B7B7B7;
+			}
+		}
+
+		.submit {
+			width: 260px;
+			height: 50px;
+			margin-left: 190px;
+			font-size: 16px;
+		}
+	}
+
+	.bottom-tip {
+		position: absolute;
+		width: 910px;
+		height: 110px;
+		margin: 0 30px;
+		padding-top: 10px;
+		border-top: 1px solid #E6E6E6;
+		font-size: 12px;
+		bottom: 0;
+
+		.tit {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 14px;
+				height: 14px;
+				background: #FF701A;
+				border-radius: 50%;
+				margin-right: 8px;
+			}
+		}
+		.text{
+			color: #999999;
+			line-height: 20px;
+		}
+	}
+}

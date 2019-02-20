@@ -9,11 +9,11 @@
 		<link rel="icon" href="../../favicon.ico">
 		<title>永高娱乐</title>
 		<meta name="viewport" content="width=1366, initial-scale=1">
-		<!-- build:css css/walletDetail.css -->
+		<!-- build:css css/gameWallet.css -->
 		<link href="css/normalize.css" rel="stylesheet">
 		<link href="css/common.css" rel="stylesheet">
 		<link href="css/wallet.css" rel="stylesheet">
-		<link href="css/walletDetail.css" rel="stylesheet">
+		<link href="css/gameWallet.css" rel="stylesheet">
 		<!-- endbuild -->
 		<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
@@ -27,19 +27,22 @@
 			@@include('include/walletSidebar.html')
 
             <div class="content">
-                <div class="title"><span>余额明细</span></div>
-                <div class="balance-detail">
+                <div class="title"><span>游戏钱包</span></div>
+                <div class="games-balance">
                     <div class="item">
-						<div><span class="type">兑换</span><span class="date">2019-01-26</span></div>
-						<div><span class="amount">-￥8000</span><span class="over">余额：￥8888888</span></div>
-					</div>
-					<div class="item">
-						<div><span class="type">转账</span><span class="date">2019-01-26</span></div>
-						<div><span class="amount">-￥8000</span><span class="over">余额：￥8888888</span></div>
-					</div>
-					<div class="item">
-						<div><span class="type">支付</span><span class="date">2019-01-26</span></div>
-						<div><span class="amount">-￥8000</span><span class="over">余额：￥8888888</span></div>
+                        <span class="game">利鑫</span>
+                        <span class="amount">510000.12</span>
+                        <i class="refesh"></i>
+                    </div>
+                    <div class="item">
+                        <span class="game">欧博</span>
+                        <span class="amount">510000.12</span>
+                        <i class="refesh"></i>
+                    </div>
+                    <div class="item">
+                        <span class="game">AG</span>
+                        <span class="amount">0</span>
+                        <i class="refesh"></i>
                     </div>
                 </div>
             </div>
@@ -47,7 +50,7 @@
 		@@include('include/footer.html')
         @@include('include/siteTool.html')
 
-		<!-- build:js js/walletDetail.js -->
+		<!-- build:js js/gameWallet.js -->
 		<script src="lib/jquery.js"></script>
         <script src="js/common.js"></script>
 		<!-- endbuild -->

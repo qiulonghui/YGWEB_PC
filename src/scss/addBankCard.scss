@@ -1,0 +1,55 @@
+.add-bank-card {
+	position: relative;
+	min-height: 806px;
+	background-color: #fff;
+	margin-top: 20px;
+	margin-bottom: 60px;
+	overflow: hidden;
+
+	.form-wrap {
+		width: 326px;
+		margin: 0 auto;
+		margin-top: 72px;
+
+		.step1 {
+			.item {
+				margin-bottom: 20px;
+
+				label {
+					display: flex;
+					align-items: center;
+
+					.input-box {
+						flex: 1;
+						width: 1px;
+						height: 36px;
+						border-radius: 4px;
+						margin-left: 30px;
+						font-size: 14px;
+					}
+				}
+			}
+
+			.submit {
+				display: block;
+				width: 112px;
+				height: 36px;
+				margin: 0 auto;
+				margin-top: 40px;
+			}
+		}
+	}
+	.bottom-tip{
+		width: 930px;
+		margin: 0 auto;
+		position: absolute;
+		padding-bottom: 6px;
+		border-bottom: 1px solid #E6E6E6;
+		left: 0;
+		right: 0;
+		bottom: 70px;
+		text-align: center;
+		color: #999999;
+		font-size: 12px;
+	}
+}

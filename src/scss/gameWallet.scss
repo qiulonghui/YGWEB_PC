@@ -1,0 +1,33 @@
+.content{
+	.games-balance{
+		width: 760px;
+		margin: 0 auto;
+		margin-top: 10px;
+		.item{
+			display: flex;
+			align-items: center;
+			height: 78px;
+			border-bottom: 1px solid #f0f0f0;
+			.game{
+				font-size:14px;
+				color: #333;
+			}
+			.amount{
+				flex:1;
+				margin-right: 30px;
+				text-align: right;
+				font-weight:bold;
+				font-size:16px;
+				color: #333;
+			}
+			.refesh{
+				display: block;
+				width: 22px;
+				height: 22px;
+				background: url(../img/shuaxin.png) no-repeat;
+				background-size: contain;
+				cursor: pointer;
+			}
+		}
+	}
+}
