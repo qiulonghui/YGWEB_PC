@@ -6,8 +6,8 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'), //错误处理提示插件
     sass = require('gulp-sass'),
     fileinclude = require('gulp-file-include'),
-    sourcemap = require('gulp-sourcemaps')
-
+	sourcemap = require('gulp-sourcemaps'),
+	spritesmith=require('gulp.spritesmith')
 
 module.exports = function dev() {
     gulp.task('serve', function () {
@@ -58,7 +58,19 @@ module.exports = function dev() {
             .pipe(plumber())
             .pipe(gulp.dest("dist/"))
             .pipe(browserSync.stream());
-    });
+	});
+	
+	// 图片转雪碧图任务
+	gulp.task('sprite',function(){  
+		gulp.src('src/resource/payicon/*.png')  
+		   .pipe(spritesmith({  
+			   imgName:'payiconSprite.png',  
+			   cssName:'css/payiconrSprite.css',  
+			   padding:5,  
+			   algorithm:'binary-tree'  
+		   }))  
+		   .pipe(gulp.dest('src/sprite/')) //输出目录
+   }) 
 
     // 复制 第三方依赖库和插件
     gulp.task('copylib', function () {

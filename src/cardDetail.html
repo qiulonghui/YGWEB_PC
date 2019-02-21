@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="../../favicon.ico">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/cardDetail.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/cardDetail.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+	<![endif]-->
+</head>
+
+<body>
+	@@include('include/header2.html')
+
+	<div class="container center-block card-detail">
+		<div class="content">
+			<div class="top">
+				<div class="card">
+					<img class="bank-icon" src="./img/CCB_small.png">
+					<div class="cont">
+						<div class="bank-name">中国建设银行</div>
+						<div class="card-type">储蓄卡</div>
+						<div class="card-num">•••• •••• •••• <span>5679</span></div>
+					</div>
+				</div>
+				<button class="unbund">解除绑定</button>
+			</div>
+			<div class="card-info">
+				<div class="item">
+					<span class="label">币种</span>
+					<span>人民币</span>
+				</div>
+				<div class="item">
+					<span class="label">银行</span>
+					<span>中国建设银行</span>
+				</div>
+				<div class="item">
+					<span class="label">支行</span>
+					<span>建设银行深圳前海支行</span>
+				</div>
+				<div class="item">
+					<span class="label">账号</span>
+					<span>6227 0033 2263 0691 234</span>
+				</div>
+				<div class="item">
+					<span class="label">姓名</span>
+					<span>百晓芬</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/cardDetail.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+	<script type="text/javascript">
+		var curTitle = '银行卡详情';
+	</script>
+</body>
+
+</html>

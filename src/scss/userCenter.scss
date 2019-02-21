@@ -80,6 +80,11 @@
 				button {
 					padding: 8px 20px;
 					margin-right: 10px;
+
+					a {
+						display: block;
+						height: 100%;
+					}
 				}
 			}
 		}
@@ -91,6 +96,51 @@
 
 		.sidebar {
 			min-height: 806px;
+			.icon {
+				background-image: url('../img/userCenterSprite.png')
+			}
+			.wdzh {
+				background-position: -25px -50px;
+
+			}
+
+			.wdyx {
+				background-position: -50px 0px;
+
+			}
+
+			.ejmm {
+				background-position: 0px 0px;
+
+			}
+
+			.wdxx {
+				background-position: 0px -25px;
+
+			}
+
+			.item.active,
+			.item:hover {
+				.wdzh {
+					background-position: 0px -50px;
+				}
+
+				.wdyx {
+					background-position: -50px -25px;
+
+				}
+
+				.ejmm {
+					background-position: -25px 0px;
+
+				}
+
+				.wdxx {
+					background-position: -25px -25px;
+
+				}
+
+			}
 		}
 
 		.content {
@@ -175,9 +225,11 @@
 					align-items: center;
 					padding: 27px 0;
 					border-bottom: 1px solid #F5F5F5;
-					&:last-of-type{
-						border-bottom:none;
+
+					&:last-of-type {
+						border-bottom: none;
 					}
+
 					.icon {
 						display: block;
 						width: 34px;
@@ -190,27 +242,32 @@
 						flex: 1;
 						line-height: 1;
 						font-size: 12px;
-						div:first-of-type{
+
+						div:first-of-type {
 							margin-bottom: 8px;
 						}
-						.hd{
+
+						.hd {
 							margin-right: 19px;
 						}
-						.status{
+
+						.status {
 							color: #FF701A;
 						}
-						.sub-tip{
+
+						.sub-tip {
 							color: #999999;
 						}
 					}
+
 					button {
 						width: 96px;
 						height: 32px;
 						color: #FF701A;
 					}
-					
+
 				}
-				
+
 			}
 
 			.Verified .title,

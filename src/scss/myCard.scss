@@ -1,0 +1,84 @@
+.my-card {
+	min-height: 806px;
+	background-color: #fff;
+	margin-top: 20px;
+	margin-bottom: 60px;
+	overflow: hidden;
+	.card-list{
+		margin: 0 113px;
+		margin-top: 50px;
+		overflow: hidden;
+		.card{
+			float: left;
+			width:282px;
+			height:98px;
+			background-color: #517ACD;
+			color: #fff;
+			box-shadow:0px 2px 8px 0px rgba(26,40,87,0.2);
+			border-radius: 6px;
+			overflow: hidden;
+			margin-right: 63px;
+			margin-bottom: 40px;
+			user-select: none;
+			
+			&:nth-of-type(3n){
+				margin-right: 0;
+			}
+			a {
+				display: flex;
+				height: 100%;
+				padding-top: 18px;
+				padding-left: 18px;
+			}
+			.bank-icon{
+				width: 32px;
+				height: 32px;
+				overflow: hidden;
+				border-radius: 50%;
+				margin-right: 8px;
+			}
+			.cont{
+				line-height: 1;
+				.bank-name{
+					font-size: 14px;
+					padding-top: 3px;
+					margin-bottom: 5px;
+				}
+				.card-type{
+					font-size: 12px;
+					margin-bottom: 12px;
+				}
+				.card-num{
+					font-size: 14px;
+				}
+			}
+		}
+		.add-card{
+			float: left;
+			width:282px;
+			height:98px;
+			display: block;
+			background-color: #F0F0F0;
+			text-align: center;
+			border: 1px dashed #00A0E9;
+			border-radius: 6px;
+			overflow: hidden;
+			a{
+				display: block;
+			}
+			.add-icon{
+				display: inline-block;
+				width: 26px;
+				height: 26px;
+				background: url("../img/tianjia.png") no-repeat;
+				background-size: contain;
+				margin-top: 18px;
+				margin-bottom: 8px;
+			}
+			.text{
+				color: #1A8CFF;
+				font-size: 18px;
+			}
+		}
+	}
+}

@@ -1,0 +1,75 @@
+.regist-agent {
+	width: 1000px;
+	min-height: 806px;
+	background-color: #fff;
+	margin-top: 20px;
+	margin-bottom: 60px;
+	overflow: hidden;
+
+	.form-wrap {
+		padding-top: 76px;
+
+		.input-wrap {
+			display: flex;
+			margin-left: 323px;
+			margin-bottom: 17px;
+			font-size: 14px;
+
+			label {
+				display: flex;
+				align-items: center;
+			}
+
+			.text {
+				display: block;
+				width: 60px;
+				margin-right: 30px;
+			}
+
+			.input-box {
+				width: 264px;
+				height: 42px;
+				border-radius: 4px;
+
+				&.tel {
+					width: 172px;
+					margin-right: 10px;
+				}
+			}
+
+			.code-btn {
+				border-color: #1A8CFF;
+				color: #1A8CFF;
+			}
+		}
+
+		.protocol {
+			display: flex;
+			align-items: center;
+			font-size: 12px;
+			margin: 30px 0;
+			margin-left: 413px;
+			color: #999999;
+
+			input {
+				margin-right: 7px;
+			}
+		}
+
+		.submit {
+			width: 264px;
+			height: 42px;
+			margin-left: 413px;
+			margin-bottom: 20px;
+		}
+		.tip{
+			font-size: 12px;
+			color: #999999;
+			margin-left: 493px;
+		}
+	}
+	.success-tip{
+		text-align: center;
+		font-size: 18px;
+	}
+}

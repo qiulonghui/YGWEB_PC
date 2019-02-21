@@ -1,0 +1,79 @@
+.card-detail {
+	min-height: 806px;
+	background-color: #fff;
+	margin-top: 20px;
+	margin-bottom: 60px;
+	overflow: hidden;
+
+	.content {
+		width: 724px;
+		margin: 0 auto;
+		margin-top: 50px;
+
+		.top {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.card {
+				display: flex;
+				width: 282px;
+				height: 98px;
+				background-color: #517ACD;
+				color: #fff;
+				box-shadow: 0px 2px 8px 0px rgba(26, 40, 87, 0.2);
+				border-radius: 6px;
+				padding-top: 18px;
+				padding-left: 18px;
+				overflow: hidden;
+				user-select: none;
+
+				.bank-icon {
+					width: 30px;
+					height: 30px;
+					overflow: hidden;
+					border-radius: 50%;
+					margin-right: 8px;
+				}
+
+				.cont {
+					line-height: 1;
+
+					.bank-name {
+						font-size: 14px;
+						padding-top: 3px;
+						margin-bottom: 5px;
+					}
+
+					.card-type {
+						font-size: 12px;
+						margin-bottom: 12px;
+					}
+
+					.card-num {
+						font-size: 14px;
+					}
+				}
+			}
+
+			.unbund {
+				width: 100px;
+				height: 40px;
+				color: #666666;
+				font-size: 14px;
+			}
+		}
+		.card-info{
+			margin-top: 18px;
+			color: #333333;
+			.item{
+				display: flex;
+				justify-content: space-between;
+				height: 45px;
+				line-height: 45px;
+				font-size: 14px;
+				border-bottom: 1px solid #E9E9E9; 
+			}
+		}
+	}
+}

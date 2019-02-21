@@ -1,0 +1,66 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-erjimima-default {
+  background-image: url(../userCenterSprite.png);
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+.icon-erjimima-pressed {
+  background-image: url(../userCenterSprite.png);
+  background-position: -25px 0px;
+  width: 20px;
+  height: 20px;
+}
+.icon-wodexiaoxo-default {
+  background-image: url(../userCenterSprite.png);
+  background-position: 0px -25px;
+  width: 20px;
+  height: 20px;
+}
+.icon-wodexiaoxo-pressed {
+  background-image: url(../userCenterSprite.png);
+  background-position: -25px -25px;
+  width: 20px;
+  height: 20px;
+}
+.icon-wodeyouxi-default {
+  background-image: url(../userCenterSprite.png);
+  background-position: -50px 0px;
+  width: 20px;
+  height: 20px;
+}
+.icon-wodeyouxi-pressed {
+  background-image: url(../userCenterSprite.png);
+  background-position: -50px -25px;
+  width: 20px;
+  height: 20px;
+}
+.icon-wodezhangha-pressed {
+  background-image: url(../userCenterSprite.png);
+  background-position: 0px -50px;
+  width: 20px;
+  height: 20px;
+}
+.icon-wodezhangha-default {
+  background-image: url(../userCenterSprite.png);
+  background-position: -25px -50px;
+  width: 20px;
+  height: 20px;
+}
