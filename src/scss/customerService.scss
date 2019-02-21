@@ -3,6 +3,19 @@
     min-height: 806px;
     margin-top: 20px;
 	margin-bottom: 60px;
+    .sidebar {
+        button.service-btn {
+            display: block;
+            width: 106px;
+            height: 36px;
+            margin: 0 auto;
+
+            &:first-of-type {
+                margin-top: 67px;
+                margin-bottom: 10px;
+            }
+        }
+    }
 	.content{
         flex: 1;
         background-color: #fff;

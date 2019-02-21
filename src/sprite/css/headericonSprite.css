@@ -1,0 +1,72 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-huanyipi {
+  background-image: url(../headericonSprite.png);
+  background-position: 0px -29px;
+  width: 16px;
+  height: 16px;
+}
+.icon-lixinjiangchi {
+  background-image: url(../headericonSprite.png);
+  background-position: -21px -50px;
+  width: 14px;
+  height: 14px;
+}
+.icon-shoucang-icon {
+  background-image: url(../headericonSprite.png);
+  background-position: -21px -29px;
+  width: 16px;
+  height: 16px;
+}
+.icon-shousou-icon {
+  background-image: url(../headericonSprite.png);
+  background-position: -29px 0px;
+  width: 20px;
+  height: 20px;
+}
+.icon-shouye-icon {
+  background-image: url(../headericonSprite.png);
+  background-position: -54px 0px;
+  width: 16px;
+  height: 16px;
+}
+.icon-xiangxia-icon {
+  background-image: url(../headericonSprite.png);
+  background-position: -40px -50px;
+  width: 8px;
+  height: 8px;
+}
+.icon-xiazai-icon {
+  background-image: url(../headericonSprite.png);
+  background-position: -54px -21px;
+  width: 16px;
+  height: 16px;
+}
+.icon-yonggaoxz {
+  background-image: url(../headericonSprite.png);
+  background-position: 0px 0px;
+  width: 24px;
+  height: 24px;
+}
+.icon-yuyan-icon {
+  background-image: url(../headericonSprite.png);
+  background-position: 0px -50px;
+  width: 16px;
+  height: 16px;
+}

@@ -1,169 +1,71 @@
-
 .swiper-container {
     background-color: #1A8CFF;
     min-width: 1200px;
     height: 580px;
-    .swiper-slide{
+
+    .swiper-slide {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        a{
+
+        a {
             display: block;
             width: 100%;
             height: 100%;
         }
     }
-    .swiper-pagination{
+
+    .swiper-pagination {
         bottom: 205px;
     }
-    .swiper-pagination-bullet{
+
+    .swiper-pagination-bullet {
         width: 34px;
         height: 6px;
         border-radius: 3px;
         background: #fff;
         opacity: 1;
     }
-    .swiper-pagination-bullet-active{
+
+    .swiper-pagination-bullet-active {
         background: #1975FF;
     }
-}  
+}
 
-.login-area{
+.login-area {
     position: relative;
     display: flex;
     margin-top: -190px;
     z-index: 10;
-    .title {
-        font-size: 16px;
-        color: #333333;
-        font-weight:bold;
-        margin-bottom: 14px;
-    }
-    .item{
+
+    .item {
+
         background-color: #fff;
         height: 266px;
         flex: 1;
         margin-right: 20px;
-        border-radius:4px;
+        border-radius: 4px;
         padding: 20px;
         background-repeat: no-repeat;
-        background-size: 100% auto; 
+        background-size: 100% auto;
         background-position: left top;
-        &:last-child{
+
+        &:last-child {
             margin-right: 0;
         }
-        .input{
-            width:244px;
-            height:36px;
-            border-radius:4px;
-            padding-left: 40px;
-            font-size:12px;
-            color: #999999;
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: 10px center;
-            &:first-child{
-                margin-bottom: 14px;
-            }
-        }
-        .zh{
-            background-image: url(../img/index/lianxiren-icon-default.png);
-        }
-        .pw{
-            background-image: url(../img/index/mima_icon-default.png);
-        }
-        .btn{
-			width: 100%;
-			height:36px;
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-        .btn-group{
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 14px;
-            .remb,a{
-                display: flex;
-                align-items: center;
-                color: #999999;
-                font-size: 12px;
-                font-weight:400;
-                input{
-                    margin-right: 6px;
-                }
-            }
-        }
-        .login-method-wrap{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            line-height: 24px;
-            font-size:12px;
-            font-weight:400;
-            color:#999999;
-            .group{
-                display: flex;
-                li{
-                    display: inline-block;
-                    padding: 0 8px;
-                    border-left: 1px solid #EBEBEB;
-                    line-height: 12px;
-                    cursor: pointer;
-                    &:hover{
-                        &.qq:before{
-                            background-image: url(../img/index/qq-pressed.png);
-                        }
-                        &.wx:before{
-                            background-image: url(../img/index/weixin-pressed.png);
-                        }
-                        &.wb:before{
-                            background-image: url(../img/index/weibo-pressed.png);
-                        }
 
-                    }
-                    span{
-                        vertical-align: middle;
-                    }
-                    &:first-child{
-                        padding-left: 0;
-                        border-left:none;
-                    }
-                    &:before{
-                        content: "";
-                        display: inline-block;
-                        vertical-align: middle;
-                        margin-right: 4px;
-                        width: 16px;
-                        height: 16px;
-                        background-repeat: no-repeat;
-                        background-size: 16px;
-                        background-position: center;
-                    }
-                    &.qq:before{
-                        background-image: url(../img/index/qq-default.png);
-                    }
-                    &.wx:before{
-                        background-image: url(../img/index/weixin-default.png);
-                    }
-                    &.wb:before{
-                        background-image: url(../img/index/weibo-default.png);
-                    }
-                }
-            }
-            .regist{
-                color: #1A8CFF;
-            }
-        }
     }
-    .pt-title{
+
+    .pt-title {
         line-height: 18px;
         position: relative;
-        font-size:18px;
+        font-size: 18px;
         color: #333333;
-        font-weight:bold;
+        font-weight: bold;
         margin-top: 174px;
         margin-bottom: 22px;
-        &:after{
+
+        &:after {
             content: "";
             position: absolute;
             display: block;
@@ -173,31 +75,37 @@
             bottom: -6px;
         }
     }
-    .sub-title{
+
+    .sub-title {
         line-height: 12px;
-        font-size:14px;
-        font-weight:400;
+        font-size: 14px;
+        font-weight: 400;
         color: #B3B3B3;
     }
-    .pic1{
+
+    .pic1 {
         background-image: url(../img/index/lixin.png);
     }
-    .pic2{
+
+    .pic2 {
         background-image: url(../img/index/oubo.png);
     }
-    .pic3{
+
+    .pic3 {
         background-image: url(../img/index/AG.png);
     }
 }
 
-.trans-info-area{
+.trans-info-area {
     display: flex;
     justify-content: space-between;
     margin-top: 22px;
     margin-bottom: 43px;
-    .left{
+
+    .left {
         width: 894px;
-        .info{
+
+        .info {
             display: flex;
             height: 24px;
             line-height: 24px;
@@ -205,49 +113,55 @@
             color: #666666;
             margin-bottom: 10px;
             border-bottom: 1px solid #E6E6E6;
-            &::before{
+
+            &::before {
                 content: "";
                 display: block;
                 width: 60px;
                 height: 24px;
                 margin-right: 12px;
-                background-image:url('../img/index/yinliang-icon.png'),linear-gradient(-90deg,rgba(255,156,0,1) 0%,rgba(255,186,1,1) 100%);
-                border-radius:0px 20px 0px 0px;
+                background-image: url('../img/index/yinliang-icon.png'), linear-gradient(-90deg, rgba(255, 156, 0, 1) 0%, rgba(255, 186, 1, 1) 100%);
+                border-radius: 0px 20px 0px 0px;
                 background-repeat: no-repeat;
                 background-size: 18px, auto;
                 background-position: center;
             }
         }
-        .content{
+
+        .content {
             display: flex;
             background-color: #fff;
-            border-radius:4px;
-            .item{
+            border-radius: 4px;
+
+            .item {
                 flex: 1;
-                .text-wrap{
+
+                .text-wrap {
                     margin: 30px 0;
                     font-size: 16px;
                     text-align: center;
                     border-right: 1px solid #EBEBEB;
-                    .tit{
+
+                    .tit {
                         line-height: 16px;
                         color: #333333;
                         margin-top: 0;
                         margin-bottom: 14px;
                         font-weight: 400;
-                        &::before{
+
+                        &::before {
                             content: "";
                             display: inline-block;
                             width: 14px;
                             height: 14px;
                             margin-right: 5px;
-                            background-image:url('../img/index/lixinjiangchi.png');
+                            background-image: url('../img/headericonSprite.png');
                             background-repeat: no-repeat;
-                            background-size: 14px;
-                            background-position: center;
+                            background-position: -21px -50px;
                         }
                     }
-                    .text{
+
+                    .text {
                         font-size: 24px;
                         line-height: 24px;
                         color: #E83A3A;
@@ -255,40 +169,49 @@
                         font-weight: 400;
                     }
                 }
-                &:last-child .text-wrap{
+
+                &:last-child .text-wrap {
                     border: none
                 }
             }
         }
     }
-    .right{
+
+    .right {
         width: 284px;
-        .tit{
+
+        .tit {
             line-height: 14px;
             font-size: 14px;
-            font-weight:400;
+            font-weight: 400;
             color: #666666;
             margin-bottom: 7px;
         }
-        .content-wrap{
+
+        .content-wrap {
             height: 126px;
             overflow: hidden;
             background-color: #fff;
-            border-radius:4px;
+            border-radius: 4px;
         }
-        .content{
+
+        .content {
             height: 98px;
             overflow: hidden;
             margin: 14px;
-            .item{
+
+            .item {
                 display: flex;
                 justify-content: space-between;
-                height:22px;
+                height: 22px;
                 font-size: 12px;
-                .name,.game{
+
+                .name,
+                .game {
                     color: #999999;
                 }
-                .amount{
+
+                .amount {
                     color: #E83A3A;
                 }
             }
@@ -296,99 +219,252 @@
     }
 }
 
-.game-area{
+.game-area {
     margin-bottom: 58px;
-    .header{
+
+    .header {
         text-align: justify;
         font-size: 0;
         margin-bottom: 20px;
-        div{
+
+        div {
             display: inline-block;
         }
-        .title{
+
+        .title {
             color: #000;
             line-height: 18px;
             font-size: 18px;
-            font-weight:bold;
-            &:before{
+            font-weight: bold;
+
+            &:before {
                 content: "";
                 display: inline-block;
                 vertical-align: middle;
                 margin-right: 12px;
-                width:6px;
-                height:18px;
-                background:linear-gradient(0deg,rgba(255,56,56,1) 0%,rgba(255,185,34,1) 100%);
+                width: 6px;
+                height: 18px;
+                background: linear-gradient(0deg, rgba(255, 56, 56, 1) 0%, rgba(255, 185, 34, 1) 100%);
             }
-            span{
+
+            span {
                 vertical-align: middle;
             }
 
         }
-        .btn-wrap{
+
+        .btn-wrap {
             display: inline-block;
             font-size: 14px;
             color: #999;
             cursor: pointer;
-            &:after{
+
+            &:after {
                 content: "";
                 display: inline-block;
                 vertical-align: middle;
                 width: 16px;
                 height: 16px;
                 background-repeat: no-repeat;
-                background-size: 16px;
-                background-position: center;
-                background-image: url(../img/index/huanyipi.png);
+                background-image: url(../img/headericonSprite.png);
+                background-position: 0px -29px;
                 margin-left: 11px;
             }
         }
-        &:after{
+
+        &:after {
             content: "";
             width: 100%;
             display: inline-block;
         }
     }
-    .content{
+
+    .content {
         display: flex;
         justify-content: space-between;
-        .item{
+
+        .item {
             width: 284px;
             height: 232px;
             background-color: #fff;
-            
+
         }
-        .item-bottom{
+
+        .item-bottom {
             display: flex;
             justify-content: space-between;
-            .left{
+
+            .left {
                 margin-left: 12px;
-                .pt-title{
+
+                .pt-title {
                     line-height: 16px;
-                    font-size:16px;
-                    font-weight:400;
+                    font-size: 16px;
+                    font-weight: 400;
                     margin-top: 10px;
                     margin-bottom: 8px;
                 }
-                .sub-title{
-                    font-size:12px;
-                    font-weight:400;
+
+                .sub-title {
+                    font-size: 12px;
+                    font-weight: 400;
                     color: #B3B3B3;
                     line-height: 12px;
                 }
             }
-            button{
-                width:70px;
+
+            button {
+                width: 70px;
                 line-height: 10px;
-                height:24px;
-                padding:5px 8px;
+                height: 24px;
+                padding: 5px 8px;
                 margin-top: 14px;
                 margin-right: 23px;
-                &:hover{
-                    border:1px solid #1A8CFF;
+
+                &:hover {
+                    border: 1px solid #1A8CFF;
                     background-color: #1A8CFF;
                     color: #fff;
                 }
             }
         }
     }
+}
+
+.login {
+    .title {
+        font-size: 16px;
+        color: #333333;
+        font-weight: bold;
+        margin-bottom: 14px;
+    }
+    .input {
+            width: 100%;
+            height: 36px;
+            border-radius: 4px;
+            padding-left: 40px;
+            font-size: 12px;
+            color: #999999;
+            background-repeat: no-repeat;
+            background-image: url("../img/logininputSprite.png");
+
+            &:first-child {
+                margin-bottom: 14px;
+            }
+        }
+
+        .zh {
+            background-position: 10px -62px;
+        }
+
+        .pw {
+            background-position: 10px -132px;
+        }
+
+        .zh:focus {
+            background-position: 10px 8px;
+        }
+
+        .pw:focus {
+            background-position: 10px -202px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 36px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 14px;
+
+            .remb,
+            a {
+                display: flex;
+                align-items: center;
+                color: #999999;
+                font-size: 12px;
+                font-weight: 400;
+
+                input {
+                    margin-right: 6px;
+                }
+            }
+        }
+
+        .login-method-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 24px;
+            font-size: 12px;
+            font-weight: 400;
+            color: #999999;
+
+            .group {
+                display: flex;
+
+                li {
+                    display: inline-block;
+                    padding: 0 8px;
+                    border-left: 1px solid #EBEBEB;
+                    line-height: 12px;
+                    cursor: pointer;
+
+                    &:hover {
+                        &.qq:before {
+                            background-position: -50px -21px;
+                        }
+
+                        &.wx:before {
+                            background-position: -71px 0px;
+                        }
+
+                        &.wb:before {
+                            background-position: -21px -50px;
+                        }
+
+                    }
+
+                    span {
+                        vertical-align: middle;
+                    }
+
+                    &:first-child {
+                        padding-left: 0;
+                        border-left: none;
+                    }
+
+                    &:before {
+                        content: "";
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 4px;
+                        width: 16px;
+                        height: 16px;
+                        background-repeat: no-repeat;
+                        background-image: url("../img/loginSprite.png");
+                    }
+
+                    &.qq:before {
+                        background-position: -50px 0px;
+                    }
+
+                    &.wx:before {
+                        background-position: -42px -50px;
+                    }
+
+                    &.wb:before {
+                        background-position: 0px -50px;
+                    }
+                }
+            }
+
+            .regist {
+                color: #1A8CFF;
+            }
+        }
 }

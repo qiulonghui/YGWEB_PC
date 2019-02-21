@@ -1,0 +1,83 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-chanpinfuwu-icon {
+  background-image: url(../footerSprite.png);
+  background-position: -132px -110px;
+  width: 26px;
+  height: 26px;
+}
+.icon-dianhua -default {
+  background-image: url(../footerSprite.png);
+  background-position: 0px -55px;
+  width: 50px;
+  height: 50px;
+}
+.icon-dingbu-default {
+  background-image: url(../footerSprite.png);
+  background-position: -55px 0px;
+  width: 50px;
+  height: 50px;
+}
+.icon-gaoxiao-icon {
+  background-image: url(../footerSprite.png);
+  width: 26px;
+  height: 26px;
+}
+.icon-jishu-icon {
+  background-image: url(../footerSprite.png);
+  background-position: -70px -110px;
+  width: 26px;
+  height: 26px;
+}
+.icon-kefuqq-icon {
+  background-image: url(../footerSprite.png);
+  background-position: -110px -55px;
+  width: 30px;
+  height: 30px;
+}
+.icon-mianfeishiwan-default {
+  background-image: url(../footerSprite.png);
+  background-position: -55px -55px;
+  width: 50px;
+  height: 50px;
+}
+.icon-qqkefu-default {
+  background-image: url(../footerSprite.png);
+  background-position: -110px 0px;
+  width: 50px;
+  height: 50px;
+}
+.icon-rexiandianhua-icon {
+  background-image: url(../footerSprite.png);
+  background-position: -35px -110px;
+  width: 30px;
+  height: 30px;
+}
+.icon-tousuyouxiang-icon {
+  background-image: url(../footerSprite.png);
+  background-position: 0px -110px;
+  width: 30px;
+  height: 30px;
+}
+.icon-zaixiankefu-default {
+  background-image: url(../footerSprite.png);
+  background-position: 0px 0px;
+  width: 50px;
+  height: 50px;
+}
