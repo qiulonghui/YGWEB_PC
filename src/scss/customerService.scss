@@ -1,38 +1,93 @@
-.customer-service{
+.customer-service {
 	display: flex;
-    min-height: 806px;
-    margin-top: 20px;
+	min-height: 806px;
+	margin-top: 20px;
 	margin-bottom: 60px;
-    .sidebar {
-        button.service-btn {
-            display: block;
-            width: 106px;
-            height: 36px;
-            margin: 0 auto;
 
-            &:first-of-type {
-                margin-top: 67px;
-                margin-bottom: 10px;
-            }
-        }
-    }
-	.content{
-        flex: 1;
-        background-color: #fff;
-		border-radius:4px;
-		.title{
-            padding-left: 30px;
-            padding-top: 37px;
-            border-bottom: 1px solid #E6E6E6;
-            span{
-                display: inline-block;
-                line-height: 18px;
-                font-size: 18px;
-                font-weight:400;
-                color: #333;
-                padding-bottom: 6px;
-                border-bottom: 3px solid #1A8CFF;
-            }
-        }
+	.sidebar {
+		.icon {
+			background-image: url('../img/serviceiconSprite.png');
+		}
+
+		.mmss {
+			background-position: -50px -25px;
+		}
+
+		.zhss {
+			background-position: 0px -25px;
+		}
+
+		.czbz {
+			background-position: 0px 0px;
+		}
+
+		.txbz {
+			background-position: 0px -50px;
+		}
+
+		.yhxy {
+			background-position: -50px -50px;
+
+		}
+
+		.item.active,
+		.item:hover {
+			.mmss {
+				background-position: -50px 0px;
+			}
+
+			.zhss {
+				background-position: -25px -25px;
+
+			}
+
+			.czbz {
+				background-position: -25px 0px;
+
+			}
+
+			.txbz {
+				background-position: -25px -50px;
+
+			}
+
+			.yhxy {
+				background-position: -75px 0px;
+			}
+		}
+
+		button.service-btn {
+			display: block;
+			width: 106px;
+			height: 36px;
+			margin: 0 auto;
+
+			&:first-of-type {
+				margin-top: 67px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	.content {
+		flex: 1;
+		background-color: #fff;
+		border-radius: 4px;
+
+		.title {
+			padding-left: 30px;
+			padding-top: 37px;
+			border-bottom: 1px solid #E6E6E6;
+
+			span {
+				display: inline-block;
+				line-height: 18px;
+				font-size: 18px;
+				font-weight: 400;
+				color: #333;
+				padding-bottom: 6px;
+				border-bottom: 3px solid #1A8CFF;
+			}
+		}
 	}
 }
