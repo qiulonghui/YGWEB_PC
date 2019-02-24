@@ -10,4 +10,12 @@ $(function(){
 		$(".yg-modal").hide();
 		$("body").css("overflow","auto")
 	})
+
+    //搜索推荐框
+	$(".search-wrap input").focus(function(){
+		$(".search-wrap .search-rec").show();
+	})
+    $(".search-wrap input").blur(function(){
+		$(".search-wrap .search-rec").hide();
+	})
 });
