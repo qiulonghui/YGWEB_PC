@@ -1,0 +1,78 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-dizhi-icon-pressed {
+  background-image: url(../registicon.png);
+  background-position: 0px 0px;
+  width: 20px;
+  height: 20px;
+}
+.icon-dizhi-icon {
+  background-image: url(../registicon.png);
+  background-position: -35px 0px;
+  width: 20px;
+  height: 20px;
+}
+.icon-lianxiren-pressed {
+  background-image: url(../registicon.png);
+  background-position: 0px -35px;
+  width: 20px;
+  height: 20px;
+}
+.icon-lianxiren {
+  background-image: url(../registicon.png);
+  background-position: -35px -35px;
+  width: 20px;
+  height: 20px;
+}
+.icon-mima-pressed {
+  background-image: url(../registicon.png);
+  background-position: -70px 0px;
+  width: 20px;
+  height: 20px;
+}
+.icon-mima {
+  background-image: url(../registicon.png);
+  background-position: -70px -35px;
+  width: 20px;
+  height: 20px;
+}
+.icon-yanzhengma-pressed {
+  background-image: url(../registicon.png);
+  background-position: 0px -70px;
+  width: 20px;
+  height: 20px;
+}
+.icon-yanzhengma {
+  background-image: url(../registicon.png);
+  background-position: -35px -70px;
+  width: 20px;
+  height: 20px;
+}
+.icon-yaoqingma-pressed {
+  background-image: url(../registicon.png);
+  background-position: -70px -70px;
+  width: 20px;
+  height: 20px;
+}
+.icon-yaoqingma {
+  background-image: url(../registicon.png);
+  background-position: -105px 0px;
+  width: 20px;
+  height: 20px;
+}

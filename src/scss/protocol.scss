@@ -1,0 +1,45 @@
+.protocol{
+	.ptl-header{
+		display: flex;
+		justify-content: center;
+		.btn{
+			display: block;
+			width: 160px;
+			height: 40px;
+			line-height: 38px;
+			border:1px solid #99A29F;
+			color: #99A29F;
+			border-top: none;
+			border-radius: 0 0 4px 4px;
+			text-align: center;
+			font-size: 14px;
+			user-select: none;
+			cursor: pointer;
+			&:first-of-type{
+				margin-right: 32px;
+			}
+		}
+		.btn.cur{
+			color: #FF701A;
+			border-color: #FF701A;
+		}
+	}
+	.ptl-cont{
+		padding: 10px 58px;
+		.main-title{
+			text-align: center;
+			margin-top: 48px;
+			margin-bottom: 40px;
+			font-weight: 400;
+			font-size: 20px;
+		}
+		p{
+			line-height: 24px;
+			font-size: 14px;
+		}
+		.m-title{
+			font-size: 16px;
+			font-weight: bold;
+		}
+	}
+}

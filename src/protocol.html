@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="../../favicon.ico">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/protocol.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/customerService.css" rel="stylesheet">
+	<link href="css/protocol.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+</head>
+
+<body>
+	@@include('include/header.html')
+
+	<div class="container center-block customer-service">
+		@@include('include/custServerSidebar.html')
+
+		<div class="content">
+			<div class="title"><span>用户协议</span></div>
+			<div class="protocol">
+				<div class="ptl-header">
+					<span class="btn cur" data-ptl-type="userPtl">用户服务协议</span>
+					<span class="btn" data-ptl-type="agentPtl">代理注册协议</span>
+				</div>
+				<div class="ptl-cont">
+					<!-- 用户服务协议 -->
+					<div id="userPtl" class="ptl user-ptl">
+						<h3 class="main-title">用户服务协议</h3>
+						<div class="m-title">一、特别提示</div><br>	
+						<p>尊敬的用户: 在此特别提醒您在注册成为HUI MONEY用户之前，请认真阅读本《HUI MONEY用户服务协议》（以下简称“协议”），确保您充分理解本协议中各条款。您的注册、登录、使用等行为将视为对本协议的接受，并同意接受本协议各项条款的约束。 本协议约定HUI MONEY与用户之间关于“HUI MONEY”服务（以下简称“服务”）的权利义务。“用户”是指注册、登录、使用本APP的个人。本协议可由HUI MONEY随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知。</p>
+					</div>
+					<!-- 用户服务协议END -->
+
+					<!-- 代理注册协议 -->
+					<div id="agentPtl" class="ptl agent-ptl" style="display:none;">
+						<h3 class="main-title">代理注册协议</h3>
+						<p></p>
+					</div>
+					<!-- 代理注册协议END -->
+				</div>
+			</div>
+		</div>
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/protocol.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+	
+	<script type="text/javascript">
+	$(function(){
+		// 显示不同的协议
+		$(".ptl-header>.btn").click(function() {
+			var curBtn = $(this);
+			var curBtnType = curBtn.data("ptlType");
+			$(".ptl-header>.btn").removeClass("cur");
+			curBtn.addClass("cur");
+			$(".ptl").hide();
+			var id = "#" + curBtnType;
+			$(id).show();
+		})
+	});
+	</script>
+</body>
+
+</html>

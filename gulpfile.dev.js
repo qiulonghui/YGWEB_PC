@@ -62,10 +62,10 @@ module.exports = function dev() {
 	
 	// 图片转雪碧图任务
 	gulp.task('sprite',function(){  
-		gulp.src('src/resource/serviceicon/*.png')  
+		gulp.src('src/resource/commonicon/*.png')  
 		   .pipe(spritesmith({  
-			   imgName:'serviceiconSprite.png',  
-			   cssName:'css/serviceiconSprite.css',  
+			   imgName:'commonsprite.png',  
+			   cssName:'css/commonsprite.css',  
 			   padding:5,  
 			   algorithm:'binary-tree'  
 		   }))  

@@ -18,4 +18,16 @@ $(function(){
     $(".search-wrap input").blur(function(){
 		$(".search-wrap .search-rec").hide();
 	})
+	$(".search-rec .s-item").hover(function(){
+		$(this).siblings("li").find("a").hide();
+		$(this).siblings("li").find(".s-text").show();
+		$(this).find('a').show();
+		$(this).find('.s-text').hide();
+	})
+
+	//等级经验长度
+	var $pg = $(".user-info .pg");
+	var level = $pg.data("pg");
+	var percent = Number(level)/5*100;
+	$pg.width(percent+"%");
 });

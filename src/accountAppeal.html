@@ -9,11 +9,11 @@
 	<link rel="icon" href="../../favicon.ico">
 	<title>永高娱乐</title>
 	<meta name="viewport" content="width=1366, initial-scale=1">
-	<!-- build:css css/customerService.css -->
+	<!-- build:css css/accountAppeal.css -->
 	<link href="css/normalize.css" rel="stylesheet">
 	<link href="css/common.css" rel="stylesheet">
 	<link href="css/customerService.css" rel="stylesheet">
-	<link href="css/passwordAppeal.css" rel="stylesheet">
+	<link href="css/accountAppeal.css" rel="stylesheet">
 	<!-- endbuild -->
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
@@ -26,17 +26,15 @@
 	<div class="container center-block customer-service">
 		@@include('include/custServerSidebar.html')
 
-		<div class="content password-appeal">
-			<div class="title"><span>密码申诉</span></div>
+		<div class="content account-appeal">
+			<div class="title"><span>账号申诉</span></div>
 			<div class="form-wrap">
 				<div class="item">
 					<label>申诉原因:</label>
 					<select id="reason">
 						<option class="placeholder" value='' disabled selected style='display:none;'>请选择申诉原因</option>
-						<option value="volvo">Volvo</option>
-						<option value="saab">Saab</option>
-						<option value="opel">Opel</option>
-						<option value="audi">Audi</option>
+						<option value="1">手机号重置申诉</option>
+						<option value="2">邮箱重置申诉</option>
 					</select>
 				</div>
 				<div class="item">
@@ -44,7 +42,7 @@
 					<input id="tel" type="text" placeholder="请输入永高账号">
 				</div>
 				<div class="item">
-					<label for="tel">预留手机号:</label>
+					<label for="tel">联系电话:</label>
 					<input id="tel" type="text" placeholder="请输入绑定的手机号码">
 				</div>
 				<div class="item">
@@ -59,7 +57,7 @@
 	@@include('include/footer.html')
 	@@include('include/siteTool.html')
 
-	<!-- build:js js/customerService.js -->
+	<!-- build:js js/accountAppeal.js -->
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
