@@ -79,7 +79,7 @@
 					<span class="amount">￥99.95</span>
 					<span class="cost">(费用：0.05%)</span>
 				</div>
-				<button class="primary submit">立即充值</button>
+				<button id="reInfoShow" class="primary submit">立即充值</button>
 			</div>
 			<!-- 微信支付END -->
 			<div class="bottom-tip">
@@ -91,10 +91,109 @@
 	@@include('include/footer.html')
 	@@include('include/siteTool.html')
 
+	<!-- 充值信息模态框 -->
+	<div class="yg-modal recharge-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">充值信息</div>
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="recg">
+						<div class="item"><span class="label">充值方式：</span><span class="val">微信支付</span></div>
+						<div class="item"><span class="label">充值账号：</span><span class="val">18848614754</span></div>
+						<div class="item"><span class="label">充值币种：</span><span class="val">人民币CNY</span></div>
+						<div class="item"><span class="label">充值金额：</span><span class="val warning">￥100</span></div>
+						<div class="item"><span class="label">到账金额：</span><span class="val"><b class="success">￥99.95</b><b class="cost">(费用0.05%)</b></span></div>
+						<div class="btn-group">
+							<button class="primary submit">确定</button>
+							<button class="cancel">修改</button>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 充值信息模态框 END-->
+
+	<!-- 支付模态框 -->
+	<div class="yg-modal pay-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">请使用微信扫描二维码以完成支付</div>
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="pay">
+						<img class="pay-code" src="img/downAPP/erweima.png" alt="" width="214" height="214">
+						<div class="pay-tip">请使用微信扫描<br>二维码完成支付</div>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 支付模态框 END-->
+
+	<!-- 充值结果模态框 -->
+	<div class="yg-modal recg-result-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="recg-result">
+						<div class="res-tip">充值成功</div>
+						<div class="res-sub-tip">请留意通知信息</div>
+						<button class="primary ok">确定</button>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 充值结果模态框 END-->
+
+
 	<!-- build:js js/recharge.js -->
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
+
+	<script type="text/javascript">
+		$(function () {
+			// 选择充值金额
+			$(".amount-wrap .box").click(function () {
+				$(this).addClass("active").siblings().removeClass("active");
+			})
+
+			// 显示充值信息
+			$("#reInfoShow").click(function () {
+				$(".recharge-modal").show();
+				$("body").css("overflow", "hidden");
+			})
+			// 隐藏充值信息
+			$(".recharge-modal .cancel").click(function () {
+				$(".recharge-modal").hide();
+				$("body").css("overflow", "auto");
+			})
+			// 支付二维码
+			$(".recharge-modal .submit").click(function () {
+				$(".recharge-modal").hide();
+				$(".pay-modal").show();
+				$("body").css("overflow", "hidden");
+			})
+
+			$(".recg-result-modal .ok").click(function () {
+				$(".recg-result-modal").hide();
+				$("body").css("overflow", "auto");
+			})
+		})
+	</script>
 </body>
 
 </html>

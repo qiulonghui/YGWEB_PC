@@ -60,18 +60,43 @@
 					<a class="regist" href="#">免费注册</a>
 				</div>
 			</div>
-			<div class="item pic1">
-				<div class="pt-title"><a href="">立鑫平台</a></div>
-				<div class="sub-title">最专业平台：百家乐 拥挤</div>
+			<div class="item">
+				<div class="pic-wrap">
+					<img src="img/index/lixin.png" width="284" height="174" />
+					<div class="mask">
+						<button class="primary"><a href="">进入平台</a></button>
+					</div>
+				</div>
+				<div class="item-bottom">
+					<div class="pt-title">立鑫平台</div>
+					<div class="sub-title">最专业平台：百家乐 拥挤</div>
+				</div>
 			</div>
-			<div class="item pic2">
-				<div class="pt-title"><a href="">欧博平台</a></div>
-				<div class="sub-title">最专业平台：龙虎门 拥挤</div>
+			<div class="item">
+				<div class="pic-wrap">
+					<img src="img/index/oubo.png" width="284" height="174" />
+					<div class="mask">
+						<button class="primary"><a href="">进入平台</a></button>
+					</div>
+				</div>
+				<div class="item-bottom">
+					<div class="pt-title">欧博平台</div>
+					<div class="sub-title">最专业平台：龙虎门 拥挤</div>
+				</div>
 			</div>
-			<div class="item pic3">
-				<div class="pt-title"><a href="">AG平台</a></div>
-				<div class="sub-title">最专业平台：真人娱乐 拥挤</div>
+			<div class="item">
+				<div class="pic-wrap">
+					<img src="img/index/AG.png" width="284" height="174" />
+					<div class="mask">
+						<button class="primary"><a href=""></a>进入平台</a></button>
+					</div>
+				</div>
+				<div class="item-bottom">
+					<div class="pt-title">AG平台</div>
+					<div class="sub-title">最专业平台：真人娱乐 拥挤</div>
+				</div>
 			</div>
+	
 		</section>
 
 		<section class="trans-info-area">
@@ -221,7 +246,7 @@
 	<!-- 登录模态框 END-->
 
 	<!-- 注册模态框 -->
-	<div class="yg-modal regist-modal" style="display:block">
+	<div class="yg-modal regist-modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -273,13 +298,15 @@
 			// 轮播图
 			var mySwiper = new Swiper('.swiper-container', {
 				loop: true, // 循环模式选项
+				autoplay: true,
 				// 如果需要分页器
 				pagination: {
 					el: '.swiper-pagination',
 				}
 			})
 
-			jQuery(".txtMarquee-top").slide({
+			//中奖滚动
+			$(".txtMarquee-top").slide({
 				mainCell: ".bd ul",
 				autoPlay: true,
 				effect: "topMarquee",

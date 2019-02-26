@@ -37,23 +37,51 @@
 	display: flex;
 	margin-top: -190px;
 	z-index: 10;
+	.login{
+		padding: 20px;
+	}
 
 	.item {
-
 		background-color: #fff;
 		height: 266px;
 		flex: 1;
 		margin-right: 20px;
 		border-radius: 4px;
-		padding: 20px;
-		background-repeat: no-repeat;
-		background-size: 100% auto;
-		background-position: left top;
+		
 
 		&:last-child {
 			margin-right: 0;
 		}
-
+		.pic-wrap{
+			position: relative;
+			height: 174px;
+			overflow: hidden;
+			.mask{
+				position: absolute;
+				top: -174px;
+				left: 0;
+				z-index: 10;
+				width: 100%;
+				height: 174px;
+				text-align: center;
+				background-color:rgba(0,0,0,0.5);
+				transition: all 0.5s;
+				button{
+					margin-top: 66px;
+					width: 108px;
+					height: 30px;
+				}
+			}
+		}
+		.item-bottom{
+			padding: 20px;
+			height: 92px;
+		}
+	}
+	.item:hover{
+		.mask{
+			top: 0;
+		}
 	}
 
 	.pt-title {
@@ -62,7 +90,6 @@
 		font-size: 18px;
 		color: #333333;
 		font-weight: bold;
-		margin-top: 174px;
 		margin-bottom: 22px;
 
 		&:after {
@@ -81,18 +108,6 @@
 		font-size: 14px;
 		font-weight: 400;
 		color: #B3B3B3;
-	}
-
-	.pic1 {
-		background-image: url(../img/index/lixin.png);
-	}
-
-	.pic2 {
-		background-image: url(../img/index/oubo.png);
-	}
-
-	.pic3 {
-		background-image: url(../img/index/AG.png);
 	}
 }
 
@@ -193,7 +208,7 @@
 			overflow: hidden;
 			background-color: #fff;
 			border-radius: 4px;
-			padding: 15px;
+			padding: 8px 15px;
 
 		}
 
