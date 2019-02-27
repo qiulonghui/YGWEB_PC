@@ -28,35 +28,45 @@
 
 		<div class="content recharge">
 			<div class="title">
-				<span>微信支付</span>
+				<span class="text">微信支付</span>
 				<a class="record" href="#">充值记录</a>
 			</div>
 			<ul class="pay-type-wrap">
-				<li class="item active">
+				<li class="item active" data-paymethod="wx">
 					<i class="pay-icon wx"></i>微信支付
 				</li>
-				<li class="item">
+				<li class="item" data-paymethod="zfb">
 					<i class="pay-icon zfb"></i>支付宝支付
 				</li>
-				<li class="item">
+				<li class="item" data-paymethod="wing">
 					<i class="pay-icon wing"></i>Wing支付
 				</li>
-				<li class="item">
+				<li class="item" data-paymethod="card">
 					<i class="pay-icon card"></i>银行卡支付
 				</li>
 			</ul>
 			<!-- 微信支付 -->
 			<div class="wx-pay form-wrap">
 				<div class="item">
-					<label>充值账号: <input class="input-box" type="text" placeholder="输入充值账号"></label>
+					<label>充值账号:</label> <input class="input-box" type="text" placeholder="输入充值账号">
 				</div>
 				<div class="item">
-					<label>再次输入: <input class="input-box" type="text" placeholder="再次确认账号"></label>
+					<label>再次输入:</label> <input class="input-box" type="text" placeholder="再次确认账号">
 				</div>
 				<div class="item currency-list">
 					<label>选择币种:</label>
 					<select class="input-box">
 						<option class="placeholder" value='' disabled selected style='display:none;'>请选择币种</option>
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</div>
+				<div class="item card-list" style="display:none;">
+					<label>选择银行卡:</label>
+					<select class="input-box">
+						<option class="placeholder" value='' disabled selected style='display:none;'>请选择银行卡</option>
 						<option value="volvo">Volvo</option>
 						<option value="saab">Saab</option>
 						<option value="opel">Opel</option>
@@ -82,6 +92,14 @@
 				<button id="reInfoShow" class="primary submit">立即充值</button>
 			</div>
 			<!-- 微信支付END -->
+
+			<!-- 银行卡支付 未绑卡 -->
+			<div class="card-pay-unbind form-wrap" style="display:none;">
+				<div class="card-ub-tip">您还没绑定银行卡</div>
+				<button class="primary add-card-btn"><a href="addBankCard.html">立即添加</a></button>
+			</div>
+			<!-- 银行卡支付 未绑卡END -->
+
 			<div class="bottom-tip">
 				<div class="tit">温馨提示</div>
 				<div class="text">1、您必须拥有本人银行卡账户，保证您的帐户有足够的现金。<br> 2、首次使用必须绑定银行卡。</div>
@@ -166,6 +184,32 @@
 
 	<script type="text/javascript">
 		$(function () {
+			// 选择充值方式
+			$(".pay-type-wrap .item").click(function () {
+				var curPayMethod = $(this).data("paymethod");
+				var $titleBox = $(".recharge .title .text");
+				var titleTxt = "";
+				$(this).addClass("active").siblings().removeClass("active");
+				if(curPayMethod === "wx") {
+					titleTxt = "微信支付";
+				}else if(curPayMethod === "zfb"){
+					titleTxt = "支付宝支付";
+				}else if(curPayMethod === "wing"){
+					titleTxt = "Wing支付";
+				}else if(curPayMethod === "card"){
+					titleTxt = "银行卡支付";
+				}
+				if(curPayMethod === "card"){
+					$(".recharge .form-wrap").hide();
+					$(".recharge .card-pay-unbind").show();
+
+				}else{
+					$(".recharge .form-wrap").hide();
+					$(".recharge .wx-pay").show();
+				}
+				$titleBox.text(titleTxt);
+			})
+			
 			// 选择充值金额
 			$(".amount-wrap .box").click(function () {
 				$(this).addClass("active").siblings().removeClass("active");

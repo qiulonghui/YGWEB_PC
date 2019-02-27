@@ -46,7 +46,7 @@
 				<div class="item bank-card-list">
 					<label>收款银行卡:</label>
 					<select class="input-box">
-						<option class="placeholder" value='' disabled selected style='display:none;'>请选择币种</option>
+						<option class="placeholder" value='' disabled selected style='display:none;'>请选择银行卡</option>
 						<option value="volvo">Volvo</option>
 						<option value="saab">Saab</option>
 						<option value="opel">Opel</option>
@@ -87,6 +87,15 @@
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
+
+	<script type="text/javascript">
+	$(function () {
+		// 选择充值金额
+		$(".amount-wrap .box").click(function () {
+			$(this).addClass("active").siblings().removeClass("active");
+		})
+	});
+	</script>
 </body>
 
 </html>

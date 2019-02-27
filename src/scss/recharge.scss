@@ -66,8 +66,13 @@
 		margin-top: 55px;
 
 		.item {
+			font-size: 0;
 			margin-bottom: 20px;
-
+			label{
+				display: inline-block;
+				width: 75px;
+				font-size: 14px;
+			}
 			.input-box {
 				margin-left: 30px;
 				width: 264px;
@@ -80,7 +85,9 @@
 		.amount-wrap {
 			margin-top: 36px;
 			display: flex;
-
+			.label{
+				width: 75px;
+			}
 			.list {
 				width: 520px;
 				margin-left: 30px;
@@ -152,6 +159,25 @@
 			height: 50px;
 			margin-left: 190px;
 			font-size: 16px;
+		}
+	}
+
+	.card-pay-unbind {
+		width: 100%;
+		background: url("../img/wallet/weibangdin.png") no-repeat;
+		background-size: 90px;
+		background-position: center 94px;
+		text-align: center;
+		overflow: hidden;
+		.card-ub-tip{
+			color: #9DB9D1;
+			font-size: 14px;
+			margin-top: 192px;
+		}
+		.add-card-btn{
+			width:112px;
+			height:36px;
+			margin-top: 28px;
 		}
 	}
 
