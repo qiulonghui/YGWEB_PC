@@ -1,0 +1,47 @@
+.bet-record {
+	.main {
+		display: flex;
+		min-height: 806px;
+		margin-top: 20px;
+		margin-bottom: 60px;
+		.record-sidebar {
+			width: 210px;
+			margin-right: 20px;
+			padding-top: 30px;
+			background-color: #fff;
+			border-radius: 4px;
+
+			.item {
+				line-height: 40px;
+				height: 40px;
+				margin-bottom: 15px;
+				text-align: center;
+				font-size: 16px;
+				color: #333333;
+				font-weight: 400;
+				user-select: none;
+				cursor: pointer;
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+
+				&.active {
+					background-color: #FAFAFB;
+					text-indent: -3px;
+					color: #FF701A;
+					border-left: 3px solid #1A8CFF;
+				}
+
+				&:hover {
+					background-color: #FAFAFB;
+					color: #FF701A;
+				}
+			}
+		}
+		.content{
+			flex:1;
+			background-color: #fff;
+		}
+	}
+}

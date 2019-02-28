@@ -1,0 +1,69 @@
+.banner{
+	position: relative;
+	width: 100%;
+	height: 480px;
+	background: url("../img/game-banner1.png") no-repeat;
+	background-size: cover;
+	background-position: center top;
+	.b-info{
+		position: absolute;
+		display: flex;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 1150px;
+		height:24px;
+		line-height: 24px;
+		background-color:rgba(0,0,0,0.5);
+		p{
+			font-size:12px;
+			color:#fff;
+		}
+		&::before {
+			content: "";
+			display: block;
+			width: 60px;
+			height: 24px;
+			margin-right: 12px;
+			background-image: url('../img/index/yinliang-icon.png'), linear-gradient(-90deg, rgba(255, 156, 0, 1) 0%, rgba(255, 186, 1, 1) 100%);
+			border-radius: 0px 20px 0px 0px;
+			background-repeat: no-repeat;
+			background-size: 18px, auto;
+			background-position: center;
+		}
+
+	}
+}
+.game{
+	background-color: #fff;
+	.content{
+		padding: 40px 10px; 
+		.g-list{
+			display: flex;
+			flex-wrap: wrap;
+			.g-item{
+				width: 160px;
+				height: 160px;
+				text-align: center;
+				margin-bottom: 18px;
+				margin-right:10px;
+			}
+			.g-item:nth-of-type(7n){
+				margin-right:0;
+			}
+			.game-pic{
+				border-radius: 20px;
+				box-shadow: 0 4px 8px 0 rgba(123, 133, 151,0.5);
+				&:hover{
+					box-shadow: 0 4px 14px 0 rgba(123, 133, 151,1);
+				}
+			}
+			.game-name{
+				font-size: 14px;
+				color: #333;
+				margin-top: 10px;
+			}
+		}
+	}
+}
