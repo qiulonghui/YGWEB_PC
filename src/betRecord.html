@@ -9,11 +9,14 @@
 	<link rel="icon" href="../../favicon.ico">
 	<title>永高娱乐</title>
 	<meta name="viewport" content="width=1366, initial-scale=1">
+	<link href="lib/Datepicker/css/date-font.css" rel="stylesheet">
+	<link href="lib/Datepicker/css/foundation-datepicker.min.css" rel="stylesheet">
 	<!-- build:css css/betRecord.css -->
 	<link href="css/normalize.css" rel="stylesheet">
 	<link href="css/common.css" rel="stylesheet">
 	<link href="css/betRecord.css" rel="stylesheet">
 	<!-- endbuild -->
+
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
 	<![endif]-->
@@ -43,7 +46,66 @@
 				</ul>
 			</div>
 			<div class="content">
-
+				<div class="datepicker-group">
+					<div class="item">
+						<label>平台</label>
+						<select class="input-box" id="platform">
+							<option class="placeholder" value='' disabled selected style='display:none;'>选择平台</option>
+							<option value="1">全部</option>
+							<option value="2">欧博</option>
+							<option value="2">利鑫</option>
+							<option value="2">AG</option>
+						</select>
+					</div>
+					<div class="item">
+						<label>开始时间</label>
+						<input class="input-box time-box" id="startTime" type="text">
+					</div>
+					<div class="item">
+						<label>结束时间</label>
+						<input class="input-box time-box" id="endTime" type="text">
+					</div>
+					<button class="primary search">查询</button>
+				</div>
+				<div class="record">
+					<div class="top">
+						<div class="t-item">
+							<span class="label">平台</span><span>全部</span>
+						</div>
+						<div class="t-item">
+							<span class="label">查询时间</span><div><span class="st">开始时间：2018-12-26</span><span class="et">结束时间：2018-12-26</span></div>
+						</div>
+						<div class="t-item">
+							<span class="label">总投注</span><span>5,000,000.00</span>
+						</div>
+						<div class="t-item">
+							<span class="label">有效投注</span><span>1,481,000.00</span>
+						</div>
+						<div class="t-item">
+							<span class="label">输赢</span><span>6,000,000.00</span>
+						</div>
+					</div>
+					<ul class="r-list">
+						<li class="r-item">
+							<span class="game-type">视讯</span>
+							<div class="text">
+								<div class="des">庄家 [￥50,000]</div>
+								<div class="time">2018-12-26至2018-12-26</div>
+							</div>
+							<span class="amount">￥-50,000</span>
+							<a href="betDetail.html">详情</a>
+						</li>
+						<li class="r-item">
+							<span class="game-type">视讯</span>
+							<div class="text">
+								<div class="des">庄家 [￥50,000]</div>
+								<div class="time">2018-12-26至2018-12-26</div>
+							</div>
+							<span class="amount">￥-50,000</span>
+							<a href="betDetail.html">详情</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 
@@ -55,9 +117,17 @@
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
+	<script src="lib/Datepicker/js/foundation-datepicker.js"></script>
+	<script src="lib/Datepicker/js/locales/foundation-datepicker.zh-CN.js"></script>
 
 	<script type="text/javascript">
 		var curTitle = '投注记录'
+		$('#startTime').fdatepicker({
+			format: 'yyyy-mm-dd'
+		});
+		$('#endTime').fdatepicker({
+			format: 'yyyy-mm-dd'
+		});
 	</script>
 </body>
 
