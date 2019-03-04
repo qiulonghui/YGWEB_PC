@@ -59,16 +59,30 @@
 			<!-- 添加银行卡END -->
 
 			<!-- 步骤2 设置交易密码  如果未设置-->
-			<!-- <div class="step2">
+			<div class="step2" style="display:none;">
 				<div class="item">
-					<label>卡号:<input class="input-box" type="number" placeholder="请输入卡号"></label>
+					<label for="dealPsw">设置交易密码:</label>
+					<div class="input-wrap">
+						<input id="dealPsw" type="password" placeholder="输入六位数交易密码">
+						<i class="icon-eyes"></i>
+					</div>
 				</div>
 				<div class="item">
-					<label>姓名:<input class="input-box" type="text" placeholder="持卡人姓名"></label>
+					<label for="confirmDealPsw">确认密码:</label>
+					<div class="input-wrap">
+						<input id="confirmDealPsw" type="password" placeholder="再次输入密码">
+						<i class="icon-eyes"></i>
+					</div>
 				</div>
-				<button class="primary submit">立即添加</button>
-			</div> -->
-			<!-- 设置交易密码 -->
+				<button class="primary submit">确定</button>
+			</div>
+			<!-- 设置交易密码 END-->
+			<!-- 添加成功 -->
+			<div class="add-success" style="display:none;">
+				<div class="text">恭喜您，银行卡添加成功！查看银行卡详情!</div>
+				<button class="primary"><a href="recharge.html">去充值</a></button>
+			</div>
+			<!-- 添加成功 END -->
 		</div>
 		<div class="bottom-tip">添加个人银行卡，以方便支付</div>
 	</div>
@@ -80,7 +94,26 @@
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
 	<script type="text/javascript">
-		var curTitle = '添加银行卡'
+		var curTitle = '添加银行卡';
+		$(function () {
+			// 密码显示隐藏
+			$(".icon-eyes").click(function () {
+				var inputType = $(this).siblings("input").attr("type");
+				var curInputType = inputType === "password" ? "text" : "password";
+				$(this).toggleClass("on").siblings("input").attr("type", curInputType);
+			})
+
+			$(".step1 .submit").click(function() {
+				$(".step1").hide();
+				$(".step2").show();
+				curTitle = '设置交易密码';
+			})
+
+			$(".step2 .submit").click(function() {
+				$(".step2").hide();
+				$(".add-success").show();
+			})
+		});
 	</script>
 </body>
 
