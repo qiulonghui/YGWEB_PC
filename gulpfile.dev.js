@@ -1,7 +1,8 @@
 'use strict';
 
 var gulp = require('gulp'),
-    browserSync = require('browser-sync').create(),
+	browserSync = require('browser-sync').create(),
+	// autoprefixer = require('gulp-autoprefixer'),
     SSI = require('browsersync-ssi'),
     plumber = require('gulp-plumber'), //错误处理提示插件
     sass = require('gulp-sass'),
@@ -36,7 +37,10 @@ module.exports = function dev() {
             .pipe(sass.sync().on('error', sass.logError))
             .pipe(sass({
                 outputStyle: "compact"
-            }))
+			}))
+			// .pipe(autoprefixer({
+            //     browsers: ['last 10 versions', 'Firefox >= 20', 'Opera >= 36', 'ie >= 9', 'Android >= 4.0'] // 浏览器版本
+            // }))
             .pipe(sourcemap.write('./maps')) //生成sourcemap文件，路径为./maps
             .pipe(gulp.dest("dist/css"))
             .pipe(browserSync.stream()); //文件有更新自动执行

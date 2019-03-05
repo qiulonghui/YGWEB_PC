@@ -23,9 +23,21 @@
 	@@include('include/header2.html')
 
 	<div class="container center-block record">
-		<div class="form-wrap">
-		
+		<div class="btn-group">
+			<label class="box-label"><input class="yg-checkbox" type="checkbox" />全选</label>
+			<button class="del-msg">删除</button>
 		</div>
+		<ul class="record-list">
+			<li class="r-item selected">
+				<input class="yg-checkbox" type="checkbox">
+				<div class="rec-wrap">
+					<div class="top"><span class="sn">单号：23423435</span><span class="status ">待付款</span></div>
+					<div class="time"><span class="label">充值金额</span><span>5000 USD</span></div>
+					<div class="text"><span class="label">充值银行</span><span>中国建设银行</span></div>
+					<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><a class="go-detail" href="">查看详情 ></a></div>
+				</div>
+			</li>
+		</ul>
 	</div>
 	@@include('include/footer.html')
 	@@include('include/siteTool.html')
@@ -35,8 +47,7 @@
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
 	<script type="text/javascript">
-		var curTitle = '添加银行卡';
-		
+		var curTitle = '充值记录';
 	</script>
 </body>
 
