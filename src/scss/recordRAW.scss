@@ -1,12 +1,14 @@
-.record{
+.record {
 	background-color: #fff;
-	margin-top:20px;
+	margin-top: 20px;
 	margin-bottom: 60px;
+	padding-bottom: 80px;
 	min-height: 600px;
-	.btn-group{
+
+	.btn-group {
 		width: 910px;
-		margin:  0 auto;
-		margin-bottom: 50px;	
+		margin: 0 auto;
+		margin-bottom: 50px;
 		padding-top: 34px;
 		display: flex;
 		justify-content: space-between;
@@ -14,6 +16,7 @@
 		font-size: 12px;
 		color: #333;
 	}
+
 	.yg-checkbox {
 		margin-right: 10px;
 	}
@@ -23,13 +26,14 @@
 		display: flex;
 		align-items: center;
 	}
+
 	.del-msg {
 		width: 80px;
 		height: 30px;
 	}
 
-	.record-list{
-		.r-item{
+	.record-list {
+		.r-item {
 			display: flex;
 			align-items: center;
 			width: 910px;
@@ -41,32 +45,80 @@
 			padding: 0 24px;
 			font-size: 12px;
 			margin-bottom: 16px;
-			&.selected{
+
+			&.selected {
 				background-color: #FFF8EE;
 			}
 		}
-		.rec-wrap{
+
+		.rec-wrap {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			width:758px;
+			width: 758px;
 			height: 185px;
 			margin-left: 30px;
-			div{
+
+			div {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+
+				.status {
+					font-weight: bold;
+				}
 			}
-			.top{
+
+			.top {
 				height: 50px;
 				border-bottom: 1px solid #e6e6e6;
 			}
-			.bottom{
+
+			.bottom {
 				height: 50px;
 				border-top: 1px solid #e6e6e6;
+
+				button {
+					width: 60px;
+					height: 30px;
+					color: #9A9A9A;
+				}
 			}
-			.sn{
+
+			.sn {
 				font-weight: bold;
+			}
+		}
+
+		.unpaid,
+		.Processing {
+			.status {
+				color: #FF701A;
+			}
+
+		}
+
+		.unpaid {
+			.go-detail {
+				color: #1A8CFF;
+			}
+		}
+
+		.completed {
+			.status {
+				color: #39DD00;
+			}
+		}
+
+		.notpass {
+			.status {
+				color: #E83A3A;
+			}
+		}
+
+		.cancelled {
+			.status {
+				color: #666666;
 			}
 		}
 	}
