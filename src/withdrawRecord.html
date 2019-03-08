@@ -9,7 +9,7 @@
 	<link rel="icon" href="">
 	<title>永高娱乐</title>
 	<meta name="viewport" content="width=1366, initial-scale=1">
-	<!-- build:css css/rechargeRecord.css -->
+	<!-- build:css css/withdrawRecord.css -->
 	<link href="css/normalize.css" rel="stylesheet">
 	<link href="css/common.css" rel="stylesheet">
 	<link href="css/recordRAW.css" rel="stylesheet">
@@ -28,27 +28,16 @@
 				<label class="box-label"><input class="yg-checkbox" type="checkbox" />全选</label>
 				<button class="del-msg">删除</button>
 			</div>
-
 			<ul class="record-list">
-				<!-- 待付款 -->
-				<li class="r-item  selected">
-					<input class="yg-checkbox" type="checkbox">
-					<div class="rec-wrap unpaid">
-						<div class="top"><span class="sn">单号：23423435</span><span class="status">待付款</span></div>
-						<div class="time"><span class="label">充值金额</span><span>5000 USD</span></div>
-						<div class="text"><span class="label">充值银行</span><span>中国建设银行(2166)</span></div>
-						<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><a class="go-detail" target="_blank" href="recRecordDetail.html">查看详情
-								></a></div>
-					</div>
-				</li>
 				<!-- 处理中 -->
-				<li class="r-item">
+				<li class="r-item selected">
 					<input class="yg-checkbox" type="checkbox">
 					<div class="rec-wrap Processing">
 						<div class="top"><span class="sn">单号：23423435</span><span class="status">处理中</span></div>
-						<div class="time"><span class="label">充值金额</span><span>5000 USD</span></div>
-						<div class="text"><span class="label">充值银行</span><span>中国建设银行(2166)</span></div>
-						<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><button>取消</button></div>
+						<div class="time"><span class="label">提现金额</span><span>5000 USD</span></div>
+						<div class="text"><span class="label">收款银行</span><span>中国建设银行(2166)</span></div>
+						<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><a class="go-detail" target="_blank" href="wdrRecordDetail.html">查看详情
+								></a></div>
 					</div>
 				</li>
 				<!-- 已完成 -->
@@ -56,28 +45,38 @@
 					<input class="yg-checkbox" type="checkbox">
 					<div class="rec-wrap completed">
 						<div class="top"><span class="sn">单号：23423435</span><span class="status">已完成</span></div>
-						<div class="time"><span class="label">充值金额</span><span>5000 USD</span></div>
-						<div class="text"><span class="label">充值银行</span><span>中国建设银行(2166)</span></div>
+						<div class="time"><span class="label">提现金额</span><span>5000 USD</span></div>
+						<div class="text"><span class="label">收款银行</span><span>中国建设银行(2166)</span></div>
 						<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><button>删除</button></div>
 					</div>
 				</li>
-				<!-- 未通过 -->
+				<!-- 已完成 -->
 				<li class="r-item">
 					<input class="yg-checkbox" type="checkbox">
-					<div class="rec-wrap  notpass">
-						<div class="top"><span class="sn">单号：23423435</span><span class="status">审核未通过</span></div>
-						<div class="time"><span class="label">充值金额</span><span>5000 USD</span></div>
-						<div class="text"><span class="label">充值银行</span><span>中国建设银行(2166)</span></div>
+					<div class="rec-wrap completed">
+						<div class="top"><span class="sn">单号：23423435</span><span class="status">已完成</span></div>
+						<div class="time"><span class="label">提现金额</span><span>5000 USD</span></div>
+						<div class="text"><span class="label">收款银行</span><span>中国建设银行(2166)</span></div>
 						<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><button>删除</button></div>
 					</div>
 				</li>
-				<!-- 已取消 -->
+				<!-- 已完成 -->
 				<li class="r-item">
 					<input class="yg-checkbox" type="checkbox">
-					<div class="rec-wrap  cancelled">
-						<div class="top"><span class="sn">单号：23423435</span><span class="status">已取消</span></div>
-						<div class="time"><span class="label">充值金额</span><span>5000 USD</span></div>
-						<div class="text"><span class="label">充值银行</span><span>中国建设银行(2166)</span></div>
+					<div class="rec-wrap completed">
+						<div class="top"><span class="sn">单号：23423435</span><span class="status">已完成</span></div>
+						<div class="time"><span class="label">提现金额</span><span>5000 USD</span></div>
+						<div class="text"><span class="label">收款银行</span><span>中国建设银行(2166)</span></div>
+						<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><button>删除</button></div>
+					</div>
+				</li>
+				<!-- 已完成 -->
+				<li class="r-item">
+					<input class="yg-checkbox" type="checkbox">
+					<div class="rec-wrap completed">
+						<div class="top"><span class="sn">单号：23423435</span><span class="status">已完成</span></div>
+						<div class="time"><span class="label">提现金额</span><span>5000 USD</span></div>
+						<div class="text"><span class="label">收款银行</span><span>中国建设银行(2166)</span></div>
 						<div class="text bottom"><span class="label">2018-08-28 12:00:21</span><button>删除</button></div>
 					</div>
 				</li>
@@ -89,18 +88,17 @@
 		<!-- 无记录 (无记录时显示)-->
 		<!-- <div class="no-record">暂无充值记录</div> -->
 		<!-- 无记录 END-->
-
 	</div>
 
 	@@include('include/footer.html')
 	@@include('include/siteTool.html')
 
-	<!-- build:js js/rechargeRecord.js -->
+	<!-- build:js js/withdrawRecord.js -->
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
 	<script type="text/javascript">
-		var curTitle = '充值记录';
+		var curTitle = '提现记录';
 	</script>
 </body>
 

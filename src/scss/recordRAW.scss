@@ -4,6 +4,7 @@
 	margin-bottom: 60px;
 	padding-bottom: 80px;
 	min-height: 600px;
+	overflow: hidden;
 
 	.btn-group {
 		width: 910px;
@@ -44,7 +45,7 @@
 			border-radius: 4px;
 			padding: 0 24px;
 			font-size: 12px;
-			margin-bottom: 16px;
+			margin-bottom: 40px;
 
 			&.selected {
 				background-color: #FFF8EE;
@@ -98,11 +99,10 @@
 
 		}
 
-		.unpaid {
-			.go-detail {
-				color: #1A8CFF;
-			}
+		.go-detail {
+			color: #1A8CFF;
 		}
+		
 
 		.completed {
 			.status {
@@ -121,5 +121,19 @@
 				color: #666666;
 			}
 		}
+	}
+
+	.no-record{
+		width: 124px;
+		height: 124px;
+		margin: 0 auto;
+		margin-top: 160px;
+		text-align: center;
+		line-height: 210px;
+		font-size: 14px;
+		color: #9DB9D1;
+		background: url("../img/norecord-icon.png") no-repeat;
+		background-size: 80px;
+		background-position: center 10px;	
 	}
 }

@@ -1,0 +1,31 @@
+.record-detail {
+	background-color: #fff;
+	margin-top: 20px;
+	margin-bottom: 80px;
+	padding-top: 40px;
+	min-height: 596px;
+	.detail-list{
+		width: 758px;
+		margin: 0 auto;
+		.item{
+			display: flex;
+			justify-content: space-between;
+			height: 50px;
+			line-height: 49px;
+			border-bottom: 1px solid#F5F5F5;
+			color: #333333;
+			font-size: 14px;
+			.sn{
+				color: #333333;
+				font-weight: bold;
+			}
+			.status{
+				color: #FF701A;
+				font-weight: bold;
+			}
+		}
+		.label{
+			color: #808080;
+		}
+	}
+}

@@ -40,7 +40,7 @@ $(function () {
 				$slider = $(".nav-line"),
 				$targetEle = $(".nav-list>li:not('.last')"),
 				$navBox = $(".nav-list");
-				
+
 			$slider.stop(true, true).animate({
 				"left": curP,
 				"width": curW
@@ -48,7 +48,7 @@ $(function () {
 			$targetEle.mouseenter(function () {
 				var $_parent = $(this); //.parent(),
 				_width = $_parent.outerWidth(true),
-				posL = $_parent.position().left;
+					posL = $_parent.position().left;
 				$slider.stop(true, true).animate({
 					"left": posL,
 					"width": _width
@@ -65,4 +65,26 @@ $(function () {
 		}
 	};
 	nav();
+
+	function regAndLogin() {
+		// 登陆模态框
+		$("header .login-btn").click(function () {
+			$(".login-modal").show();
+			$("body").css("overflow", "hidden")
+		})
+		// show注册模态框
+		$("header .regist-btn").click(function () {
+			$(".regist-modal").show();
+			$("body").css("overflow", "hidden")
+		})
+
+		$(".regist-modal .input").focus(function () {
+			$(this).parent(".input-box").addClass("pressed");
+		})
+		$(".regist-modal .input").blur(function () {
+			$(this).parent(".input-box").removeClass("pressed");
+		})
+	}
+
+	regAndLogin();
 });

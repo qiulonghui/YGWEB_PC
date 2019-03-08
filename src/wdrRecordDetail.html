@@ -9,10 +9,10 @@
 	<link rel="icon" href="">
 	<title>永高娱乐</title>
 	<meta name="viewport" content="width=1366, initial-scale=1">
-	<!-- build:css css/recRecordDetail.css -->
+	<!-- build:css css/wdrRecordDetail.css -->
 	<link href="css/normalize.css" rel="stylesheet">
 	<link href="css/common.css" rel="stylesheet">
-	<link href="css/recRecordDetail.css" rel="stylesheet">
+	<link href="css/wdrRecordDetail.css" rel="stylesheet">
 	<!-- endbuild -->
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
@@ -23,17 +23,32 @@
 	@@include('include/header2.html')
 
 	<div class="container center-block record-detail">
+		<div class="step-pic">
+			<div class="item cur">
+				<div class="text">手机安全认证</div>
+				<div class="circle">1</div>
+			</div>
+			<div class="item">
+				<div class="text">请输入二级密码</div>
+				<div class="circle">2</div>
+			</div>
+			<div class="item">
+				<div class="text">设置成功</div>
+				<div class="circle">3</div>
+			</div>
+			<div class="bar"><span class="inline"></span></div>
+		</div>
 		<ul class="detail-list">
 			<li class="item">
-				<span class="label sn">单号：23232323</span>
-				<span class="val status">待付款</span>
+				<span class="label">单号</span>
+				<span class="val">23232323</span>
 			</li>
 			<li class="item">
-				<span class="label">充值币种</span>
-				<span class="val">人民币 CNY</span>
+				<span class="label">提现时间</span>
+				<span class="val">2018-08-28 12:00:21</span>
 			</li>
 			<li class="item">
-				<span class="label">充值金额</span>
+				<span class="label">提现金额</span>
 				<span class="val">5000 CNY</span>
 			</li>
 			<li class="item">
@@ -41,30 +56,21 @@
 				<span class="val">4988 (费用：0.05%)</span>
 			</li>
 			<li class="item">
-				<span class="label">充值方式</span>
+				<span class="label">收款银行卡</span>
 				<span class="val">中国建设银行 (4575)</span>
 			</li>
-			<li class="item">
-				<span class="label">充值账号</span>
-				<span class="val">as188s68</span>
-			</li>
-			<li class="item">
-				<span class="label">充值时间</span>
-				<span class="val">2019-01-21 12:00:21</span>
-			</li>
 		</ul>
-		
 	</div>
 
 	@@include('include/footer.html')
 	@@include('include/siteTool.html')
 
-	<!-- build:js js/recRecordDetail.js -->
+	<!-- build:js js/wdrRecordDetail.js -->
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
 	<script type="text/javascript">
-		var curTitle = '充值记录详情';
+		var curTitle = '提现记录详情';
 	</script>
 </body>
 
