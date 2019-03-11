@@ -108,6 +108,9 @@
 		font-size: 14px;
 		font-weight: 400;
 		color: #B3B3B3;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 
@@ -298,13 +301,12 @@
 
 	.content {
 		display: flex;
-		justify-content: space-between;
 
 		.item {
 			width: 284px;
 			height: 232px;
 			background-color: #fff;
-
+			margin-right: 21px;
 		}
 
 		.item-bottom {

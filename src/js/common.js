@@ -6,10 +6,17 @@ $(function () {
 	}
 
 	//关闭模态框
-	$(".yg-modal .modal-header .close").click(function () {
-		$(".yg-modal").hide();
-		$("body").css("overflow", "auto")
-	})
+	window.closeModal = function (callback) {
+		$(".yg-modal .modal-header .close").click(function () {
+			$(".yg-modal").hide();
+			$("body").css("overflow", "auto")
+	
+			if(callback&&callback instanceof Function){
+				callback();
+			}
+		})
+	}
+	closeModal();
 
 	//搜索推荐框
 	$(".search-wrap input").focus(function () {
@@ -87,4 +94,5 @@ $(function () {
 	}
 
 	regAndLogin();
+
 });

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/amountConversion.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/wallet.css" rel="stylesheet">
+	<link href="css/amountConversion.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+</head>
+
+<body>
+	@@include('include/header.html')
+
+	<div class="container center-block user-wallet">
+		@@include('include/walletSidebar.html')
+
+		<div class="content amount-Conversion">
+			<div class="title">
+				<span>额度转换</span>
+			</div>
+
+			<div class="form-wrap">
+				<div class="item currency-list">
+					<label>转出:</label>
+					<select class="input-box">
+						<option class="placeholder" value='' disabled selected style='display:none;'>请选择中心钱包币种</option>
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</div>
+				<div class="item bank-card-list">
+					<label>转入:</label>
+					<select class="input-box">
+						<option class="placeholder" value='' disabled selected style='display:none;'>请选择游戏钱包</option>
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</div>
+				<div class="amount-wrap">
+					<div class="label">转换金额:</div>
+					<div class="list">
+						<span class="box active">100元</span>
+						<span class="box">200元</span>
+						<span class="box">400元</span>
+						<span class="box">1000元</span>
+						<span class="box">5000元</span>
+						<span class="box">10000元</span>
+						<span class="box">50000元</span>
+						<span class="box other"> <input type="number" placeholder="其他金额">元</span>
+					</div>
+				</div>
+
+				<div class="center-balance-tip">
+					当前中心钱包余额：20000 CNY
+				</div>
+
+				<button class="primary submit">确认</button>
+			</div>
+			<div class="bottom-tip">
+				<div class="tit">温馨提示</div>
+				<div class="text">1、额度转换不收取任何费用。<br> 2、确认您的钱包是否有余额。</div>
+			</div>
+		</div>
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- 密码模态框 -->
+	<div class="yg-modal passw-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">请输入交易密码</div>
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="passw">
+						<div class="type">转换</div>
+						<div class="amount">￥5000</div>
+						<div class="pw-box">
+							<input class="item" type="password" maxlength="1">
+							<input class="item" type="password" maxlength="1">
+							<input class="item" type="password" maxlength="1">
+							<input class="item" type="password" maxlength="1">
+							<input class="item" type="password" maxlength="1">
+							<input class="item" type="password" maxlength="1">
+						</div>
+						<div class="forget"><a href="#">忘记密码</a></div>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 密码模态框 END-->
+
+	<!-- 成功模态框 -->
+	<div class="yg-modal success-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="recg-result">
+						<div class="res-tip">转换成功</div>
+						<div class="res-sub-tip">请留意通知信息</div>
+						<button class="primary ok">确定</button>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 成功模态框 END-->
+
+	<!-- build:js js/amountConversion.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+
+	<script type="text/javascript">
+		$(function () {
+			// 选择转换金额
+			$(".amount-wrap .box").click(function () {
+				$(this).addClass("active").siblings().removeClass("active");
+			})
+
+			// show密码输入框
+			$(".submit").click(function () {
+				$(".passw-modal").show();
+				$(".pw-box>.item").eq(0).focus();
+				$("body").css("overflow", "hidden");
+			})
+			
+			var passwordVal = '';
+			$(".pw-box>.item").keyup(function (event) {
+				var thisInputVal = $(this).val();
+				var thisInputLen = thisInputVal.length;
+				if (thisInputLen > 0 && passwordVal.length < 6) {
+					passwordVal = passwordVal + thisInputVal;
+					$(this).next("input").focus();
+				}
+				if (event.keyCode === 8 ) {
+					$(this).prev("input").focus();
+				}
+				console.log(passwordVal)
+			})
+
+		});
+	</script>
+</body>
+
+</html>

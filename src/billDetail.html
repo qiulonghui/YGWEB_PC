@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/billDetail.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/userBill.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+	<![endif]-->
+</head>
+
+<body>
+	@@include('include/header2.html')
+
+	<div class="container center-block bill-detail">
+		<ul class="bd-list">
+			<li class="bd-item">
+				<span class="label">账单类型</span>
+				<span class="text">返水</span>
+			</li>
+			<li class="bd-item">
+				<span class="label">游戏类型</span>
+				<span class="text">视讯</span>
+			</li>
+			<li class="bd-item">
+				<span class="label">账单周期</span>
+				<span class="text">
+					2018-08-22 至 2018-08-29
+				</span>
+			</li>
+			<li class="bd-item">
+				<span class="label">下注金额</span>
+				<span class="text">￥50,000</span>
+			</li>
+			<li class="bd-item">
+				<span class="label">有效投注</span>
+				<span class="text">￥50,000</span>
+			</li>
+			<li class="bd-item">
+				<span class="label">输赢</span>
+				<span class="text" style="color:red">-￥50,000</span>
+			</li>
+			<li class="bd-item">
+				<span class="label">下单级别</span>
+				<span class="text">1</span>
+			</li>
+			<li class="bd-item">
+				<span class="label">账单号</span>
+				<span class="text">2121212321321</span>
+			</li>
+
+		</ul>
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/billDetail.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+	<script type="text/javascript">
+		var curTitle = '账单详情'
+	</script>
+</body>
+
+</html>

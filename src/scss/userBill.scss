@@ -1,4 +1,4 @@
-.bet-record {
+.user-bill {
 	.main {
 		display: flex;
 		min-height: 806px;
@@ -75,30 +75,8 @@
 			}
 
 			.record {
-				.top {
-					margin-bottom: 50px;
-
-					.t-item {
-						width: 770px;
-						height: 50px;
-						margin: 0 auto;
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-						border-bottom: 1px solid #f0f0f0;
-						font-size: 14px;
-
-						.label{
-							color: #808080;
-						}
-						.st{
-							margin-right: 10px;
-						}
-					}
-				}
 
 				.r-list {
-					border-top: 1px dashed #f0f0f0;
 					.r-item {
 						display: flex;
 						align-items: center;
@@ -145,7 +123,7 @@
 	}
 }
 
-.bet-detail{
+.bill-detail{
 	background-color: #fff;
 	margin-top: 20px;
 	margin-bottom: 60px;

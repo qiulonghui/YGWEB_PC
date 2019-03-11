@@ -895,6 +895,7 @@ footer {
 		}
 	}
 }
+
 .login {
 	.title {
 		font-size: 16px;
@@ -1049,19 +1050,20 @@ footer {
 
 	.regist {
 
-		.input-box{
+		.input-box {
 			position: relative;
 			width: 100%;
 			height: 36px;
 			margin-bottom: 12px;
 			font-size: 12px;
-		
-			.input{
+
+			.input {
 				width: 100%;
 				height: 100%;
 				padding-left: 40px;
 			}
-			&::before{
+
+			&::before {
 				content: "";
 				position: absolute;
 				top: 8px;
@@ -1072,38 +1074,47 @@ footer {
 				background-repeat: no-repeat;
 				background-image: url("../img/registicon.png");
 			}
-			
+
 		}
-		.r-nation::before{
+
+		.r-nation::before {
 			background-position: -35px 0px;
 
 		}
-		.zh::before{
+
+		.zh::before {
 			background-position: -35px -35px;
 		}
-		.pw::before{
+
+		.pw::before {
 			background-position: -70px -35px;
 		}
-		.verCode::before{
+
+		.verCode::before {
 			background-position: -35px -70px;
 		}
-		.yqm::before{
+
+		.yqm::before {
 			background-position: -105px 0px;
 		}
 
-		.r-nation.pressed::before{
+		.r-nation.pressed::before {
 			background-position: 0px 0px;
 		}
-		.zh.pressed::before{
+
+		.zh.pressed::before {
 			background-position: 0px -35px;
 		}
-		.pw.pressed::before{
+
+		.pw.pressed::before {
 			background-position: -70px 0px;
 		}
-		.verCode.pressed::before{
+
+		.verCode.pressed::before {
 			background-position: 0px -70px;
 		}
-		.yqm.pressed::before{
+
+		.yqm.pressed::before {
 			background-position: -70px -70px;
 		}
 
@@ -1147,7 +1158,8 @@ footer {
 			height: 36px;
 			margin-bottom: 30px;
 		}
-		.r-bottom-tip{
+
+		.r-bottom-tip {
 			font-size: 12px;
 			text-align: center;
 		}
@@ -1160,6 +1172,7 @@ footer {
 	display: flex;
 	justify-content: center;
 	margin-top: 55px;
+
 	span {
 		width: 40px;
 		height: 40px;
@@ -1169,7 +1182,8 @@ footer {
 		border-radius: 4px;
 		margin-right: 20px;
 		color: #333333;
-		a{
+
+		a {
 			display: block;
 			width: 100%;
 			height: 100%;
@@ -1185,5 +1199,126 @@ footer {
 	.next,
 	.prev {
 		width: 80px;
+	}
+}
+
+//密码模态框
+.passw-modal {
+	background-color: rgba(51, 51, 51, 0.5);
+
+	.modal-dialog {
+		width: 520px;
+		height: 380px;
+		top: 20%;
+
+		.modal-content {
+			width: 100%;
+		}
+	}
+
+	.modal-title {
+		width: 440px;
+		margin: 0 auto;
+		padding-bottom: 26px;
+		border-bottom: 1px solid #E6E6E6;
+		text-align: center;
+		font-size: 18px;
+		font-weight: 400;
+	}
+
+	.modal-body {
+		.passw {
+			width: 440px;
+			margin: 0 auto;
+
+			.type {
+				text-align: center;
+				color: #666666;
+				font-size: 18px;
+				margin-bottom: 8px;
+			}
+
+			.amount {
+				color: #333333;
+				font-size: 30px;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+
+			.pw-box {
+				display: flex;
+				justify-content: center;
+				margin-bottom: 10px;
+
+				.item {
+					display: block;
+					width: 50px;
+					height: 50px;
+					padding-bottom: 8px;
+					margin-right: 10px;
+					text-align: center;
+					font-size: 36px;
+					border: 1px solid #808080;
+					border-radius: 4px;
+					outline: none;
+					color: transparent;
+					text-shadow: 0 0 0 #000;
+
+					&:last-of-type {
+						margin-right: 0;
+					}
+				}
+			}
+
+			.forget {
+				font-size: 12px;
+				color: #1A8CFF;
+				padding-right: 44px;
+				text-align: right;
+			}
+		}
+	}
+}
+
+// 成功提示模态框
+.success-modal {
+	.modal-dialog {
+		width: 520px;
+		height: 440px;
+	}
+
+	.modal-content {
+		width: 100% !important;
+
+		.modal-body {
+			width: 440px;
+			margin: 0 auto;
+
+			.recg-result {
+				text-align: center;
+				line-height: 1;
+				background: url("../img/chognzhichenggong.png") no-repeat;
+				background-size: 100px;
+				background-position: center 30px;
+				overflow: hidden;
+
+				.res-tip {
+					margin-top: 146px;
+					margin-bottom: 8px;
+					font-size: 18px;
+				}
+
+				.res-sub-tip {
+					font-size: 12px;
+					color: #999999;
+					margin-bottom: 52px;
+				}
+
+				.ok {
+					width: 170px;
+					height: 36px;
+				}
+			}
+		}
 	}
 }

@@ -1,0 +1,160 @@
+.amount-Conversion {
+	position: relative;
+
+	.title {
+		display: flex;
+		justify-content: space-between;
+		padding-right: 30px;
+
+		.record {
+			font-size: 14px;
+			color: #1A8CFF;
+		}
+	}
+
+	.form-wrap {
+		margin-left: 153px;
+		margin-top: 55px;
+		background: url('../img/wallet/zhaunghuan.png') no-repeat;
+		background-size: 80px 60px;
+		background-position: 370px 22px;
+		;
+
+		.item {
+			margin-bottom: 20px;
+
+			label {
+				display: inline-block;
+				width: 84px;
+				text-align: right;
+			}
+
+			.input-box {
+				margin-left: 30px;
+				width: 264px;
+				height: 40px;
+				border-radius: 4px;
+				font-size: 14px;
+			}
+		}
+
+		.amount-wrap {
+			display: flex;
+			margin-top: 36px;
+
+			.label {
+				display: inline-block;
+				width: 84px;
+				text-align: right;
+			}
+
+			.list {
+				width: 520px;
+				margin-left: 30px;
+
+				.box {
+					float: left;
+					width: 160px;
+					height: 40px;
+					line-height: 38px;
+					margin-right: 20px;
+					margin-bottom: 14px;
+					text-align: center;
+					border: 1px solid #E6E6E6;
+					border-radius: 4px;
+					user-select: none;
+					cursor: pointer;
+
+					&:nth-of-type(3n) {
+						margin-right: 0;
+					}
+
+					&.active {
+						border-color: #FF701A;
+						background: url("../img/jinekuang.png") no-repeat;
+						background-size: 22px 22px;
+						background-position: right bottom;
+					}
+
+					&.other {
+						display: flex;
+						align-items: center;
+
+						input {
+							width: 103px;
+							height: 26px;
+							margin-left: 8px;
+							margin-right: 10px;
+							font-size: 12px;
+							border-radius: 4px;
+							outline: none;
+						}
+					}
+				}
+			}
+		}
+
+		.center-balance-tip {
+			margin-left: 220px;
+			margin-top: 40px;
+			margin-bottom: 14px;
+			font-size: 14px;
+			color: #333333;
+		}
+
+		.submit {
+			width: 260px;
+			height: 50px;
+			margin-left: 190px;
+			font-size: 16px;
+		}
+	}
+
+	.bottom-tip {
+		position: absolute;
+		width: 910px;
+		height: 110px;
+		margin: 0 30px;
+		padding-top: 10px;
+		border-top: 1px solid #E6E6E6;
+		font-size: 12px;
+		bottom: 0;
+
+		.tit {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 14px;
+				height: 14px;
+				background: #FF701A;
+				border-radius: 50%;
+				margin-right: 8px;
+			}
+		}
+
+		.text {
+			color: #999999;
+			line-height: 20px;
+		}
+	}
+}
+
+
+// 成功提示模态框
+.success-modal {
+	background-color: rgba(51, 51, 51, 0.5);
+
+	.modal-dialog {
+		width: 520px;
+		height: 380px;
+		top: 20%;
+
+		.modal-content {
+			width: 100%;
+		}
+	}
+}
