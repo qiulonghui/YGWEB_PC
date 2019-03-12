@@ -1168,12 +1168,13 @@ footer {
 
 
 // 分页公共样式
-.pagination-wrap {
+.pagination {
 	display: flex;
 	justify-content: center;
 	margin-top: 55px;
+	margin-bottom: 55px;
 
-	span {
+	li {
 		width: 40px;
 		height: 40px;
 		line-height: 38px;
@@ -1190,7 +1191,7 @@ footer {
 		}
 	}
 
-	span.active {
+	li.active {
 		background-color: #1A8CFF;
 		border-color: #1A8CFF;
 		color: #fff;
@@ -1245,6 +1246,10 @@ footer {
 				margin-bottom: 20px;
 			}
 
+			#rel-psw{
+				opacity: 0;
+				position: absolute;
+			}
 			.pw-box {
 				display: flex;
 				justify-content: center;
@@ -1267,6 +1272,9 @@ footer {
 					&:last-of-type {
 						margin-right: 0;
 					}
+				}
+				.item:disabled{
+					background-color: #fff;
 				}
 			}
 

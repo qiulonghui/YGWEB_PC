@@ -93,13 +93,14 @@
 					<div class="passw">
 						<div class="type">转换</div>
 						<div class="amount">￥5000</div>
+						<input id="rel-psw" type="tel" maxlength="6">
 						<div class="pw-box">
-							<input class="item" type="password" maxlength="1">
-							<input class="item" type="password" maxlength="1">
-							<input class="item" type="password" maxlength="1">
-							<input class="item" type="password" maxlength="1">
-							<input class="item" type="password" maxlength="1">
-							<input class="item" type="password" maxlength="1">
+							<input class="item" type="password" maxlength="1" disabled>
+							<input class="item" type="password" maxlength="1" disabled>
+							<input class="item" type="password" maxlength="1" disabled>
+							<input class="item" type="password" maxlength="1" disabled>
+							<input class="item" type="password" maxlength="1" disabled>
+							<input class="item" type="password" maxlength="1" disabled>
 						</div>
 						<div class="forget"><a href="#">忘记密码</a></div>
 					</div>
@@ -145,24 +146,11 @@
 			// show密码输入框
 			$(".submit").click(function () {
 				$(".passw-modal").show();
-				$(".pw-box>.item").eq(0).focus();
+				$("#rel-psw").focus();
 				$("body").css("overflow", "hidden");
 			})
-			
-			var passwordVal = '';
-			$(".pw-box>.item").keyup(function (event) {
-				var thisInputVal = $(this).val();
-				var thisInputLen = thisInputVal.length;
-				if (thisInputLen > 0 && passwordVal.length < 6) {
-					passwordVal = passwordVal + thisInputVal;
-					$(this).next("input").focus();
-				}
-				if (event.keyCode === 8 ) {
-					$(this).prev("input").focus();
-				}
-				console.log(passwordVal)
-			})
 
+			pswModal();
 		});
 	</script>
 </body>

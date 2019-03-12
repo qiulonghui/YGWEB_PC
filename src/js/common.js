@@ -95,4 +95,38 @@ $(function () {
 
 	regAndLogin();
 
+	// 密码框初始化绑定事件
+	// 可传入一个回调函数
+	window.pswModal = function (callback) {
+		$(".passw-modal #rel-psw").on('input', function () {
+			var pwd = $(this).val().trim();
+			var $input = $(".pw-box>.item");
+			var len = pwd.length;
+
+			// input 输入值
+			for (var i = 0; i < pwd.length; i++) {
+				$input.eq(i).val(pwd[i])
+			}
+
+			// 将有值的当前input后的所有input清空
+			$input.each(function () { 
+				var index = $(this).index();
+				if (index >= len) {
+					$(this).val("");
+				}
+			});
+
+			if (len === 6) {
+				//执行其他操作
+				if(callback&&callback instanceof Function){
+					callback();
+				}
+			}
+		})
+		
+		$(".passw").click(function(){
+			$("#rel-psw").focus();
+		})
+	}
+
 });

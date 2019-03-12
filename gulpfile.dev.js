@@ -66,10 +66,10 @@ module.exports = function dev() {
 	
 	// 图片转雪碧图任务
 	gulp.task('sprite',function(){  
-		gulp.src('src/resource/withdrawdetail/*.png')  
+		gulp.src('src/resource/ls/*.png')  
 		   .pipe(spritesmith({  
-			   imgName:'wdrdetailsprite.png',  
-			   cssName:'css/wdrdetailsprite.css',  
+			   imgName:'btn.png',  
+			   cssName:'css/btn.css',  
 			   padding:5,  
 			   algorithm:'binary-tree'  
 		   }))  
