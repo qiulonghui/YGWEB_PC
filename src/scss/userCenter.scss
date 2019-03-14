@@ -216,7 +216,7 @@
 				}
 			}
 
-			.Verified {
+			.verified {
 				padding: 0 30px;
 				margin-bottom: 24px;
 
@@ -251,6 +251,52 @@
 						line-height: 1;
 					}
 				}
+			}
+
+			.verified-complete {
+				padding: 0 30px;
+				margin-bottom: 24px;
+				.wrap {
+					width: 910px;
+					margin: 0 auto;
+					background-color: #FAFAFA;
+					padding-top: 36px;
+					padding-bottom: 60px;
+
+				}
+
+				.item {
+					margin-left: 51px;
+					margin-bottom: 18px;
+					font-size: 14px;
+					color: #999999;
+
+					&:last-of-type {
+						margin-bottom: 20px;
+					}
+
+					.text {
+						color: #333;
+					}
+				}
+
+				.tip{
+					display: flex;
+					align-items: center;
+					margin-left: 51px;
+					margin-top: 20px;
+					font-size: 12px;
+					color: #39DD00;
+					.safety{
+						display: block;
+						width: 26px;
+						height: 26px;
+						background: url("../img/anquan-icon@2x.png") no-repeat;
+						background-size: contain;
+						margin-right: 10px;
+					}
+				}
+
 			}
 
 			.binding-info {
@@ -315,7 +361,8 @@
 
 			}
 
-			.Verified .title,
+			.verified .title,
+			.verified-complete .title,
 			.binding-info .title {
 				display: flex;
 				align-items: center;

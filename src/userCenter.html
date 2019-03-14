@@ -1,90 +1,126 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<link rel="icon" href="">
-		<title>永高娱乐</title>
-		<meta name="viewport" content="width=1366, initial-scale=1">
-		<!-- build:css css/userCenter.css -->
-		<link href="css/normalize.css" rel="stylesheet">
-		<link href="css/common.css" rel="stylesheet">
-		<link href="css/userCenter.css" rel="stylesheet">
-		<!-- endbuild -->
-		<!--[if lte IE 9]>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" conten t="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/userCenter.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/userCenter.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
-		@@include('include/header.html')
-		
-		<div class="container center-block user-center">
-			@@include('include/userInfo.html')
-			
-			<section class="main">
-				@@include('include/userSidebar.html')
+<body>
+	@@include('include/header.html')
 
-				<div class="content">
-					<div class="header">
-						<div class="title">我的账号</div>
-						<div class="safety-level">
-							<span>安全指数</span><span></span><span class="text">低</span>
-						</div>
-					</div>
-					<div class="Verified">
-						<div class="title">实名认证</div>
-						<div class="form-wrap">
-							<div class="item">
-								<label class="real-name" for="realName">真实姓名:</label>
-								<input id="realName" type="text" placeholder="请输入您的真实姓名">
-							</div>
-							<div class="item">
-								<label class="identy-num" for="identyNum">身份证号:</label>
-								<input id="identyNum" type="number" placeholder="请输入您的身份证号码">
-							</div>
-							<button class="primary">提交</button>
-						</div>
-					</div>
-					<div class="binding-info">
-						<div class="title">绑定联系方式</div>
-						<div class="item">
-							<i class="icon b-tel"></i>
-							<div class="column">
-								<div class="tip">
-									<span class="hd">手机号码</span>
-									<span class="status">未绑定</span>
-								</div>
-								<div class="sub-tip">忘记密码时，您可以通过绑定的手机短信找回密码</div>
-							</div>
-							<button><a href="boundPhone.html">绑定手机</a></button>
-						</div>
-						<div class="item">
-							<i class="icon b-email"></i>
-							<div class="column">
-								<div class="tip">
-									<span class="hd">密保邮箱</span>
-									<span class="status">未绑定</span>
-								</div>
-								<div class="sub-tip">忘记密码时，您可以通过绑定的邮箱找回密码</div>
-							</div>
-							<button><a href="boundEmail.html">绑定邮箱</a></button>
-						</div>
+	<div class="container center-block user-center">
+		@@include('include/userInfo.html')
+
+		<section class="main">
+			@@include('include/userSidebar.html')
+
+			<div class="content">
+				<div class="header">
+					<div class="title">我的账号</div>
+					<div class="safety-level">
+						<span>安全指数</span><span></span><span class="text">低</span>
 					</div>
 				</div>
-			</section>
-				
-		</div>
-		@@include('include/footer.html')
-        @@include('include/siteTool.html')
 
-		<!-- build:js js/userCenter.js -->
-		<script src="lib/jquery.js"></script>
-        <script src="js/common.js"></script>
-		<!-- endbuild -->
-	</body>
+				<div class="verified">
+					<div class="title">实名认证</div>
+					<div class="form-wrap">
+						<div class="item">
+							<label class="real-name" for="realName">真实姓名:</label>
+							<input id="realName" type="text" placeholder="请输入您的真实姓名">
+						</div>
+						<div class="item">
+							<label class="identy-num" for="identyNum">身份证号:</label>
+							<input id="identyNum" type="number" placeholder="请输入您的身份证号码">
+						</div>
+						<button class="primary">提交</button>
+					</div>
+				</div>
+
+				<!-- 已实名认证 -->
+				<!-- <div class="verified-complete">
+					<div class="title">实名认证</div>
+					<div class="wrap">
+						<div class="item">
+							真实姓名: <span class="text">陈**</span>
+						</div>
+						<div class="item">
+							身份证号: <span class="text">4***********2</span>
+						</div>
+						<div class="tip"><i class="safety"></i>您的账号已通过实名认证，非常安全！</div>
+					</div> 
+				</div> -->
+				<!-- 已实名认证 END -->
+
+				<div class="binding-info">
+					<div class="title">绑定联系方式</div>
+					<div class="item">
+						<i class="icon b-tel"></i>
+						<div class="column">
+							<div class="tip">
+								<span class="hd">手机号码</span>
+								<span class="status">未绑定</span>
+							</div>
+							<div class="sub-tip">忘记密码时，您可以通过绑定的手机短信找回密码</div>
+						</div>
+						<button><a href="boundPhone.html">绑定手机</a></button>
+					</div>
+					<div class="item">
+						<i class="icon b-email"></i>
+						<div class="column">
+							<div class="tip">
+								<span class="hd">密保邮箱</span>
+								<span class="status">未绑定</span>
+							</div>
+							<div class="sub-tip">忘记密码时，您可以通过绑定的邮箱找回密码</div>
+						</div>
+						<button><a href="boundEmail.html">绑定邮箱</a></button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="yg-modal yg-confirm" style="display:block">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="modal-title">提示</div>
+						<button class="close"></button>
+					</div>
+					<div class="modal-body">
+						确定要删除吗？
+
+					</div>
+					<div class="modal-footer">
+						<button class="primary submit">确定</button>
+						<button class="concal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/userCenter.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+</body>
 
 </html>

@@ -1330,3 +1330,59 @@ footer {
 		}
 	}
 }
+
+
+// Toast提示
+.yg-toast{
+	position: fixed;
+	z-index: 99999;
+	top: -50px;
+	left: 50%;
+	margin: 0 auto;
+	line-height: 1;
+	font-size: 20px;
+	padding: 15px 35px 15px 35px;
+	background-color: rgba(0, 0, 0, 0.8);
+	border: 1px solid #ced4ff;
+	color: #fff;
+	transform: translateX(-50%);
+	transition: top 0.5s;
+	border-radius: 4px;
+    overflow: hidden;
+}
+
+
+// 无记录
+.no-record{
+	width: 124px;
+	height: 124px;
+	margin: 0 auto;
+	margin-top: 160px;
+	text-align: center;
+	line-height: 210px;
+	font-size: 14px;
+	color: #9DB9D1;
+	background: url("../img/norecord-icon.png") no-repeat;
+	background-size: 80px;
+	background-position: center 10px;	
+}
+
+// 确认框
+.yg-confirm{
+	background-color: rgba(0, 0, 0, 0.5);
+	.modal-dialog{
+		min-height: 230px;
+	}
+	.modal-body{
+		min-height: 90px;
+	}
+	.modal-footer{
+		button{
+			width: 65px;
+			height: 30px;
+		}
+		.submit{
+			margin-right: 10px;
+		}
+	}
+}

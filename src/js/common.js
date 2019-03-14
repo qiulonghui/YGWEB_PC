@@ -5,18 +5,28 @@ $(function () {
 		$("header .yg-title span").text(curTitle);
 	}
 
-	//关闭模态框
-	window.closeModal = function (callback) {
+	// 模态框关闭按钮事件绑定
+	ygModalInit = function () {
 		$(".yg-modal .modal-header .close").click(function () {
 			$(".yg-modal").hide();
 			$("body").css("overflow", "auto")
-	
-			if(callback&&callback instanceof Function){
-				callback();
-			}
 		})
 	}
-	closeModal();
+	ygModalInit();
+
+	// 模态框 show 方法
+	window.ygModalShow = function (selector) {
+		var $dom = $(selector);
+			$dom.show();
+			$("body").css("overflow", "hide");
+	}
+
+	// 模态框 hide 方法
+	window.ygModalHide = function (selector) {
+		var $dom = $(selector);
+			$dom.hide();
+			$("body").css("overflow", "auto");
+	}
 
 	//搜索推荐框
 	$(".search-wrap input").focus(function () {
@@ -33,7 +43,7 @@ $(function () {
 	})
 
 	//等级经验长度
-	var $pg = $(".user-info .pg");
+	var $pg = $(".progress .pg");
 	var level = $pg.data("pg");
 	var percent = Number(level) / 5 * 100;
 	$pg.width(percent + "%");
@@ -74,7 +84,7 @@ $(function () {
 	nav();
 
 	function regAndLogin() {
-		// 登陆模态框
+		// show登陆模态框
 		$("header .login-btn").click(function () {
 			$(".login-modal").show();
 			$("body").css("overflow", "hidden")
@@ -97,7 +107,7 @@ $(function () {
 
 	// 密码框初始化绑定事件
 	// 可传入一个回调函数
-	window.pswModal = function (callback) {
+	 function pswModalInit () {
 		$(".passw-modal #rel-psw").on('input', function () {
 			var pwd = $(this).val().trim();
 			var $input = $(".pw-box>.item");
@@ -116,17 +126,59 @@ $(function () {
 				}
 			});
 
-			if (len === 6) {
-				//执行其他操作
-				if(callback&&callback instanceof Function){
-					callback();
-				}
-			}
+			// if (len === 6) {
+			// 	//执行其他操作
+			// 	if(callback&&callback instanceof Function){
+			// 		callback();
+			// 	}
+			// }
 		})
 		
 		$(".passw").click(function(){
 			$("#rel-psw").focus();
 		})
+	}
+
+	pswModalInit();
+
+	// 信息弹出提示
+	// ygToast(content)
+	window.ygToast = function(content) {
+		var dom = '<div class="yg-toast">'+content+'</div>';
+		$('body').append(dom);
+		var ygToast = $(".yg-toast");
+		ygToast.show().css('top','188px');	
+		setTimeout(function(){
+			$('body>.yg-toast').remove();
+		},3500)
+	}
+	// ygToast("content")
+
+	// 询问框
+	function ygConfirmInit() {
+		$('.yg-confirm botton.concal').click(function(){
+			$(this)
+		})
+	}  
+	window.ygToast = function(content,callback) {
+		var dom = 
+		`<div class="yg-modal yg-confirm" style="display:block">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="modal-title">提示</div>
+						<button class="close"></button>
+					</div>
+					<div class="modal-body">${content}</div>
+					<div class="modal-footer">
+						<button class="primary submit">确定</button>
+						<button class="concal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>`
+		$('body').append(dom);
+		
 	}
 
 });

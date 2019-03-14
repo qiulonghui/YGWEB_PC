@@ -83,6 +83,52 @@
 	@@include('include/footer.html')
 	@@include('include/siteTool.html')
 
+	<!-- 提现信息模态框 -->
+	<div class="yg-modal withdraw-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">提现信息</div>
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="recg">
+						<div class="item"><span class="label">收款银行：</span><span class="val">中国建设银行(5152)</span></div>
+						<div class="item"><span class="label">提现币种：</span><span class="val">人民币CNY</span></div>
+						<div class="item"><span class="label">提现金额：</span><span class="val warning">￥100</span></div>
+						<div class="item"><span class="label">到账金额：</span><span class="val"><b class="success">￥99.95</b><b class="cost">(费用0.05%)</b></span></div>
+						<div class="btn-group">
+							<button class="primary submit">确定</button>
+							<button class="cancel">修改</button>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 提现信息模态框 END-->
+
+	<!-- 成功提示模态框 -->
+	<div class="yg-modal success-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="recg-result">
+						<div class="res-tip">提现成功</div>
+						<div class="res-sub-tip">请留意通知信息</div>
+						<button class="primary ok">确定</button>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 成功提示模态框 END-->
+
 	<!-- build:js js/withdraw.js -->
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
@@ -94,6 +140,7 @@
 		$(".amount-wrap .box").click(function () {
 			$(this).addClass("active").siblings().removeClass("active");
 		})
+		ygModal.show('.success-modal')
 	});
 	</script>
 </body>

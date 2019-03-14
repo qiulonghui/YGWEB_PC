@@ -37,26 +37,29 @@
 	display: flex;
 	margin-top: -174px;
 	z-index: 10;
-	.login{
+
+	.login {
 		padding: 20px;
 	}
 
 	.item {
 		background-color: #fff;
 		height: 266px;
-		flex: 1;
+		width: 284px;
 		margin-right: 20px;
 		border-radius: 4px;
-		
+
 
 		&:last-child {
 			margin-right: 0;
 		}
-		.pic-wrap{
+
+		.pic-wrap {
 			position: relative;
 			height: 174px;
 			overflow: hidden;
-			.mask{
+
+			.mask {
 				position: absolute;
 				top: -174px;
 				left: 0;
@@ -64,22 +67,25 @@
 				width: 100%;
 				height: 174px;
 				text-align: center;
-				background-color:rgba(0,0,0,0.5);
+				background-color: rgba(0, 0, 0, 0.5);
 				transition: all 0.5s;
-				button{
+
+				button {
 					margin-top: 66px;
 					width: 108px;
 					height: 30px;
 				}
 			}
 		}
-		.item-bottom{
+
+		.item-bottom {
 			padding: 20px;
 			height: 92px;
 		}
 	}
-	.item:hover{
-		.mask{
+
+	.item:hover {
+		.mask {
 			top: 0;
 		}
 	}
@@ -112,6 +118,160 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+}
+
+.login-after {
+	padding: 20px;
+	font-size: 12px;
+
+	.led-user-wrap {
+		display: flex;
+
+		.info {
+			margin-left: 8px;
+		}
+
+		.led-avater {
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+	}
+
+	.name-wrap {
+		.name {
+			display: inline-block;
+			width: 115px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			margin-top: 8px;
+		}
+
+		.icon {
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			&.tel {
+				background-image: url('../img/shoujihaoma.png');
+				margin-left: 10px;
+			}
+
+			&.email {
+				background-image: url('../img/youxiang.png');
+				margin-left: 6px;
+			}
+		}
+
+	}
+
+	.msg {
+		margin-top: 8px;
+		color: #808080;
+
+		.num {
+			color: red;
+		}
+
+		.out {
+			margin-left: 50px;
+			cursor: pointer;
+		}
+	}
+
+	.level-wrap {
+		display: flex;
+		align-items: center;
+		margin: 8px 0;
+
+		.level {
+			display: inline-block;
+			width: 62px;
+			line-height: 18px;
+			height: 20px;
+			font-size: 12px;
+			background: linear-gradient(90deg, rgba(219, 151, 44, 1) 0%, rgba(219, 176, 44, 1) 100%);
+			border-radius: 12px;
+			text-align: center;
+			color: #fff;
+		}
+
+		.progress {
+			display: block;
+			width: 180px;
+			height: 8px;
+			overflow: hidden;
+			background: #E6E6E6;
+			border-radius: 4px;
+			margin: 0 8px;
+
+			.pg {
+				display: block;
+				height: 8px;
+				width: 20%;
+				background: #F3A92C;
+				border-radius: 4px;
+			}
+		}
+	}
+
+	.btn-group {
+		margin-top: 18px;
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: space-between;
+
+		.btn {
+			display: block;
+			height: 30px;
+			width: 118px;
+			text-align: center;
+			line-height: 30px;
+			color: #2e2e2e;
+			font-size: 12px;
+			background: #F4F4F4;
+			border-radius: 3px;
+		}
+	}
+
+	.user-play-g {
+		.text {
+			padding-bottom: 8px;
+			border-bottom: 1px solid #EEEEEE;
+		}
+
+		.p-g {
+			display: flex;
+			align-items: center;
+			padding-top: 8px;
+
+			.game-pic {
+				margin-right: 8px;
+				width: 25px; 
+				height: 25px;
+				background-color: #F4F4F4;
+			}
+
+			.game-name {
+				flex: 1;
+			}
+
+			.go {
+				width: 60px;
+				height: 25px;
+				line-height: 24px;
+				border-radius: 3px;
+				background-color: #138DFF;
+				color: #fff;
+				text-align: center;
+			}
+		}
+	}
+
 }
 
 .trans-info-area {
@@ -349,4 +509,3 @@
 		}
 	}
 }
-
