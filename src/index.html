@@ -292,26 +292,26 @@
 				<div class="modal-body">
 					<div class="regist">
 						<div class="input-box r-nation">
-							<select class="input">
-								<option class="placeholder" value='' disabled selected style='display:none;'>国家/地区</option>
+							<select class="input" id="country_area">
+								<option class="placeholder" value='' selected style='display:none;'>国家/地区</option>
 								<option value="volvo">Volvo</option>
 								<option value="saab">Saab</option>
 								<option value="opel">Opel</option>
 								<option value="audi">Audi</option>
 							</select>
 						</div>
-						<div class="input-box zh"><input class="input" type="text" placeholder="邮箱/手机" /></div>
-						<div class="input-box pw"><input class="input" type="password" placeholder="输入6-20位字母、数字密码" /></div>
-						<div class="input-box pw"><input class="input" type="password" placeholder="确认密码" /></div>
+						<div class="input-box zh"><input id="mobile_phone" class="input" type="text" placeholder="邮箱/手机" /></div>
+						<div class="input-box pw"><input id="user_password" class="input" type="password" placeholder="输入6-20位字母、数字密码" /></div>
+						<div class="input-box pw"><input id="confirm_password" class="input" type="password" placeholder="确认密码" /></div>
 						<div class="input-box verCode">
-							<input class="input" id="verCode" type="number" placeholder="验证码">
+							<input class="input" id="verCode"  id="verification_code" type="text" maxlength="6" placeholder="验证码">
 							<button class="code-btn">获取验证码</button>
 						</div>
-						<div class="input-box yqm"><input class="input" type="text" placeholder="邀请码/无可留空" /></div>
+						<div class="input-box yqm"><input class="input" type="text" id="recommend_code" placeholder="邀请码/无可留空" /></div>
 						<div class="protocol"><input checked type="checkbox">
 							我已阅读并同意 <a class="warning" href="">代理服务协议</a>
 						</div>
-						<button class="primary btn">接受协议并注册</button>
+						<button id="register_user" class="primary btn">接受协议并注册</button>
 						<div class="r-bottom-tip">
 							已有账号，<a class="warning" href="">立即登录</a>
 						</div>
@@ -328,7 +328,46 @@
 	<script src="lib/superSlide2.1.1.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
+
 	<script type="text/javascript">
+		//注册提交按钮事件绑定
+		function registBtnEventInit() {
+			$(".regist-modal #register_user").click(function () {
+				var zcNationVal = $("#country_area option:selected").val();
+				var zcAccount = $("#mobile_phone").val();
+				var zcPassword = $("#user_password").val();
+				var zcPasswordConfirm = $("#confirm_password").val();
+				var verCode = $(".regist-modal #verification_code").val();
+
+				if (!verification(zcNationVal, 'require')) {
+					ygToast('请选择地区');
+					return;
+				} else if (!verification(zcAccount, 'require')) {
+					ygToast('请填写账号');
+					return;
+				} else if (!verification(zcAccount, 'require')) {
+					ygToast('请填写正确的手机或邮箱');
+					return;
+				} else if (!verification(zcPassword, 'require')) {
+					ygToast('请填写密码');
+					return;
+				} else if (!verification(zcPassword, 'passw')) {
+					ygToast('密码为6-20为数字或字母');
+					return;
+				} else if (!verification(zcPasswordConfirm, 'require')) {
+					ygToast('请在输入一次密码');
+					return;
+				} else if (zcPassword !== zcPasswordConfirm) {
+					ygToast('两次密码不一致');
+					return;
+				} else if (!verification(verCode, 'require')) {
+					ygToast('请输入6位数验证码');
+					return;
+				} else {
+					alert("提交成功")
+				}
+			})
+		}
 		$(document).ready(function () {
 			// 轮播图
 			var mySwiper = new Swiper('.swiper-container', {
@@ -349,6 +388,9 @@
 				interTime: 50,
 				trigger: "click"
 			});
+
+			registBtnEventInit();
+
 		});
 	</script>
 </body>

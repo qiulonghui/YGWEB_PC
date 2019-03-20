@@ -71,12 +71,12 @@
 						<div class="form-wrap first">
 							<div class="input-wrap">
 								<label for="tel">您的手机号码:</label>
-								<input id="tel" type="tel" placeholder="请输入您的手机号码">
+								<input id="phone" type="tel" placeholder="请输入您的手机号码">
 							</div>
 							<div class="input-wrap">
 								<label for="verCode">验证码:</label>
-								<input id="verCode" type="number" placeholder="请输入验证码">
-								<button class="code-btn">获取验证码</button>
+								<input id="verCode" type="text" maxlength="6" placeholder="请输入验证码">
+								<button id="code_btn" class="code-btn">获取验证码</button>
 							</div>
 							<button id="step1Btn" class="primary">下一步</button>
 						</div>
@@ -121,30 +121,90 @@
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
 	<script type="text/javascript">
-		$(function () {
-			// 密码显示隐藏
+	
+		// 发送验证码按钮事件绑定
+		function vercodeEvent() {
+			$("#code_btn").click(function () {
+				var phone = $("#phone").val();
+				$('.yg-error').remove(); //重置所有错误提示
+				if (!verification(phone, 'require')) {
+					eInfo = errorInfo('请填写手机');
+					$("#phone").parent().append(eInfo); // 输入提示插入到input末尾
+					return;
+				} else {
+					vercodeTime();
+					ygToast("验证码已发送");
+				}
+			})
+		}
+
+		// 验证码倒计时
+		function vercodeTime() {
+			var btn = $("#code_btn");
+			var time = 60;
+			var timeUnit = 's';
+			btn.html(time + timeUnit + "后重发");
+			btn.attr("disabled", true);
+			var timer = setInterval(function () {
+				time--;
+				btn.html(time + timeUnit+ "后重发");
+				if (time <= 0) {
+					btn.removeAttr('disabled');
+					btn.html('获取验证码');
+					clearInterval(timer);
+				}
+			}, 1000)
+
+		}
+
+		function step1() {
+			// 设置第一步
+			$("#step1Btn").click(function () {
+				var phone = $("#phone").val();
+				var verCode = $("#verCode").val();
+				$('.yg-error').remove(); //重置所有错误提示
+				if (!verification(phone, 'require')) {
+					eInfo = errorInfo('请填写验证手机号');
+					$("#phone").parent().append(eInfo); // 输入提示插入到input末尾
+					return;
+				} else if (!verification(verCode, 'require') && !verCode.length===6) {
+					eInfo = errorInfo('请填写验证码');
+					$("#verCode").parent().append(eInfo);
+					return;
+				} else {
+					// ...发送ajax请求，成功后进入第二步
+					$(".first").hide();
+					$(".second").show();
+					$(".step-pic .item").eq(1).addClass("cur");
+					$(".bar .inline").width("50%");
+				}
+			})
+		}
+
+		// 密码可见显示隐藏
+		function eyesToggle() {
 			$(".icon-eyes").click(function () {
 				var inputType = $(this).siblings("input").attr("type");
 				var curInputType = inputType === "password" ? "text" : "password";
 				$(this).toggleClass("on").siblings("input").attr("type", curInputType);
 			})
+		}
+
+		$(function () {
+			vercodeEvent();
+			step1();
+			eyesToggle();
 
 			// 去设置
-			$("#setBtn").click(function() {
+			$("#setBtn").click(function () {
 				$(".not-set").hide();
 				$(".set-wrap").show();
-			})		
-
-			// 设置第一步
-			$("#step1Btn").click(function() {
-				$(".first").hide();
-				$(".second").show();
-				$(".step-pic .item").eq(1).addClass("cur");
-				$(".bar .inline").width("50%");
 			})
+
 			
+
 			//设置第二部
-			$("#step2Btn").click(function() {
+			$("#step2Btn").click(function () {
 				$(".second").hide();
 				$(".set-success").show();
 				$(".step-pic .item").eq(2).addClass("cur");

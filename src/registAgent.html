@@ -25,28 +25,40 @@
 	<div class="container center-block regist-agent">
 		<div class="form-wrap">
 			<div class="input-wrap">
-				<label><span class="text">用户名:</span><input class="input-box" type="text" placeholder="输入你的登录账号"></label>
+				<label>
+					<span class="text">国家/地区</span>
+					<select class="input-box" id="country_area">
+						<option class="placeholder" value='' selected style='display:none;'>国家/地区</option>
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</label>
 			</div>
 			<div class="input-wrap">
-				<label><span class="text">真实姓名:</span><input class="input-box" type="text" placeholder="输入你的真实姓名"></label>
+				<label><span class="text">用户名:</span><input id="user_account" class="input-box" type="text" placeholder="输入你的登录账号"></label>
 			</div>
 			<div class="input-wrap">
-				<label><span class="text">密码:</span><input class="input-box" type="text" placeholder="请输入密码"></label>
+				<label><span class="text">真实姓名:</span><input id="user_name" class="input-box" type="text" placeholder="输入你的真实姓名"></label>
 			</div>
 			<div class="input-wrap">
-				<label><span class="text">确认密码:</span><input class="input-box" type="text" placeholder="请再次输入密码"></label>
+				<label><span class="text">密码:</span><input id="password" class="input-box" type="password" placeholder="请输入密码"></label>
 			</div>
 			<div class="input-wrap">
-				<label><span class="text">手机号:</span><input class="input-box tel" type="text" placeholder="请输入你的手机号"></label>
-				<button class="code-btn">获取验证码</button>
+				<label><span class="text">确认密码:</span><input id="password_confirm" class="input-box" type="password" placeholder="请再次输入密码"></label>
 			</div>
 			<div class="input-wrap">
-				<label><span class="text">验证码:</span><input class="input-box" type="text" placeholder="请输入验证码"></label>
+				<label><span class="text">手机号:</span><input id="phone" class="input-box tel" type="text" placeholder="请输入你的手机号"></label>
+				<button id="code_btn" class="code-btn">获取验证码</button>
 			</div>
-			<div class="protocol"><input checked type="checkbox">
+			<div class="input-wrap">
+				<label><span class="text">验证码:</span><input id="vercode" class="input-box" type="tel" maxlength="6" placeholder="请输入验证码"></label>
+			</div>
+			<div class="protocol"><input id="protocol" checked type="checkbox">
 				我已阅读并同意 <a class="warning" href="">代理服务协议</a>
 			</div>
-			<button class="primary submit">马上注册</button>
+			<button id="agent_regist_btn" class="primary submit">马上注册</button>
 			<div class="tip">已有账号，立即登录</div>
 		</div>
 
@@ -62,6 +74,107 @@
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
+
+	<script type="text/javascript">
+		// 注册代理提交按钮事件绑定
+		function regtBtnEventInit() {
+			$("#agent_regist_btn").click(function () {
+				var country_area = $("#country_area").val();
+				var userAccount = $("#user_account").val();
+				var userName = $("#user_name").val();
+				var password = $("#password").val();
+				var passwordConfirm = $("#password_confirm").val();
+				var phone = $("#phone").val();
+				var vercode = $("#vercode").val();
+				var protocolBox = $("#protocol");
+				var eInfo = ''; 
+
+				$('.yg-error').remove(); //重置所有错误提示
+
+				if (!verification(country_area, 'require')) {
+					eInfo = errorInfo('请选择地区');
+					$("#country_area").parent().append(eInfo); // 输入提示插入到input末尾
+					return;
+				} else if (!verification(userAccount, 'require')) {
+					eInfo = errorInfo('请填写账号');
+					$("#user_account").parent().append(eInfo);
+					return;
+				} else if (!verification(userName, 'require')) {
+					eInfo = errorInfo('请你的姓名');
+					$("#user_name").parent().append(eInfo);
+					return;
+				} else if (!verification(password, 'require')) {
+					eInfo = errorInfo('请填写密码');
+					$("#password").parent().append(eInfo);
+					return;
+				} else if (!verification(password, 'passw')) {
+					eInfo = errorInfo('密码为6-20为数字加字母');
+					$("#password").parent().append(eInfo);
+					return;
+				} else if (!verification(passwordConfirm, 'require')) {
+					eInfo = errorInfo('请再输入一次密码');
+					$("#password_confirm").parent().append(eInfo);
+					return;
+				} else if (password !== passwordConfirm) {
+					eInfo = errorInfo('两次密码不一致');
+					$("#password_confirm").parent().append(eInfo);
+					return;
+				} else if (!verification(phone, 'require')) {
+					eInfo = errorInfo('请填写正确的手机');
+					$("#phone").parent().append(eInfo);
+					return;
+				} else if (!verification(vercode, 'require')) {
+					eInfo = errorInfo('请输入6位数验证码');
+					$("#vercode").parent().append(eInfo);
+					return;
+				} else if (!protocolBox.prop("checked")) {
+					ygToast('请阅读后同意用户协议');
+					return;
+				} else {
+					alert("提交成功");
+				}
+
+			})
+		}
+
+		// 获取验证码按钮事件绑定
+		function vercodeBtnEventInit() {
+			$("#code_btn").click(function () {
+				var phone = $("#phone").val();
+				if (!verification(phone, 'require')) {
+					ygToast('请填写正确的手机');
+					return;
+				} else {
+					vercodeTime();
+					//alert("发送验证码");
+				}
+			})
+		}
+
+		// 验证码倒计时
+		function vercodeTime() {
+			var btn = $("#code_btn");
+			var time = 60;
+			var timeUnit = 's';
+			btn.html(time + timeUnit + "后重发");
+			btn.attr("disabled", true);
+			var timer = setInterval(function () {
+				time--;
+				btn.html(time + timeUnit+ "后重发");
+				if (time <= 0) {
+					btn.removeAttr('disabled');
+					btn.html('获取验证码');
+					clearInterval(timer);
+				}
+			}, 1000)
+
+		}
+
+		$(function () {
+			regtBtnEventInit();
+			vercodeBtnEventInit();
+		})
+	</script>
 
 </body>
 

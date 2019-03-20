@@ -251,7 +251,7 @@
 
 			.game-pic {
 				margin-right: 8px;
-				width: 25px; 
+				width: 25px;
 				height: 25px;
 				background-color: #F4F4F4;
 			}
@@ -485,10 +485,14 @@
 				}
 
 				.sub-title {
+					width: 150px;
 					font-size: 12px;
 					font-weight: 400;
 					color: #B3B3B3;
 					line-height: 12px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 			}
 

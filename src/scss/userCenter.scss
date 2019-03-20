@@ -256,6 +256,7 @@
 			.verified-complete {
 				padding: 0 30px;
 				margin-bottom: 24px;
+
 				.wrap {
 					width: 910px;
 					margin: 0 auto;
@@ -280,14 +281,15 @@
 					}
 				}
 
-				.tip{
+				.tip {
 					display: flex;
 					align-items: center;
 					margin-left: 51px;
 					margin-top: 20px;
 					font-size: 12px;
 					color: #39DD00;
-					.safety{
+
+					.safety {
 						display: block;
 						width: 26px;
 						height: 26px;
@@ -334,6 +336,10 @@
 						line-height: 1;
 						font-size: 12px;
 
+						.tip {
+							display: flex;
+						}
+
 						div:first-of-type {
 							margin-bottom: 8px;
 						}
@@ -344,10 +350,25 @@
 
 						.status {
 							color: #FF701A;
+							display: flex;
+							align-items: center;
+						}
+
+						.info {
+							margin-left: 10px;
 						}
 
 						.sub-tip {
 							color: #999999;
+						}
+
+						.status-icon {
+							display: inline-block;
+							width: 16px;
+							height: 16px;
+							background: url('../img/weishezhi.png') no-repeat;
+							background-size: 16px;
+							margin-right: 5px;
 						}
 					}
 
@@ -357,6 +378,25 @@
 						color: #FF701A;
 					}
 
+				}
+
+				.bind-after {
+					.tip {
+						color: #39DD00;
+
+						.status {
+							color: #39DD00;
+						}
+					}
+
+					.column {
+						.status-icon {
+							background: url('../img/yibangding.png') no-repeat;
+						}
+					}
+					button {
+						color: #333;
+					}
 				}
 
 			}

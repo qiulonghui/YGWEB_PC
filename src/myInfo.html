@@ -1,73 +1,106 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<link rel="icon" href="">
-		<title>永高娱乐</title>
-		<meta name="viewport" content="width=1366, initial-scale=1">
-		<!-- build:css css/myInfo.css -->
-		<link href="css/normalize.css" rel="stylesheet">
-		<link href="css/common.css" rel="stylesheet">
-		<link href="css/userCenter.css" rel="stylesheet">
-		<link href="css/myInfo.css" rel="stylesheet">
-		<!-- endbuild -->
-		<!--[if lte IE 9]>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/myInfo.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/userCenter.css" rel="stylesheet">
+	<link href="css/myInfo.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
-		@@include('include/header.html')
-		
-		<div class="container center-block user-center">
-			@@include('include/userInfo.html')
-			
-			<section class="main">
-				@@include('include/userSidebar.html')
+<body>
+	@@include('include/header.html')
 
-				<div class="content">
-					<div class="header">
-						<div class="title">系统信息</div>
-					</div>
-					<div class="my-info">
-						<div class="btn-group">
-                            <label class="box-label"><input class="yg-checkbox" type="checkbox"/>全选</label>
-                            <button class="del-msg">删除</button>
-						</div>
-                        <ul class="msg-list">
-                            <li class="item selected">
-                                <input class="yg-checkbox" type="checkbox">
-                                <div class="msg-wrap">
-                                    <div class="time">2019年01月26日</div>
-                                    <div class="text">首次充值，高达送1000元大礼包，邀请好友，充值即可9折优惠，赶紧行动吧。</div>
-                                </div>
-                                <a class="go-detail" href="">查看详情 ></a>
-                            </li>
-                            <li class="item">
-                                <input class="yg-checkbox" type="checkbox">
-                                <div class="msg-wrap">
-                                    <div class="time">2019年01月26日</div>
-                                    <div class="text">首次充值，高达送1000元大礼包，邀请好友，充值即可9折优惠，赶紧行动吧。</div>
-                                </div>
-                                <a class="go-detail" href="">查看详情 ></a>
-                            </li>
-                        </ul>
-					</div>
+	<div class="container center-block user-center">
+		@@include('include/userInfo.html')
+
+		<section class="main">
+			@@include('include/userSidebar.html')
+
+			<div class="content">
+				<div class="header">
+					<div class="title">系统信息</div>
 				</div>
-			</section>
-				
-		</div>
-		@@include('include/footer.html')
-        @@include('include/siteTool.html')
+				<div class="my-info">
+					<div class="btn-group">
+						<label class="box-label"><input class="yg-checkbox all" type="checkbox" />全选</label>
+						<button class="del-msg">删除</button>
+					</div>
+					<ul class="msg-list">
+						<li class="item">
+							<input class="yg-checkbox" type="checkbox">
+							<div class="msg-wrap">
+								<div class="time">2019年01月26日</div>
+								<div class="text">首次充值，高达送1000元大礼包，邀请好友，充值即可9折优惠，赶紧行动吧。</div>
+							</div>
+							<a class="go-detail" href="">查看详情 ></a>
+						</li>
+						<li class="item">
+							<input class="yg-checkbox" type="checkbox">
+							<div class="msg-wrap">
+								<div class="time">2019年01月26日</div>
+								<div class="text">首次充值，高达送1000元大礼包，邀请好友，充值即可9折优惠，赶紧行动吧。</div>
+							</div>
+							<a class="go-detail" href="">查看详情 ></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
 
-		<!-- build:js js/myInfo.js -->
-		<script src="lib/jquery.js"></script>
-        <script src="js/common.js"></script>
-		<!-- endbuild -->
-	</body>
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/myInfo.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+
+	<script type="text/javascript">
+		// check全选
+		function checkboxEvent() {
+			var $allBtn = $(".yg-checkbox.all");
+			var $checkboxs = $(".msg-list .yg-checkbox");
+			$allBtn.change(function () {
+				if ($(this).prop("checked")) {
+					$checkboxs.prop("checked", true);
+					$checkboxs.parent(".item").addClass("selected");
+				} else {
+					$checkboxs.prop("checked", false);
+					$checkboxs.parent(".item").removeClass("selected");
+
+				}
+			})
+			$checkboxs.change(function () {
+				if ($(this).prop("checked")) {
+					$(this).parent(".item").addClass("selected");
+				} else {
+					$(this).parent(".item").removeClass("selected");
+				}
+				if ($(".msg-list .yg-checkbox").length === $(".msg-list .yg-checkbox:checked").length) {
+					$allBtn.prop("checked", true);
+				} else {
+					$allBtn.prop("checked", false);
+				}
+			})
+		}
+		$(function () {
+			checkboxEvent();
+		});
+	</script>
+</body>
 
 </html>

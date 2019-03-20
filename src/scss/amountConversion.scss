@@ -13,12 +13,9 @@
 	}
 
 	.form-wrap {
+		position: relative;
 		margin-left: 153px;
 		margin-top: 55px;
-		background: url('../img/wallet/zhaunghuan.png') no-repeat;
-		background-size: 80px 60px;
-		background-position: 370px 22px;
-		;
 
 		.item {
 			margin-bottom: 20px;
@@ -107,6 +104,17 @@
 			height: 50px;
 			margin-left: 190px;
 			font-size: 16px;
+		}
+
+		.trans-btn {
+			position: absolute;
+			left: 380px;
+			top: 20px;
+			width: 80px;
+			height: 60px;
+			background: url('../img/wallet/zhaunghuan.png') no-repeat;
+			background-size: 80px 60px;
+			cursor: pointer;
 		}
 	}
 

@@ -34,7 +34,7 @@
 			<div class="form-wrap">
 				<div class="item currency-list">
 					<label>转出:</label>
-					<select class="input-box">
+					<select class="input-box" id="centerWallet">
 						<option class="placeholder" value='' disabled selected style='display:none;'>请选择中心钱包币种</option>
 						<option value="volvo">Volvo</option>
 						<option value="saab">Saab</option>
@@ -44,7 +44,7 @@
 				</div>
 				<div class="item bank-card-list">
 					<label>转入:</label>
-					<select class="input-box">
+					<select class="input-box" id="gameWallet">
 						<option class="placeholder" value='' disabled selected style='display:none;'>请选择游戏钱包</option>
 						<option value="volvo">Volvo</option>
 						<option value="saab">Saab</option>
@@ -69,7 +69,7 @@
 				<div class="center-balance-tip">
 					当前中心钱包余额：20000 CNY
 				</div>
-
+				<div class="trans-btn" id="trsBtn"></div>
 				<button class="primary submit">确认</button>
 			</div>
 			<div class="bottom-tip">
@@ -147,10 +147,30 @@
 			$(".submit").click(function () {
 				$(".passw-modal").show();
 				$("#rel-psw").focus();
+				$("#rel-psw").val('');
+				$(".pw-box>.item").val('')
 				$("body").css("overflow", "hidden");
 			})
 
-			pswModal();
+			// 中心钱包和游戏钱包切换
+			$('#trsBtn').click(function (){
+				$domCentWallet = $("#centerWallet");
+				$domGameWallet = $("#gameWallet");
+				$outDom = $domCentWallet.parent();
+				$enterDom = $domGameWallet.parent();
+				$outDom.append($domGameWallet)
+				$enterDom.append($domCentWallet)
+			})
+
+			$("#rel-psw").keyup(function(){
+			
+				var psw = $(this).val();
+				if(psw.length === 6){
+					$(this).blur();
+					console.log(1)
+				}
+			})
+
 		});
 	</script>
 </body>

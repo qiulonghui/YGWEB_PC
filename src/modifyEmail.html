@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/modifyEmail.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/userCenter.css" rel="stylesheet">
+	<link href="css/modifyEmail.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+</head>
+
+<body>
+	@@include('include/header.html')
+
+	<div class="container center-block user-center">
+		@@include('include/userInfo.html')
+
+		<section class="main">
+			@@include('include/userSidebar.html')
+
+			<div class="content ">
+				<div class="header">
+					<div class="title">修改邮箱</div>
+				</div>
+				<div class="modify-email">
+					<ul class="step-pic">
+						<li class="item cur">
+							<div class="text">输入验证码</div>
+							<div class="circle">1</div>
+						</li>
+						<li class="item">
+							<div class="text">请输入新邮箱</div>
+							<div class="circle">2</div>
+						</li>
+						<li class="item">
+							<div class="text">修改成功</div>
+							<div class="circle">3</div>
+						</li>
+						<div class="bar"><span class="inline"></span></div>
+					</ul>
+
+					<!-- 步骤一 -->
+					<div class="form-wrap first">
+						<div class="input-wrap">
+							<label for="tel">您的邮箱:</label>
+							<input id="tel" type="number" placeholder="请输入您的邮箱">
+						</div>
+						<div class="input-wrap">
+							<label for="verCode">验证码:</label>
+							<input id="verCode" type="number" placeholder="请输入验证码">
+							<button class="code-btn">获取验证码</button>
+						</div>
+						<button id="step1Btn" class="primary">下一步</button>
+					</div>
+					<!-- 步骤一 END -->
+
+					<!-- 步骤二 -->
+					<div class="form-wrap second" style="display:none;">
+						<div class="input-wrap">
+							<label for="nTel">新的邮箱:</label>
+							<input id="nTel" type="number" placeholder="请输入新的邮箱">
+						</div>
+						<div class="input-wrap">
+							<label for="t2VerCode">验证码:</label>
+							<input id="t2VerCode" type="number" placeholder="请输入验证码">
+							<button class="code-btn">获取验证码</button>
+						</div>
+						<button id="step2Btn" class="primary">下一步</button>
+					</div>
+					<!-- 步骤二 END -->
+
+					<!-- 设置成功 -->
+					<div class="set-success" style="display:none;">
+						恭喜您! 邮箱修改成功!
+					</div>
+					<!-- 设置成功 END -->
+
+				</div>
+			</div>
+		</section>
+
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/modifyEmail.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+
+	<script type="text/javascript">
+		$(function () {
+
+			// 设置第一步
+			$("#step1Btn").click(function () {
+				$(".first").hide();
+				$(".second").show();
+				$(".step-pic .item").eq(1).addClass("cur");
+				$(".bar .inline").width("50%");
+			})
+
+			//设置第二部
+			$("#step2Btn").click(function () {
+				$(".second").hide();
+				$(".set-success").show();
+				$(".step-pic .item").eq(2).addClass("cur");
+				$(".bar .inline").width("100%");
+			})
+		});
+	</script>
+</body>
+
+</html>

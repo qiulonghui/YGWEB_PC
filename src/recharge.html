@@ -45,53 +45,53 @@
 					<i class="pay-icon card"></i>银行卡支付
 				</li>
 			</ul>
-			<!-- 微信支付 -->
+			<!-- 支付 -->
 			<div class="wx-pay form-wrap">
 				<div class="item">
-					<label>充值账号:</label> <input class="input-box" type="text" placeholder="输入充值账号">
+					<label>充值账号:</label> <input id="account" class="input-box" type="text" placeholder="输入充值账号">
 				</div>
 				<div class="item">
-					<label>再次输入:</label> <input class="input-box" type="text" placeholder="再次确认账号">
+					<label>再次输入:</label> <input id="accountConfirm"class="input-box" type="text" placeholder="再次确认账号">
 				</div>
 				<div class="item currency-list">
 					<label>选择币种:</label>
-					<select class="input-box">
-						<option class="placeholder" value='' disabled selected style='display:none;'>请选择币种</option>
-						<option value="volvo">Volvo</option>
-						<option value="saab">Saab</option>
-						<option value="opel">Opel</option>
-						<option value="audi">Audi</option>
+					<select class="input-box" id="currentList">
+						<option class="placeholder" value='' style='display:none;'>请选择币种</option>
+						<option value="1" data-symbol="$">美元</option>
+						<option value="2" data-symbol="￥">人民币</option>
+						<option value="3">Opel</option>
+						<option value="4">Audi</option>
 					</select>
 				</div>
-				<div class="item card-list" style="display:none;">
+				<div class="item card-list" id="cardList" style="display:none;">
 					<label>选择银行卡:</label>
 					<select class="input-box">
-						<option class="placeholder" value='' disabled selected style='display:none;'>请选择银行卡</option>
-						<option value="volvo">Volvo</option>
-						<option value="saab">Saab</option>
-						<option value="opel">Opel</option>
-						<option value="audi">Audi</option>
+						<option class="placeholder" value='' style='display:none;'>请选择银行卡</option>
+						<option value="1">adds</option>
+						<option value="2">bba</option>
+						<option value="3">Opel</option>
+						<option value="4">Audi</option>
 					</select>
 				</div>
 				<div class="amount-wrap">
 					<div class="label">充值金额:</div>
-					<div class="list">
-						<span class="box active">100元</span>
-						<span class="box">200元</span>
-						<span class="box">400元</span>
-						<span class="box">1000元</span>
-						<span class="box">5000元</span>
-						<span class="box other"> <input type="number" placeholder="其他金额">元</span>
+					<div class="list" id="amoutList">
+						<span class="box active"><span class="symbol"></span><span class="amount">100</span></span>
+						<span class="box"><span class="symbol"></span><span class="amount">200</span></span>
+						<span class="box"><span class="symbol"></span><span class="amount">500</span></span>
+						<span class="box"><span class="symbol"></span><span class="amount">1000</span></span>
+						<span class="box"><span class="symbol"></span><span class="amount">5000</span></span>
+						<span class="box other"><span class="symbol"></span><input id="amountInput" type="number" placeholder="其他金额"></span>
 					</div>
 				</div>
-				<div class="to-amount-tip">
+				<div class="to-amount-tip" id="recAmount">
 					<span class="text">到账金额</span>
 					<span class="amount">￥99.95</span>
 					<span class="cost">(费用：0.05%)</span>
 				</div>
 				<button id="reInfoShow" class="primary submit">立即充值</button>
 			</div>
-			<!-- 微信支付END -->
+			<!-- 支付END -->
 
 			<!-- 银行卡支付 未绑卡 -->
 			<div class="card-pay-unbind form-wrap" style="display:none;">
@@ -118,12 +118,13 @@
 					<button class="close"></button>
 				</div>
 				<div class="modal-body">
-					<div class="recg">
-						<div class="item"><span class="label">充值方式：</span><span class="val">微信支付</span></div>
-						<div class="item"><span class="label">充值账号：</span><span class="val">18848614754</span></div>
-						<div class="item"><span class="label">充值币种：</span><span class="val">人民币CNY</span></div>
-						<div class="item"><span class="label">充值金额：</span><span class="val warning">￥100</span></div>
-						<div class="item"><span class="label">到账金额：</span><span class="val"><b class="success">￥99.95</b><b class="cost">(费用0.05%)</b></span></div>
+					<div class="recg" id="recInfo">
+						<div class="item payMethod"><span class="label">充值方式：</span><span class="val">微信支付</span></div>
+						<div class="item payAcc"><span class="label">充值账号：</span><span class="val">18848614754</span></div>
+						<div class="item payCurreny"><span class="label">充值币种：</span><span class="val">人民币CNY</span></div>
+						<div class="item payAmount"><span class="label">充值金额：</span><span class="val warning">￥100</span></div>
+						<div class="item recAmount"><span class="label">到账金额：</span><span class="val"><b class="success">￥99.95</b><b
+								 class="cost">(费用0.05%)</b></span></div>
 						<div class="btn-group">
 							<button class="primary submit">确定</button>
 							<button class="cancel">修改</button>
@@ -183,59 +184,128 @@
 	<!-- endbuild -->
 
 	<script type="text/javascript">
+		var payMethodText = "微信支付";
+		var payAccText = "";
+		var payAccConfirm = "";
+		var payCurrenyText = "";
+		var payAmount = "100";
+		var payAmountText = "";
+		var recAmountText = "";
+		var currencyId = "";
+		var curSymbol = "";
+
+		// 计算到账金额
+		function calcRecAoumnt() {
+			// ...ajax操作省略
+			recAmountText = payAmountText;
+			$("#recAmount .amount").text(recAmountText);
+		}
+
 		$(function () {
+
 			// 选择充值方式
 			$(".pay-type-wrap .item").click(function () {
 				var curPayMethod = $(this).data("paymethod");
 				var $titleBox = $(".recharge .title .text");
-				var titleTxt = "";
 				$(this).addClass("active").siblings().removeClass("active");
-				if(curPayMethod === "wx") {
-					titleTxt = "微信支付";
-				}else if(curPayMethod === "zfb"){
-					titleTxt = "支付宝支付";
-				}else if(curPayMethod === "wing"){
-					titleTxt = "Wing支付";
-				}else if(curPayMethod === "card"){
-					titleTxt = "银行卡支付";
+				if (curPayMethod === "wx") {
+					payMethodText = "微信支付";
+
+				} else if (curPayMethod === "zfb") {
+					payMethodText = "支付宝支付";
+				} else if (curPayMethod === "wing") {
+					payMethodText = "Wing支付";
+				} else if (curPayMethod === "card") {
+					payMethodText = "银行卡支付";
 				}
-				if(curPayMethod === "card"){
+				if (curPayMethod === "card") {
 					$(".recharge .form-wrap").hide();
 					$(".recharge .card-pay-unbind").show();
 
-				}else{
+				} else {
 					$(".recharge .form-wrap").hide();
 					$(".recharge .wx-pay").show();
 				}
-				$titleBox.text(titleTxt);
+				$titleBox.text(payMethodText);
 			})
-			
+
 			// 选择充值金额
 			$(".amount-wrap .box").click(function () {
 				$(this).addClass("active").siblings().removeClass("active");
+				if (!$(this).hasClass('other')) {
+					$("#amountInput").val('');
+				}
+				payAmount = $(this).find('.amount').text();
+				payAmountText = curSymbol + payAmount;
+				calcRecAoumnt();
+
+			})
+			// 填写其他金额
+			$("#amountInput").keyup(function () {
+				payAmount = $(this).val();
+				payAmountText = curSymbol + payAmount;
+				calcRecAoumnt();
+			})
+
+			// 选择币种
+			$("#currentList").on("change", function () {
+				curSymbol = $(this).find('option:selected').data('symbol');
+				payCurrenyText = $(this).find('option:selected').text();
+				currencyId = $(this).find('option:selected').val();
+				$('.amount-wrap .symbol').text(curSymbol);
+				payAmountText = curSymbol + payAmount;
+				calcRecAoumnt();
 			})
 
 			// 显示充值信息
 			$("#reInfoShow").click(function () {
-				$(".recharge-modal").show();
-				$("body").css("overflow", "hidden");
-			})
-			// 隐藏充值信息
-			$(".recharge-modal .cancel").click(function () {
-				$(".recharge-modal").hide();
-				$("body").css("overflow", "auto");
-			})
-			// 支付二维码
-			$(".recharge-modal .submit").click(function () {
-				$(".recharge-modal").hide();
-				$(".pay-modal").show();
-				$("body").css("overflow", "hidden");
+				$('.form-wrap .yg-error').remove(); //重置所有错误提示
+
+				payAccText = $("#account").val();
+				payAccConfirm = $("#accountConfirm").val();
+				payAmountText = curSymbol + payAmount;
+
+
+				// 把信息赋值到模态框里
+				$("#recInfo .payMethod .val").text(payMethodText);
+				$("#recInfo .payAcc .val").text(payAccText);
+				$("#recInfo .payCurreny .val").text(payCurrenyText);
+				$("#recInfo .payAmount .val").text(payAmountText);
+				$("#recInfo .recAmount .val").text(recAmountText);
+
+				if (payAccText === '') {
+					var eInfo = errorInfo("请填写充值账号");
+					$("#account").parent().append(eInfo);
+				} else if (payAccConfirm === ''){
+					var eInfo = errorInfo("请再输入一次充值账号");
+					$("#accountConfirm").parent().append(eInfo);
+				}else if (payAccConfirm !== payAccText){
+					var eInfo = errorInfo("两次输入不一致");
+					$("#accountConfirm").parent().append(eInfo);
+				} else if (currencyId === '') {
+					eInfo = errorInfo("请选择币种");
+					$("#currentList").parent().append(eInfo);
+				} else {
+					ygModalShow('.recharge-modal');
+				}
 			})
 
-			$(".recg-result-modal .ok").click(function () {
-				$(".recg-result-modal").hide();
-				$("body").css("overflow", "auto");
+			// 充值信息修改按钮事件
+			$(".recharge-modal .cancel").click(function () {
+				ygModalHide('.recharge-modal');
 			})
+
+			// 充值信息确认按钮事件
+			$(".recharge-modal .submit").click(function () {
+				ygModalShow('.pay-modal')
+				ygModalHide('.recharge-modal');
+			})
+
+			// 成功后的确定按钮事件绑定
+			$(".success-modal .ok").click(function () {
+				ygModalHide('.success-modal');
+			})
+
 		})
 	</script>
 </body>

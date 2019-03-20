@@ -28,44 +28,62 @@
 		<section class="main">
 			<div class="record-sidebar">
 				<ul>
-					<li class="item active">
+					<li id="nowDay" class="item active">
 						<span>今天</span>
 					</li>
-					<li class="item">
+					<li id="nowWeek" class="item">
 						<span>本周</span>
 					</li>
-					<li class="item">
+					<li id="lastWeek" class="item">
 						<span>上周</span>
 					</li>
-					<li class="item">
+					<li id="lastMonth" class="item">
 						<span>上月</span>
 					</li>
-					<li class="item">
+					<li id="nowMonth" class="item">
 						<span>本月</span>
 					</li>
 				</ul>
 			</div>
 			<div class="content">
 				<div class="datepicker-group">
-					<div class="item">
-						<label>平台</label>
-						<select class="input-box" id="platform">
-							<option class="placeholder" value='' disabled selected style='display:none;'>选择平台</option>
-							<option value="1">全部</option>
-							<option value="2">欧博</option>
-							<option value="2">利鑫</option>
-							<option value="2">AG</option>
-						</select>
+					<div class="row">
+						<div class="item">
+							<label>时区</label>
+							<span class="radio-wrap"><input type="radio" value="1" name="zone">美东时间</span>
+							<span class="radio-wrap"><input type="radio" value="2" name="zone">北京时间</span>
+						</div>
+						<div class="item">
+							<label>类别</label>
+							<select class="input-box select" id="platform">
+								<option value="1" selected>全部</option>
+								<option value="2">类别12</option>
+								<option value="2">类别2</option>
+							</select>
+						</div>
+						<div class="item">
+							<label>平台</label>
+							<select class="input-box select" id="platform">
+								<option value="1" selected>全部</option>
+								<option value="2">欧博</option>
+								<option value="2">利鑫</option>
+								<option value="2">AG</option>
+							</select>
+						</div>
 					</div>
-					<div class="item">
-						<label>开始时间</label>
-						<input class="input-box time-box" id="startTime" type="text">
+					<div class="row">
+						<div class="item">
+							<label>开始时间</label>
+							<input class="input-box time-box" id="startTime" type="text">
+						</div>
+						<div class="item">
+							<label>结束时间</label>
+							<input class="input-box time-box" id="endTime" type="text">
+						</div>
 					</div>
-					<div class="item">
-						<label>结束时间</label>
-						<input class="input-box time-box" id="endTime" type="text">
+					<div class="row">
+						<button class="primary search">查询</button>
 					</div>
-					<button class="primary search">查询</button>
 				</div>
 				<div class="record">
 					<div class="top">
@@ -73,7 +91,8 @@
 							<span class="label">平台</span><span>全部</span>
 						</div>
 						<div class="t-item">
-							<span class="label">查询时间</span><div><span class="st">开始时间：2018-12-26</span><span class="et">结束时间：2018-12-26</span></div>
+							<span class="label">查询时间</span>
+							<div><span class="st">开始时间：2018-12-26</span><span class="et">结束时间：2018-12-26</span></div>
 						</div>
 						<div class="t-item">
 							<span class="label">总投注</span><span>5,000,000.00</span>
@@ -106,7 +125,7 @@
 						</li>
 					</ul>
 				</div>
-				
+
 				<!-- 无记录 (无记录时显示)-->
 				<!-- <div class="no-record">暂无相关记录</div> -->
 				<!-- 无记录 END-->
@@ -125,13 +144,68 @@
 	<script src="lib/Datepicker/js/locales/foundation-datepicker.zh-CN.js"></script>
 
 	<script type="text/javascript">
-		var curTitle = '投注记录'
-		$('#startTime').fdatepicker({
-			format: 'yyyy-mm-dd'
-		});
-		$('#endTime').fdatepicker({
-			format: 'yyyy-mm-dd'
-		});
+		var curTitle = '投注记录';
+
+		// 时间选择器初始化
+		function DatepickerInit() {
+			var initStartDate = getDate('nowDayStart');
+			var initEndDate = getDate('nowDayEnd');
+
+			$('#startTime').fdatepicker({
+				format: 'yyyy-mm-dd hh:ii:ss',
+				pickTime: true,
+				initialDate: initStartDate
+			});
+			$('#endTime').fdatepicker({
+				format: 'yyyy-mm-dd hh:ii:ss',
+				pickTime: true,
+				initialDate: initEndDate
+			});
+		}
+
+		// 记录侧边栏选择时间切换
+		function timeSiderBarToggle() {
+			var startTimeInput = $("#startTime");
+			var endTimeInput = $("#endTime");
+			var nowDayStart = getDate('nowDayStart');
+			var nowDayEnd = getDate('nowDayEnd');
+			var nowWeekStartTime = getDate('weekStartDate');
+			var nowWeekEndTime = getDate('weekEndDate');
+			var lastWeekStartTime = getDate('lastWeekStartDate');
+			var lastWeekEndTime = getDate('lastWeekEndDate');
+			var lastMonthStartTime = getDate('lastMonthStartDate');
+			var lastMonthEndTime = getDate('lastMonthEndDate');
+			var nowMonthStartTime = getDate('nowMonthStartDate');
+			var nowMonthEndDate = getDate('nowMonthEndDate');
+
+			$(".record-sidebar .item").click(function () {
+				$(this).addClass('active').siblings().removeClass('active');
+			})
+			$("#nowDay").click(function () {
+				startTimeInput.val(nowDayStart);
+				endTimeInput.val(nowDayEnd);
+			})
+			$("#nowWeek").click(function () {
+				startTimeInput.val(nowWeekStartTime);
+				endTimeInput.val(nowWeekEndTime);
+			})
+			$("#lastWeek").click(function () {
+				startTimeInput.val(lastWeekStartTime);
+				endTimeInput.val(lastWeekEndTime);
+			})
+			$("#lastMonth").click(function () {
+				startTimeInput.val(lastMonthStartTime);
+				endTimeInput.val(lastMonthEndTime);
+			})
+			$("#nowMonth").click(function () {
+				startTimeInput.val(nowMonthStartTime);
+				endTimeInput.val(nowMonthEndDate);
+			})
+		}
+		$(function () {
+			DatepickerInit();
+			timeSiderBarToggle();
+		})
 	</script>
 </body>
 
