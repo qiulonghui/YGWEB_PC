@@ -48,10 +48,10 @@
 			<div class="content">
 				<div class="datepicker-group">
 					<div class="row">
-						<div class="item">
+						<div class="item zone-wrap">
 							<label>时区</label>
-							<span class="radio-wrap"><input type="radio" value="1" name="zone">美东时间</span>
-							<span class="radio-wrap"><input type="radio" value="2" name="zone">北京时间</span>
+							<label class="radio-wrap"><input type="radio" value="md" checked name="zone">美东时间</label>
+							<label class="radio-wrap"><input type="radio" value="bj" name="zone">北京时间</label>
 						</div>
 						<div class="item">
 							<label>类别</label>
@@ -71,7 +71,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" >
 						<div class="item">
 							<label>开始时间</label>
 							<input class="input-box time-box" id="startTime" type="text">
@@ -144,12 +144,49 @@
 	<script src="lib/Datepicker/js/locales/foundation-datepicker.zh-CN.js"></script>
 
 	<script type="text/javascript">
+
 		var curTitle = '投注记录';
+		var dur            = ""
+		var zone           = "";
+		var startTimeInput = $("#startTime");
+		var endTimeInput   = $("#endTime");
+		var startTime      = "";
+		var endTime        = "";
+		
+		var tb = {
+			nowDay:   function (zone) {
+				startTime = getDate('nowDayStart',zone);
+				endTime   = getDate('nowDayEnd',zone);
+			},
+			nowWeek:   function(zone) {
+				startTime = getDate('weekStartDate',zone);
+				endTime   = getDate('weekEndDate',zone);
+			},
+			lastWeek:  function(zone) {
+				startTime = getDate('lastWeekStartDate',zone);
+				endTime   = getDate('lastWeekEndDate',zone);
+			},
+			lastMonth: function(zone) {
+				startTime = getDate('lastMonthStartDate',zone);
+				endTime   = getDate('lastMonthEndDate',zone);
+			},
+			nowMonth:  function(zone) {
+				startTime = getDate('nowMonthStartDate',zone);
+				endTime   = getDate('nowMonthEndDate',zone);
+			}
+		}
+
+		// 日期选择器发送改变时的操作
+		function datepickerChange() {
+			$("#startTime, #endTime").change(function() {
+				$(".record-sidebar .item").removeClass("active");
+			})
+		}
 
 		// 时间选择器初始化
 		function DatepickerInit() {
 			var initStartDate = getDate('nowDayStart');
-			var initEndDate = getDate('nowDayEnd');
+			var initEndDate   = getDate('nowDayEnd');
 
 			$('#startTime').fdatepicker({
 				format: 'yyyy-mm-dd hh:ii:ss',
@@ -163,48 +200,38 @@
 			});
 		}
 
-		// 记录侧边栏选择时间切换
-		function timeSiderBarToggle() {
-			var startTimeInput = $("#startTime");
-			var endTimeInput = $("#endTime");
-			var nowDayStart = getDate('nowDayStart');
-			var nowDayEnd = getDate('nowDayEnd');
-			var nowWeekStartTime = getDate('weekStartDate');
-			var nowWeekEndTime = getDate('weekEndDate');
-			var lastWeekStartTime = getDate('lastWeekStartDate');
-			var lastWeekEndTime = getDate('lastWeekEndDate');
-			var lastMonthStartTime = getDate('lastMonthStartDate');
-			var lastMonthEndTime = getDate('lastMonthEndDate');
-			var nowMonthStartTime = getDate('nowMonthStartDate');
-			var nowMonthEndDate = getDate('nowMonthEndDate');
-
-			$(".record-sidebar .item").click(function () {
-				$(this).addClass('active').siblings().removeClass('active');
-			})
-			$("#nowDay").click(function () {
-				startTimeInput.val(nowDayStart);
-				endTimeInput.val(nowDayEnd);
-			})
-			$("#nowWeek").click(function () {
-				startTimeInput.val(nowWeekStartTime);
-				endTimeInput.val(nowWeekEndTime);
-			})
-			$("#lastWeek").click(function () {
-				startTimeInput.val(lastWeekStartTime);
-				endTimeInput.val(lastWeekEndTime);
-			})
-			$("#lastMonth").click(function () {
-				startTimeInput.val(lastMonthStartTime);
-				endTimeInput.val(lastMonthEndTime);
-			})
-			$("#nowMonth").click(function () {
-				startTimeInput.val(nowMonthStartTime);
-				endTimeInput.val(nowMonthEndDate);
+		// 切换时区
+		function zoneToggle() {
+			$(".zone-wrap input[type='radio']").click(function () {
+				dur = $(".record-sidebar .item.active").attr("id");
+				zone = $(this).val();
+				tb[dur](zone);
+				startTimeInput.val(startTime);
+				endTimeInput.val(endTime);
 			})
 		}
+
+		// 记录侧边栏选择时间切换
+		function timeSiderBarToggle() {
+			
+			$(".record-sidebar .item").click(function () {
+				$(this).addClass('active').siblings().removeClass('active');
+				
+				zone = $(".zone-wrap input[type='radio']:checked").val();
+				dur = $(this).attr("id");
+				tb[dur](zone);
+
+				startTimeInput.val(startTime);
+				endTimeInput.val(endTime);
+			})
+			
+		}
+
 		$(function () {
 			DatepickerInit();
+			zoneToggle();
 			timeSiderBarToggle();
+			datepickerChange();
 		})
 	</script>
 </body>

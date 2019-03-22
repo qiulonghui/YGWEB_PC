@@ -29,28 +29,54 @@
 		<div class="content account-appeal">
 			<div class="title"><span>账号申诉</span></div>
 			<div class="form-wrap">
-				<div class="item">
-					<label>申诉原因:</label>
-					<select id="reason">
-						<option class="placeholder" value='' disabled selected style='display:none;'>请选择申诉原因</option>
-						<option value="1">手机号重置申诉</option>
-						<option value="2">邮箱重置申诉</option>
-					</select>
+				<div id="step1">
+					<div class="item">
+						<label>申诉原因:</label>
+						<select id="reason">
+							<option class="placeholder" value=''  style='display:none;'>请选择申诉原因</option>
+							<option value="1">手机号重置申诉</option>
+							<option value="2">邮箱重置申诉</option>
+						</select>
+					</div>
+					<div class="item">
+						<label for="account">永高账号:</label>
+						<input id="account" type="text" placeholder="请输入永高账号">
+					</div>
+					<div class="item">
+						<label for="tel">联系电话:</label>
+						<input id="tel" type="text" placeholder="请输入手机号码">
+					</div>
+					<div class="item">
+						<label for="verCode">验证码:</label>
+						<input id="verCode" type="text" placeholder="请输入验证码" maxlength="6">
+						<button id="codeBtn" class="code-btn">获取验证码</button>
+					</div>
+					<button class="primary submit">下一步</button>
 				</div>
-				<div class="item">
-					<label for="tel">永高账号:</label>
-					<input id="tel" type="text" placeholder="请输入永高账号">
+
+				<!-- 步骤二 -->
+				<div id="step2" style="display:none;">
+					<div class="item">
+						<label for="bindTel">绑定的手机号:</label>
+						<input id="bindTel" type="text" placeholder="绑定的手机号">
+					</div>
+					<div class="item">
+						<label for="bindEmail">绑定的邮箱账号:</label>
+						<input id="bindEmail" type="email" placeholder="请输入绑定的邮箱账号">
+					</div>
+					<div class="item">
+						<label for="idCode">注册身份证号码:</label>
+						<input id="idCode" type="number" placeholder="请输入身份证号码">
+					</div>
+					<div class="item">
+						<label for="name">注册姓名:</label>
+						<input id="name" type="text" placeholder="请输入姓名">
+					</div>
+					<button class="primary submit">提交</button>
 				</div>
-				<div class="item">
-					<label for="tel">联系电话:</label>
-					<input id="tel" type="text" placeholder="请输入绑定的手机号码">
-				</div>
-				<div class="item">
-					<label for="verCode">验证码:</label>
-					<input id="verCode" type="number" placeholder="请输入验证码">
-					<button class="code-btn">获取验证码</button>
-				</div>
-				<button id="submit" class="primary">下一步</button>
+				<!-- 步骤二 END-->
+
+				<div id="success" style="display:none;"><span class="font">邮箱重置成功!</span>去绑定其他邮箱</div>
 			</div>
 		</div>
 	</div>
@@ -61,6 +87,137 @@
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
+	<script type="text/javascript">
+
+		// 选择申诉原因
+		function selectReason() {
+			var $title   = $(".title span");
+			var initText = $title.text();
+			
+			$("#reason").change(function() {
+				var selectVal = $(this).val();
+				switch (selectVal) {
+					case "1":
+						var text = initText + "(手机号重置申诉)";
+						$title.text(text);
+						break;
+				
+					case "2":
+						var text = initText + "(邮箱重置申诉)";
+						$title.text(text);
+						break;
+				}
+			})
+		}
+
+		// 步骤一表单验证
+		function step1Form() {
+			$("#step1 .submit").click(function() {
+				var reasonInput = $("#reason");
+				var accountInput = $("#account");
+				var telInput = $("#tel");
+				var vercodeInput = $("#verCode");
+				var eInfoDom = '';  // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+
+				if(!verification(reasonInput.val(), 'require')){
+					eInfoDom = errorInfo('请选择申诉原因');
+					reasonInput.parent().append(eInfoDom); // 输入提示插入到input末尾
+					return;
+				}else if(!verification(accountInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写账号');
+					accountInput.parent().append(eInfoDom); 
+					return;
+				}else if(!verification(telInput.val(), 'require')){
+					eInfoDom = errorInfo('请填写手机号码');
+					telInput.parent().append(eInfoDom); 
+					return;
+				}else if(!verification(vercodeInput.val(), 'require')){
+					eInfoDom = errorInfo('请输入验证码');
+					vercodeInput.parent().append(eInfoDom); 
+					return;
+				}else{
+					// ajax 提交成功后到下一步
+					$("#step1").hide();
+					$("#step2").show();
+				}
+			})
+		}
+
+		// 获取验证码事件绑定
+		function vercodeBtn() {
+
+			// 验证码倒计时
+			function vercodeTime() {
+				var btn = $("#codeBtn");
+				var time = 60;
+				var timeUnit = 's';
+				btn.html(time + timeUnit + "后重发");
+				btn.attr("disabled", true);
+				var timer = setInterval(function () {
+					time--;
+					btn.html(time + timeUnit+ "后重发");
+					if (time <= 0) {
+						btn.removeAttr('disabled');
+						btn.html('获取验证码');
+						clearInterval(timer);
+					}
+				}, 1000)
+			}
+
+			$("#codeBtn").click(function() {
+				var phone = $("#tel").val();
+				if (!verification(phone, 'require')) {
+					ygToast('请输入手机号码');
+					return;
+				} else {
+					vercodeTime();
+					//alert("验证码已发送");
+				}
+			})
+		}
+
+		// 步骤二表单验证
+		function step2Form() {
+			$("#step2 .submit").click(function() {
+				var bindTelInput = $("#bindTel");
+				var bindEmailInput = $("#bindEmail");
+				var idCodeInput = $("#idCode");
+				var nameInput = $("#name");
+				var eInfoDom = '';  // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+
+				if(!verification(bindTelInput.val(), 'require')){
+					eInfoDom = errorInfo('请填写绑定的手机号');
+					bindTelInput.parent().append(eInfoDom); // 输入提示插入到input末尾
+					return;
+				}else if(!verification(bindEmailInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写绑定的邮箱');
+					bindEmailInput.parent().append(eInfoDom); 
+					return;
+				}else if(!verification(idCodeInput.val(), 'require')){
+					eInfoDom = errorInfo('请填写身份证号');
+					idCodeInput.parent().append(eInfoDom); 
+					return;
+				}else if(!verification(nameInput.val(), 'require')){
+					eInfoDom = errorInfo('请填写姓名');
+					nameInput.parent().append(eInfoDom); 
+					return;
+				}else{
+					// ajax 提交成功后到下一步
+					$("#step2").hide();
+					$("#success").show();
+				}
+			})
+		}
+
+		$(function(){
+			selectReason();
+			step1Form();
+			vercodeBtn();
+			step2Form();
+		})
+	</script>
 </body>
 
 </html>

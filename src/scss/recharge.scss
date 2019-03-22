@@ -68,11 +68,13 @@
 		.item {
 			font-size: 0;
 			margin-bottom: 20px;
-			label{
+
+			label {
 				display: inline-block;
 				width: 75px;
 				font-size: 14px;
 			}
+
 			.input-box {
 				margin-left: 30px;
 				width: 264px;
@@ -85,9 +87,11 @@
 		.amount-wrap {
 			margin-top: 36px;
 			display: flex;
-			.label{
+
+			.label {
 				width: 75px;
 			}
+
 			.list {
 				width: 520px;
 				margin-left: 30px;
@@ -169,14 +173,16 @@
 		background-position: center 94px;
 		text-align: center;
 		overflow: hidden;
-		.card-ub-tip{
+
+		.card-ub-tip {
 			color: #9DB9D1;
 			font-size: 14px;
 			margin-top: 192px;
 		}
-		.add-card-btn{
-			width:112px;
-			height:36px;
+
+		.add-card-btn {
+			width: 112px;
+			height: 36px;
 			margin-top: 28px;
 		}
 	}
@@ -332,3 +338,77 @@
 	}
 }
 
+.cop-bank-acc-modal {
+	.modal-dialog {
+		width: 520px;
+		padding-bottom: 50px;
+
+		.modal-title {
+			text-align: center;
+			font-weight: 400;
+			line-height: 1;
+		}
+
+		.m-tit {
+			font-size: 18px;
+			color: #333333;
+			margin-bottom: 12px;
+		}
+
+		.s-tit {
+			color: #999999;
+			font-size: 12px;
+		}
+	}
+
+	.modal-dialog .modal-content {
+		width: 100%;
+
+		.modal-header {
+			margin-bottom: 15px;
+		}
+	}
+
+	.modal-body {
+		border-top: 1px solid #E6E6E6;
+	}
+
+	.account-info {
+		.item {
+			width: 320px;
+			height: 45px;
+			margin: 0 auto;
+			font-size: 14px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid #F5F5F5;
+
+			.label {
+				color: #999999;
+			}
+		}
+
+		.tip-info {
+			margin-top: 30px;
+
+			.row {
+				width: 320px;
+				margin: 0 auto;
+				font-size: 12px;
+				display: flex;
+				justify-content: space-between;
+				color: #CCCCCC;
+				margin-bottom: 6px;
+			}
+		}
+
+		.btn {
+			width: 100px;
+			height: 36px;
+			display: block;
+			margin: 0 auto;
+			margin-top: 50px;
+		}
+	}
+}

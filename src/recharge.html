@@ -28,10 +28,10 @@
 
 		<div class="content recharge">
 			<div class="title">
-				<span class="text">微信支付</span>
+				<span class="text">银行卡支付</span>
 				<a class="record" href="rechargeRecord.html" target="_blank">充值记录</a>
 			</div>
-			<ul class="pay-type-wrap">
+			<!-- <ul class="pay-type-wrap">
 				<li class="item active" data-paymethod="wx">
 					<i class="pay-icon wx"></i>微信支付
 				</li>
@@ -44,14 +44,14 @@
 				<li class="item" data-paymethod="card">
 					<i class="pay-icon card"></i>银行卡支付
 				</li>
-			</ul>
+			</ul> -->
 			<!-- 支付 -->
 			<div class="wx-pay form-wrap">
 				<div class="item">
 					<label>充值账号:</label> <input id="account" class="input-box" type="text" placeholder="输入充值账号">
 				</div>
 				<div class="item">
-					<label>再次输入:</label> <input id="accountConfirm"class="input-box" type="text" placeholder="再次确认账号">
+					<label>再次输入:</label> <input id="accountConfirm" class="input-box" type="text" placeholder="再次确认账号">
 				</div>
 				<div class="item currency-list">
 					<label>选择币种:</label>
@@ -81,7 +81,8 @@
 						<span class="box"><span class="symbol"></span><span class="amount">500</span></span>
 						<span class="box"><span class="symbol"></span><span class="amount">1000</span></span>
 						<span class="box"><span class="symbol"></span><span class="amount">5000</span></span>
-						<span class="box other"><span class="symbol"></span><input id="amountInput" type="number" placeholder="其他金额"></span>
+						<span class="box other"><span class="symbol"></span><input id="amountInput" type="number"
+								placeholder="其他金额"></span>
 					</div>
 				</div>
 				<div class="to-amount-tip" id="recAmount">
@@ -120,11 +121,14 @@
 				<div class="modal-body">
 					<div class="recg" id="recInfo">
 						<div class="item payMethod"><span class="label">充值方式：</span><span class="val">微信支付</span></div>
-						<div class="item payAcc"><span class="label">充值账号：</span><span class="val">18848614754</span></div>
-						<div class="item payCurreny"><span class="label">充值币种：</span><span class="val">人民币CNY</span></div>
-						<div class="item payAmount"><span class="label">充值金额：</span><span class="val warning">￥100</span></div>
-						<div class="item recAmount"><span class="label">到账金额：</span><span class="val"><b class="success">￥99.95</b><b
-								 class="cost">(费用0.05%)</b></span></div>
+						<div class="item payAcc"><span class="label">充值账号：</span><span class="val">18848614754</span>
+						</div>
+						<div class="item payCurreny"><span class="label">充值币种：</span><span class="val">人民币CNY</span>
+						</div>
+						<div class="item payAmount"><span class="label">充值金额：</span><span
+								class="val warning">￥100</span></div>
+						<div class="item recAmount"><span class="label">到账金额：</span><span class="val"><b
+									class="success">￥99.95</b><b class="cost">(费用0.05%)</b></span></div>
 						<div class="btn-group">
 							<button class="primary submit">确定</button>
 							<button class="cancel">修改</button>
@@ -136,6 +140,46 @@
 		</div>
 	</div>
 	<!-- 充值信息模态框 END-->
+
+	<!-- 公司账户信息模态框 -->
+	<div id="copBankAccModal" class="yg-modal cop-bank-acc-modal" style="display:none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">
+						<div class="m-tit">转账信息</div>
+						<div class="s-tit">请往以下账户转入相应的充值金额</div>
+					</div>
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="account-info">
+						<div class="item"><span class="label">银行</span><span class="val">中国工商银行</span></div>
+						<div class="item"><span class="label">支行</span><span class="val">金边支行</span>
+						</div>
+						<div class="item"><span class="label">账号</span><span class="val">32232323132131</span>
+						</div>
+						<div class="item"><span class="label">姓名</span><span class="val">胡歌</span></div>
+						<div class="item"><span class="label">转账金额</span><span class="val warning">￥100</span></div>
+						<div class="tip-info">
+							<div class="row">
+								<span>转账留言:永高</span>
+								<span>有助于快速审核</span>
+							</div>
+							<div class="row">
+								温馨提示：转账时间期限为1小时内，超时订单将自动关闭
+							</div>
+						</div>
+						<div class="btn-group">
+							<button class="primary btn">已转账</button>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 公司账户信息模态框 END-->
 
 	<!-- 支付模态框 -->
 	<div class="yg-modal pay-modal">
@@ -194,16 +238,8 @@
 		var currencyId = "";
 		var curSymbol = "";
 
-		// 计算到账金额
-		function calcRecAoumnt() {
-			// ...ajax操作省略
-			recAmountText = payAmountText;
-			$("#recAmount .amount").text(recAmountText);
-		}
-
-		$(function () {
-
-			// 选择充值方式
+		// 选择充值方式
+		function choosePayMethod() {
 			$(".pay-type-wrap .item").click(function () {
 				var curPayMethod = $(this).data("paymethod");
 				var $titleBox = $(".recharge .title .text");
@@ -228,26 +264,10 @@
 				}
 				$titleBox.text(payMethodText);
 			})
+		}
 
-			// 选择充值金额
-			$(".amount-wrap .box").click(function () {
-				$(this).addClass("active").siblings().removeClass("active");
-				if (!$(this).hasClass('other')) {
-					$("#amountInput").val('');
-				}
-				payAmount = $(this).find('.amount').text();
-				payAmountText = curSymbol + payAmount;
-				calcRecAoumnt();
-
-			})
-			// 填写其他金额
-			$("#amountInput").keyup(function () {
-				payAmount = $(this).val();
-				payAmountText = curSymbol + payAmount;
-				calcRecAoumnt();
-			})
-
-			// 选择币种
+		// 选择币种
+		function chooseCurrency() {
 			$("#currentList").on("change", function () {
 				curSymbol = $(this).find('option:selected').data('symbol');
 				payCurrenyText = $(this).find('option:selected').text();
@@ -256,15 +276,47 @@
 				payAmountText = curSymbol + payAmount;
 				calcRecAoumnt();
 			})
+		}
 
-			// 显示充值信息
+		// 选择充值金额
+		function chooseAmount() {
+			$(".amount-wrap .box").click(function () {
+				$(this).addClass("active").siblings().removeClass("active");
+				if (!$(this).hasClass('other')) {
+					$("#amountInput").val('');
+				}
+				payAmount = $(this).find('.amount').text();
+				payAmountText = curSymbol + payAmount;
+				calcRecAoumnt();
+			})
+		}
+
+		// 填写其他金额
+		function inputAmount() {
+			$("#amountInput").keyup(function () {
+				payAmount = $(this).val();
+				payAmountText = curSymbol + payAmount;
+				calcRecAoumnt();
+			})
+		}
+
+
+		// 计算到账金额
+		function calcRecAoumnt() {
+			// ...ajax操作省略
+			//
+			recAmountText = payAmountText;
+			$("#recAmount .amount").text(recAmountText);
+		}
+
+		// 提交时充值信息时表单验证
+		function submitVer() {
 			$("#reInfoShow").click(function () {
 				$('.form-wrap .yg-error').remove(); //重置所有错误提示
 
 				payAccText = $("#account").val();
 				payAccConfirm = $("#accountConfirm").val();
 				payAmountText = curSymbol + payAmount;
-
 
 				// 把信息赋值到模态框里
 				$("#recInfo .payMethod .val").text(payMethodText);
@@ -276,36 +328,46 @@
 				if (payAccText === '') {
 					var eInfo = errorInfo("请填写充值账号");
 					$("#account").parent().append(eInfo);
-				} else if (payAccConfirm === ''){
+				} else if (payAccConfirm === '') {
 					var eInfo = errorInfo("请再输入一次充值账号");
 					$("#accountConfirm").parent().append(eInfo);
-				}else if (payAccConfirm !== payAccText){
+				} else if (payAccConfirm !== payAccText) {
 					var eInfo = errorInfo("两次输入不一致");
 					$("#accountConfirm").parent().append(eInfo);
 				} else if (currencyId === '') {
 					eInfo = errorInfo("请选择币种");
 					$("#currentList").parent().append(eInfo);
 				} else {
+					// 显示充值信息模态框
 					ygModalShow('.recharge-modal');
 				}
 			})
+		}
 
-			// 充值信息修改按钮事件
+		// 充值信息模态框内的按钮事件
+		function rhgBtnInit() {
+			// 取消
 			$(".recharge-modal .cancel").click(function () {
 				ygModalHide('.recharge-modal');
 			})
-
-			// 充值信息确认按钮事件
+			// 确定
 			$(".recharge-modal .submit").click(function () {
-				ygModalShow('.pay-modal')
+				ygModalShow('#copBankAccModal')
 				ygModalHide('.recharge-modal');
 			})
-
 			// 成功后的确定按钮事件绑定
 			$(".success-modal .ok").click(function () {
 				ygModalHide('.success-modal');
 			})
+		}
 
+		$(function () {
+			// choosePayMethod();
+			chooseCurrency();
+			chooseAmount();
+			inputAmount();
+			submitVer();
+			rhgBtnInit();
 		})
 	</script>
 </body>

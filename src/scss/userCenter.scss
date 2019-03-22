@@ -210,6 +210,21 @@
 						border-left: 1px solid #F0F0F0;
 					}
 
+					.secure-step{
+						margin-left: 6px;
+						i{
+							display: inline-block;
+							width: 20px;
+							height: 6px;
+							margin-right: 6px;
+							background-color: #E6E6E6;
+						}
+						i.focus{
+							background-color: #FF701A;
+						}
+					}
+				
+
 					.text {
 						color: #FF701A;
 					}

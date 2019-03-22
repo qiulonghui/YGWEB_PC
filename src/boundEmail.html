@@ -1,75 +1,148 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<link rel="icon" href="">
-		<title>永高娱乐</title>
-		<meta name="viewport" content="width=1366, initial-scale=1">
-		<!-- build:css css/boundEmail.css -->
-		<link href="css/normalize.css" rel="stylesheet">
-		<link href="css/common.css" rel="stylesheet">
-		<link href="css/userCenter.css" rel="stylesheet">
-		<link href="css/boundPhone.css" rel="stylesheet">
-		<!-- endbuild -->
-		<!--[if lte IE 9]>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/boundEmail.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/userCenter.css" rel="stylesheet">
+	<link href="css/boundPhone.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
 		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
-		@@include('include/header.html')
-		
-		<div class="container center-block user-center">
-			@@include('include/userInfo.html')
-			
-			<section class="main">
-				@@include('include/userSidebar.html')
+<body>
+	@@include('include/header.html')
 
-				<div class="content ">
-					<div class="header">
-						<div class="title">绑定邮箱</div>
+	<div class="container center-block user-center">
+		@@include('include/userInfo.html')
+
+		<section class="main">
+			@@include('include/userSidebar.html')
+
+			<div class="content ">
+				<div class="header">
+					<div class="title">绑定邮箱</div>
+				</div>
+				<div class="binding-email">
+					<!-- 已绑定邮箱 -->
+					<div class="bind-after">
+						<div class="p-info">你已成功绑定了邮箱：1134****14@qq.com</div>
+						<div class="p-tip">您若需要修改邮箱，可以点击下面的按钮</div>
+						<button class="primary"><a href="modifyEmail.html">修改邮箱</a></button>
 					</div>
-					<div class="binding-email">
-						<!-- 已绑定邮箱 -->
-						<div class="bind-after">
-							<div class="p-info">你已成功绑定了邮箱：1134****14@qq.com</div>
-							<div class="p-tip">您若需要修改邮箱，可以点击下面的按钮</div>
-							<button class="primary"><a href="modifyEmail.html">修改邮箱</a></button>
-						</div>
-						<!-- 已绑定邮箱 END -->
+					<!-- 已绑定邮箱 END -->
 
-						<!-- 未绑定邮箱 END -->
-						<!-- <div class="form-wrap">
+					<!-- 未绑定邮箱 END -->
+					<div id="bind">
+						<div class="form-wrap">
 							<div class="item">
-								<label for="tel">邮箱:</label>
-								<input id="tel" type="text" placeholder="请输入您的邮箱">
+								<label for="email">邮箱:</label>
+								<input id="email" type="email" placeholder="请输入您的邮箱">
 							</div>
 							<div class="item">
 								<label for="verCode">验证码:</label>
-								<input id="verCode" type="number" placeholder="请输入验证码">
-								<button class="code-btn">获取验证码</button>
+								<input id="verCode" type="text" placeholder="请输入验证码" maxlength="6">
+								<button id="codeBtn" class="code-btn">获取验证码</button>
 							</div>
 							<button id="submit" class="primary">确认</button>
 						</div>
 						<div class="tip">邮箱是你账户信息的重要认证。</div>
-						<div class="sub-tip">忘记密码时，您可以通过绑定的邮箱验证找回密码。</div> -->
-						<!-- 未绑定邮箱 END -->
+						<div class="sub-tip">忘记密码时，您可以通过绑定的邮箱验证找回密码。</div>
 					</div>
-				</div>
-			</section>
-				
-		</div>
-		@@include('include/footer.html')
-        @@include('include/siteTool.html')
+					<!-- 未绑定邮箱 END -->
 
-		<!-- build:js js/boundEmail.js -->
-		<script src="lib/jquery.js"></script>
-        <script src="js/common.js"></script>
-		<!-- endbuild -->
-	</body>
+					<!-- 设置成功 -->
+					<div class="set-success" style="display:none;">
+						恭喜您! 邮箱修改成功!
+					</div>
+					<!-- 设置成功 END -->
+				</div>
+			</div>
+		</section>
+
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/boundEmail.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+	<script type="text/javascript">
+		// 获取验证码事件绑定
+		function vercodeBtn() {
+			// 验证码倒计时
+			function vercodeTime() {
+				var btn = $("#codeBtn");
+				var time = 60;
+				var timeUnit = 's';
+				btn.html(time + timeUnit + "后重发");
+				btn.attr("disabled", true);
+				var timer = setInterval(function () {
+					time--;
+					btn.html(time + timeUnit + "后重发");
+					if (time <= 0) {
+						btn.removeAttr('disabled');
+						btn.html('获取验证码');
+						clearInterval(timer);
+					}
+				}, 1000)
+			}
+
+			$("#codeBtn").click(function () {
+				var emailVal = $("#email").val();
+				if (!verification(emailVal, 'require')) {
+					ygToast('请输入邮箱号码');
+					return;
+				} else {
+					vercodeTime();
+					//alert("验证码已发送");
+				}
+			})
+		}
+
+		// 表单提交
+		function formSubmit() {
+			$("#submit").click(function () {
+				var emailInput = $("#email");
+				var vercodeInput = $("#verCode");
+				var eInfoDom = ''; // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+				if (!verification(emailInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写邮箱');
+					emailInput.parent().append(eInfoDom);
+					return
+				} else if (!verification(emailInput.val(), 'email')) {
+					eInfoDom = errorInfo('邮箱格式不正确');
+					emailInput.parent().append(eInfoDom);
+					return
+				} else if (!verification(vercodeInput.val(), 'require')) {
+					eInfoDom = errorInfo('请输入验证码');
+					vercodeInput.parent().append(eInfoDom);
+					return
+				} else {
+					// ajax 提交成功后到下一步
+					$("#bind").hide();
+					$(".set-success").show();
+				}
+			})
+		}
+
+		$(function () {
+			vercodeBtn();
+			formSubmit();
+		})
+	</script>
+</body>
 
 </html>

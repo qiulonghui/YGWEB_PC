@@ -25,10 +25,9 @@
 	<div class="container center-block add-bank-card">
 		<div class="form-wrap">
 			<!-- 步骤1 添加银行卡 -->
-			<div class="step1">
+			<div id="step1" class="step1">
 				<div class="item">
-					<label>币种:
-						<select class="input-box" id="currency">
+					<label>币种:<select class="input-box" id="currency">
 							<option class="placeholder" value='' disabled selected style='display:none;'>请选择币种</option>
 							<option value="volvo">Volvo</option>
 							<option value="saab">Saab</option>
@@ -38,8 +37,7 @@
 					</label>
 				</div>
 				<div class="item">
-					<label>银行:
-						<select class="input-box" id="bank">
+					<label>银行:<select class="input-box" id="bank">
 							<option class="placeholder" value='' disabled selected style='display:none;'>请选择银行</option>
 							<option value="volvo">Volvo</option>
 							<option value="saab">Saab</option>
@@ -49,36 +47,38 @@
 					</label>
 				</div>
 				<div class="item">
-					<label>卡号:<input class="input-box" type="number" placeholder="请输入卡号"></label>
+					<label>卡号:<input id="cardNum" class="input-box" type="number" placeholder="请输入卡号"></label>
 				</div>
 				<div class="item">
-					<label>姓名:<input class="input-box" type="text" placeholder="持卡人姓名"></label>
+					<label>姓名:<input id="name" class="input-box" type="text" placeholder="持卡人姓名"></label>
 				</div>
-				<button class="primary submit">立即添加</button>
+				<button id="step1Btn" class="primary submit">立即添加</button>
 			</div>
 			<!-- 添加银行卡END -->
 
 			<!-- 步骤2 设置交易密码  如果未设置-->
-			<div class="step2" style="display:none;">
+			<div id="step2" class="step2" style="display:none;">
 				<div class="item">
 					<label for="dealPsw">设置交易密码:</label>
 					<div class="input-wrap">
-						<input id="dealPsw" type="password" placeholder="输入六位数交易密码">
+						<input id="dealPsw" type="password" placeholder="输入六位数交易密码" maxlength="6"
+							oninput="if(value.length>6)value=value.slice(0,6)">
 						<i class="icon-eyes"></i>
 					</div>
 				</div>
 				<div class="item">
 					<label for="confirmDealPsw">确认密码:</label>
 					<div class="input-wrap">
-						<input id="confirmDealPsw" type="password" placeholder="再次输入密码">
+						<input id="confirmDealPsw" type="password" placeholder="再次输入密码" maxlength="6"
+							oninput="if(value.length>6)value=value.slice(0,6)">
 						<i class="icon-eyes"></i>
 					</div>
 				</div>
-				<button class="primary submit">确定</button>
+				<button id="step2Btn" class="primary submit">确定</button>
 			</div>
 			<!-- 设置交易密码 END-->
 			<!-- 添加成功 -->
-			<div class="add-success" style="display:none;">
+			<div id="success" class="add-success" style="display:none;">
 				<div class="text">恭喜您，银行卡添加成功！查看银行卡详情!</div>
 				<button class="primary"><a href="recharge.html">去充值</a></button>
 			</div>
@@ -95,24 +95,87 @@
 	<!-- endbuild -->
 	<script type="text/javascript">
 		var curTitle = '添加银行卡';
-		$(function () {
-			// 密码显示隐藏
+
+		// 步骤一表单提交验证及事件绑定
+		function step1Form() {
+			$("#step1Btn").click(function () {
+				var currencyInput = $("#currency");
+				var bankInput = $("#bank");
+				var cardNumInput = $("#cardNum");
+				var nameInput = $("#name");
+				var eInfoDom = ''; // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+
+				if (!verification(currencyInput.val(), 'require')) {
+					eInfoDom = errorInfo('请选择币种');
+					currencyInput.parent().append(eInfoDom);
+					return
+				} else if (!verification(bankInput.val(), 'require')) {
+					eInfoDom = errorInfo('请选择银行');
+					bankInput.parent().append(eInfoDom);
+					return
+				} else if (!verification(cardNumInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写银行卡号');
+					cardNumInput.parent().append(eInfoDom);
+					return
+				} else if (!verification(nameInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写持卡人姓名');
+					nameInput.parent().append(eInfoDom);
+					return
+				} else {
+					// ajax 提交成功后到下一步
+					$("#step1").hide();
+					$("#step2").show();
+					$("header .yg-title span").text("设置交易密码");
+				}
+			})
+		}
+
+		// 步骤二表单提交验证及事件绑定
+		function step2Form() {
+			$("#step2Btn").click(function () {
+				var dealPswInput = $("#dealPsw");
+				var confirmDealPswInput = $("#confirmDealPsw");
+				var eInfoDom = ''; // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+
+				if (!verification(dealPswInput.val(), 'require')) {
+					eInfoDom = errorInfo('请设置6位数交易密码');
+					dealPswInput.parents(".item").append(eInfoDom);
+					return
+				} else if (dealPswInput.val().length !== 6) {
+					eInfoDom = errorInfo('交易密码为6位数纯数字');
+					dealPswInput.parents(".item").append(eInfoDom);
+					return
+				} else if (!verification(confirmDealPswInput.val(), 'require')) {
+					eInfoDom = errorInfo('请在输入一次交易密码');
+					confirmDealPswInput.parents(".item").append(eInfoDom);
+					return
+				} else if (confirmDealPswInput.val() !== dealPswInput.val()) {
+					eInfoDom = errorInfo('两次输入不一致');
+					confirmDealPswInput.parents(".item").append(eInfoDom);
+					return
+				} else {
+					// ajax 提交成功后到下一步
+					$("#step2").hide();
+					$("#success").show();
+				}
+			})
+		}
+
+		// 密码可见状态
+		function pswStaTusInit() {
 			$(".icon-eyes").click(function () {
 				var inputType = $(this).siblings("input").attr("type");
-				var curInputType = inputType === "password" ? "text" : "password";
+				var curInputType = inputType === "password" ? "number" : "password";
 				$(this).toggleClass("on").siblings("input").attr("type", curInputType);
 			})
+		}
 
-			$(".step1 .submit").click(function() {
-				$(".step1").hide();
-				$(".step2").show();
-				curTitle = '设置交易密码';
-			})
-
-			$(".step2 .submit").click(function() {
-				$(".step2").hide();
-				$(".add-success").show();
-			})
+		$(function () {
+			step1Form();
+			step2Form();
+			pswStaTusInit();
 		});
 	</script>
 </body>

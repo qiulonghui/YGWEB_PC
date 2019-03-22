@@ -10,19 +10,13 @@
 		margin-top: 72px;
 
 		.step1 {
-			width: 326px;
-			margin: 0 auto;
 
 			.item {
+				margin-left: 410px;;
 				margin-bottom: 20px;
-
 				label {
-					display: flex;
-					align-items: center;
-
 					.input-box {
-						flex: 1;
-						width: 1px;
+						width: 261px;
 						height: 36px;
 						border-radius: 4px;
 						margin-left: 30px;
@@ -43,9 +37,9 @@
 		.step2 {
 			.item {
 				display: flex;
-				justify-content: center;
 				align-items: center;
 				font-size: 14px;
+				margin-left: 380px;
 				margin-bottom: 20px;
 
 				label {

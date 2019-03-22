@@ -110,7 +110,7 @@
 		var curTitle = '财务账单'
 		// 时间选择器初始化
 		function DatepickerInit() {
-			var initDate = getDate('nowDay');
+			var initDate = getDate('nowDayStart');
 
 			$('#startTime').fdatepicker({
 				format: 'yyyy-mm-dd',
@@ -124,41 +124,43 @@
 
 		// 记录侧边栏选择时间切换
 		function timeSiderBarToggle() {
-			var startTimeInput = $("#startTime");
-			var endTimeInput = $("#endTime");
-			var nowDay = getDate('nowDay');
-			var nowWeekStartTime = getDate('weekStartDate');
-			var nowWeekEndTime = getDate('weekEndDate');
-			var lastWeekStartTime = getDate('lastWeekStartDate');
-			var lastWeekEndTime = getDate('lastWeekEndDate');
-			var lastMonthStartTime = getDate('lastMonthStartDate');
-			var lastMonthEndTime = getDate('lastMonthEndDate');
-			var nowMonthStartTime = getDate('nowMonthStartDate');
-			var nowMonthEndDate =  getDate('nowMonthEndDate');
+			var startTimeInput     = $("#startTime");
+			var endTimeInput       = $("#endTime");
+			var dur                = "";
+			var startTime          = "";
+			var endTime            = "";
+
+			var tb = {
+				nowDay:function() {
+					startTime = getDate('nowDayStart', "local").substring(0,11);
+					endTime   = getDate('nowDayStart', "local").substring(0,11);
+				},
+				nowWeek: function() {
+					startTime = getDate('weekStartDate', "local").substring(0,11);
+					endTime   = getDate('weekEndDate', "local").substring(0,11);
+				},
+				lastWeek: function() {
+					startTime = getDate('lastWeekStartDate', "local").substring(0,11);
+					endTime   = getDate('lastWeekEndDate', "local").substring(0,11);
+				},
+				lastMonth: function() {
+					startTime = getDate('lastMonthStartDate', "local").substring(0,11);
+					endTime   = getDate('lastMonthEndDate', "local").substring(0,11);
+				},
+				nowMonth: function() {
+					startTime = getDate('nowMonthStartDate', "local").substring(0,11);
+					endTime   = getDate('nowMonthEndDate', "local").substring(0,11);
+				}
+			}
 
 			$(".record-sidebar .item").click(function(){
-				$(this).addClass('active').siblings().removeClass('active');		
+				$(this).addClass('active').siblings().removeClass('active');	
+				dur = $(this).attr("id");	
+				tb[dur]();
+				startTimeInput.val(startTime);
+				endTimeInput  .val(endTime);
 			})
-			$("#nowDay").click(function() {
-				startTimeInput.val(nowDay);
-				endTimeInput.val(nowDay);
-			})
-			$("#nowWeek").click(function() {
-				startTimeInput.val(nowWeekStartTime);
-				endTimeInput.val(nowWeekEndTime);
-			})
-			$("#lastWeek").click(function() {
-				startTimeInput.val(lastWeekStartTime);
-				endTimeInput.val(lastWeekEndTime);
-			})
-			$("#lastMonth").click(function() {
-				startTimeInput.val(lastMonthStartTime);
-				endTimeInput.val(lastMonthEndTime);
-			})
-			$("#nowMonth").click(function() {
-				startTimeInput.val(nowMonthStartTime);
-				endTimeInput.val(nowMonthEndDate);
-			})
+			
 		}
 		$(function () {
 			DatepickerInit();

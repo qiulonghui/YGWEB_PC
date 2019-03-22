@@ -138,6 +138,50 @@ function rembPsw() {
 	});
 }
 
+// 加入收藏按钮事件绑定
+function addFavoriteBtnInit() {
+	// 加入收藏
+	function addFavorite(url,title) {
+		url = url || window.location.href;;
+		title = title || document.title;
+		if (window.sidebar) {
+			window.sidebar.addPanel(title, url, "");
+		} else if (document.all) {
+			window.external.AddFavorite(url, title);
+		} else {
+			alert('浏览器不支持，请使用 Ctrl+D 进行添加');
+			return true;
+		}
+	}
+	$("header #addFavorite").click(function () {
+		addFavorite();
+	})
+
+}
+
+// 设为首页按钮事件绑定
+function setHomeBtnInit() {
+	// 设为首页
+	function setHome(url, title) {
+		if (document.all){
+			document.body.style.behavior='url(#default#homepage)';
+			document.body.setHomePage(url);
+		} else{
+			alert('浏览器不支持此操作, 请手动设为首页');
+		}
+	}
+	$("header #setHome").click(function () {
+		setHome(this, window.location);
+	})
+
+}
+
+// 回到顶部
+function toTopEventInit() {
+	$(".site-tool-wrap #toTopBtn").click(function() {
+		$('html , body').animate({scrollTop: 0},'fast');
+	})
+}
 
 /** 供外部调用的方法 */
 
@@ -264,25 +308,49 @@ function verification(inputVal, type) {
 // nowDayStart nowDayEnd 当天开始结束时间
 // weekStartDate weekEndDate 本周开始结束时间
 // lastWeekStartDate lastWeekEndDate 上周开始结束时间
-// lastMonthStartDate lastMonthEndDate 上月开始结束时间
-// nowMonthStartDate nowMonthEndDate 本月开始结束时间
-function getDate(type,zone) {
-	zone = zone||"md"; //默认计算时间为美东时间
+// lastMonthStartDate lastMonthEndDate 上月开始结束时间,以月第一周第一天为开始，以月第最后一周日为结束
+// nowMonthStartDate nowMonthEndDate 本月开始结束时间,以月第一周第一天为开始，以月第最后一周日为结束
+function getDate(type, zone) {
+	zone = zone || "md"; //默认计算时间为美东时间
 	var now = new Date();
 	var nowDayOfWeek = now.getDay() - 1; // 今天是本周的第几天 以周一为第一天
 	var nowYear = now.getFullYear(); // 当前年
 	var nowMonth = now.getMonth(); // 当前月
 	var nowDay = now.getDate(); // 当前日
 	var nowHour = now.getHours() // 当前时区 小时
-	var lastMonthDate = new Date(); //上月日期
-	lastMonthDate.setDate(1);
-	lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
-	var lastMonth = lastMonthDate.getMonth();
+	var startHour = 0; // 开始时间 小时
+	var endHour = 23; // 结束时间 小时
+	
+	var nowMothFirstDate = new Date();
+	nowMothFirstDate.setDate(1);  // 本月第一天
+	nowMothFirstDate.setMonth(nowMonth);
+	nowMonthFirstOfWeek = nowMothFirstDate.getDay(); // 本月第一天是周几
+	var nowMonthStartDay = 1;
+
+	var nowMothEndDate = new Date();
+	nowMothEndDate.setDate(getMonthDays(nowMonth));  // 本月最后一天
+	nowMothEndDate.setMonth(nowMonth);
+	nowMonthEndOfWeek = nowMothEndDate.getDay(); // 本月最后一天是周几
+	var nowMonthEndDay = getMonthDays(nowMonth);
+
+	var lastMonth = nowMonth-1; // 上月
+	var lastMonthfirstDate = new Date(); //上月第一天
+	lastMonthfirstDate.setDate(1);
+	lastMonthfirstDate.setMonth(lastMonth);
+	var lastMonthFirstOfWeek = lastMonthfirstDate.getDay(); // 上个月第一天是周几
+	var lastMonthStartDay = 1;
+
+	var lastMonthEndDate = new Date(); //上月最后一天
+	lastMonthEndDate.setDate(getMonthDays(lastMonth));
+	lastMonthEndDate.setMonth(lastMonth);
+	var lastMonthEndOfWeek = lastMonthEndDate.getDay(); // 上个月最后一天是周几
+	var lastMonthEndDay = getMonthDays(lastMonth);
+	
+
 	var nTimezone = -now.getTimezoneOffset() / 60; // 获取当前时区
+	var mdHour = nowHour - (nTimezone + 4); // 根据当前时区 小时 转换成 美东时区 小时
 
-	if (zone==="md") {
-		var mdHour = nowHour - (nTimezone + 4); // 根据当前时区 小时 转换成 美东时区 小时
-
+	if(zone === "md") {
 		if (mdHour < 0) {
 			nowDay = nowDay - 1; //mdHour < 0,美东时间要减一天
 		}
@@ -291,14 +359,40 @@ function getDate(type,zone) {
 		}
 	}
 
-	if (zone==="bj") {
-		var bjHour = mdHour + 12; // 美东时区 小时 加12小时 为北京时间 小时
-		
-		if (bjHour >= 24) {
-			nowDay = nowDay + 1; //bjHour > 24 北京时间要加一天
+
+	if (zone === "bj") {
+		// 北京时间 在美东时间的基础上加12小时 
+		startHour = startHour + 12; 
+		endHour = endHour + 12;
+	}
+
+	if(type === "lastMonthStartDate") {
+		// 如果当前不是周一，则 上月 开始时间推到下周周一
+		if(lastMonthFirstOfWeek !== 1) {
+			lastMonthStartDay = lastMonthStartDay+(7-lastMonthFirstOfWeek+1);
 		}
 	}
 
+	if(type === "lastMonthEndDate") {
+		// 如果月结束时间不是一周的最后一天，则 上月结束时间推到本周最后一天
+		if(lastMonthEndOfWeek !== 0) { // 0为周日
+			lastMonthEndDay = lastMonthEndDay+(7-lastMonthEndOfWeek);
+		}
+	}
+
+	if(type === "nowMonthStartDate") {
+		// 如果当前不是周一，则 本月 开始时间推到下周周一
+		if(nowMonthFirstOfWeek !== 1) {
+			nowMonthStartDay = nowMonthStartDay+(7-nowMonthFirstOfWeek+1);
+		}
+	}
+
+	if(type === "nowMonthEndDate") {
+		// 如果月结束时间不是一周的最后一天，则 本月结束时间推到本周最后一天
+		if(nowMonthEndOfWeek !== 0) { // 0为周日
+			nowMonthEndDay = nowMonthEndDay+(7-nowMonthEndOfWeek);
+		}
+	}
 
 	// 格式化YYYY-MM-DD
 	function formatDate(date) {
@@ -336,44 +430,44 @@ function getDate(type,zone) {
 
 	var obj = {
 		nowDayStart: function () {
-			var nowDayStart = new Date(nowYear, nowMonth, nowDay, 0, 0, 0);
+			var nowDayStart = new Date(nowYear, nowMonth, nowDay, startHour, 0, 0);
 			return formatDate(nowDayStart);
 		},
 		nowDayEnd: function () {
-			var nowDayEnd = new Date(nowYear, nowMonth, nowDay, 23, 59, 59);
+			var nowDayEnd = new Date(nowYear, nowMonth, nowDay, endHour, 59, 59);
 			return formatDate(nowDayEnd);
 		},
 		weekStartDate: function () {
-			var weekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek, 0, 0, 0);
+			var weekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek, startHour, 0, 0);
 			return formatDate(weekStartDate)
 		},
 
 		weekEndDate: function () {
-			var weekEndDate = new Date(nowYear, nowMonth, nowDay + (6 - nowDayOfWeek), 23, 59, 59);
+			var weekEndDate = new Date(nowYear, nowMonth, nowDay + (6 - nowDayOfWeek), endHour, 59, 59);
 			return formatDate(weekEndDate);
 		},
 		lastWeekStartDate: function () {
-			var lastWeekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 7, 0, 0, 0);
+			var lastWeekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 7, startHour, 0, 0);
 			return formatDate(lastWeekStartDate);
 		},
 		lastWeekEndDate: function () {
-			var lastWeekEndDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 1, 23, 59, 59);
+			var lastWeekEndDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 1, endHour, 59, 59);
 			return formatDate(lastWeekEndDate);
 		},
 		lastMonthStartDate: function () {
-			var lastMonthStartDate = new Date(nowYear, lastMonth, 1, 0, 0, 0);
+			var lastMonthStartDate = new Date(nowYear, lastMonth, lastMonthStartDay, startHour, 0, 0);
 			return formatDate(lastMonthStartDate);
 		},
 		lastMonthEndDate: function () {
-			var lastMonthEndDate = new Date(nowYear, lastMonth, getMonthDays(lastMonth), 23, 59, 59);
+			var lastMonthEndDate = new Date(nowYear, lastMonth, lastMonthEndDay, endHour, 59, 59);
 			return formatDate(lastMonthEndDate);
 		},
 		nowMonthStartDate: function () {
-			var nowMonthStartDate = new Date(nowYear, nowMonth, 1, 0, 0, 0);
+			var nowMonthStartDate = new Date(nowYear, nowMonth, nowMonthStartDay, startHour, 0, 0);
 			return formatDate(nowMonthStartDate);
 		},
 		nowMonthEndDate: function () {
-			var nowMonthEndDate = new Date(nowYear, nowMonth, getMonthDays(nowMonth), 23, 59, 59);
+			var nowMonthEndDate = new Date(nowYear, nowMonth, nowMonthEndDay, endHour, 59, 59);
 			return formatDate(nowMonthEndDate);
 		}
 
@@ -401,4 +495,10 @@ $(function () {
 	pswModalInit();
 
 	rembPsw();
+
+	addFavoriteBtnInit();
+
+	setHomeBtnInit();
+
+	toTopEventInit();
 });

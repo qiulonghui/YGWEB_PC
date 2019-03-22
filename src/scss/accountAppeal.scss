@@ -37,7 +37,13 @@
 
 	}
 
-	#submit {
+	#step2{
+		label{
+			width: 110px;	
+		}
+	}
+
+	.submit {
 		width: 112px;
 		height: 36px;
 		margin-left: 395px;
@@ -45,5 +51,12 @@
 		margin-bottom: 20px;
 		font-size: 12px;
 		line-height: 1;
+	}
+	#success {
+		font-size: 18px;
+		text-align: center;
+		.font{
+			color: #FF701A;
+		}
 	}
 }

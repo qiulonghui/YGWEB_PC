@@ -51,14 +51,14 @@
 					</ul>
 
 					<!-- 步骤一 -->
-					<div class="form-wrap first">
+					<div id="step1" class="form-wrap first">
 						<div class="input-wrap">
-							<label for="tel">手机号:</label>
-							<input id="tel" type="number" placeholder="请输入您的手机号">
+							<label for="oldTel">手机号:</label>
+							<input id="oldTel" type="number" placeholder="请输入您的手机号">
 						</div>
 						<div class="input-wrap">
 							<label for="verCode">验证码:</label>
-							<input id="verCode" type="number" placeholder="请输入验证码">
+							<input id="verCode" type="text" placeholder="请输入验证码" maxlength="6">
 							<button class="code-btn">获取验证码</button>
 						</div>
 						<button id="step1Btn" class="primary">下一步</button>
@@ -66,14 +66,14 @@
 					<!-- 步骤一 END -->
 
 					<!-- 步骤二 -->
-					<div class="form-wrap second" style="display:none;">
+					<div id="step2" class="form-wrap second" style="display:none;">
 						<div class="input-wrap">
 							<label for="nTel">新的手机号:</label>
 							<input id="nTel" type="number" placeholder="请输入您的手机号">
 						</div>
 						<div class="input-wrap">
 							<label for="t2VerCode">验证码:</label>
-							<input id="t2VerCode" type="number" placeholder="请输入验证码">
+							<input id="t2VerCode" type="text" placeholder="请输入验证码" maxlength="6">
 							<button class="code-btn">获取验证码</button>
 						</div>
 						<button id="step2Btn" class="primary">下一步</button>
@@ -100,23 +100,109 @@
 	<!-- endbuild -->
 
 	<script type="text/javascript">
-		$(function () {
-
-			// 设置第一步
+		// 步骤一表单验证
+		function step1Form() {
 			$("#step1Btn").click(function () {
-				$(".first").hide();
-				$(".second").show();
-				$(".step-pic .item").eq(1).addClass("cur");
-				$(".bar .inline").width("50%");
+				var oldTelInput = $("#oldTel");
+				var vercodeInput = $("#verCode");
+				var eInfoDom = ''; // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+				if (!verification(oldTelInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写手机号码');
+					oldTelInput.parent().append(eInfoDom);
+					return
+				} else if (!verification(vercodeInput.val(), 'require')) {
+					eInfoDom = errorInfo('请输入验证码');
+					vercodeInput.parent().append(eInfoDom);
+					return
+				} else {
+					// ajax 提交成功后到下一步
+					$("#step1").hide();
+					$("#step2").show();
+					$(".step-pic .item").eq(1).addClass("cur");
+					$(".bar .inline").width("50%");
+				}
 			})
+		}
 
-			//设置第二部
+		// 步骤二表单验证
+		function step2Form() {
 			$("#step2Btn").click(function () {
-				$(".second").hide();
-				$(".set-success").show();
-				$(".step-pic .item").eq(2).addClass("cur");
-				$(".bar .inline").width("100%");
+				var nTelInput = $("#nTel");
+				var vercodeInput = $("#t2VerCode");
+				var eInfoDom = ''; // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+				if (!verification(nTelInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写手机号码');
+					nTelInput.parent().append(eInfoDom);
+					return
+				} else if (!verification(vercodeInput.val(), 'require')) {
+					eInfoDom = errorInfo('请输入验证码');
+					vercodeInput.parent().append(eInfoDom);
+					return
+				} else {
+					// ajax 提交成功后到下一步
+					$("#step2").hide();
+					$(".set-success").show();
+					$(".step-pic .item").eq(2).addClass("cur");
+					$(".bar .inline").width("100%");
+				}
 			})
+		}
+
+		// 验证码倒计时
+		function vercodeTime(btn) {
+			var time = 60;
+			var timeUnit = 's';
+			btn.html(time + timeUnit + "后重发");
+			btn.attr("disabled", true);
+			var timer = setInterval(function () {
+				time--;
+				btn.html(time + timeUnit + "后重发");
+				if (time <= 0) {
+					btn.removeAttr('disabled');
+					btn.html('获取验证码');
+					clearInterval(timer);
+				}
+			}, 1000)
+		}
+
+		// 步骤一发送验证码事件绑定
+		function vercodeBtn1() {
+			$("#step1 .code-btn").click(function () {
+				var oldTelInput = $("#oldTel");
+				if (!verification(oldTelInput.val(), 'require')) {
+					ygToast('请输入手机号码');
+					return;
+				} else {
+					vercodeTime($(this)); //倒计时
+					//...ajax请求
+					//alert("验证码已发送");
+				}
+			})
+		}
+
+		// 步骤二发送验证码事件绑定
+		function vercodeBtn2() {
+			$("#step2 .code-btn").click(function () {
+				var nTelInput = $("#nTel");
+				if (!verification(nTelInput.val(), 'require')) {
+					ygToast('请输入新的手机号码');
+					return;
+				} else {
+					vercodeTime($(this)); //倒计时
+					//...ajax请求
+					//alert("验证码已发送");
+				}
+			})
+		}
+
+
+		$(function () {
+			step1Form();
+			vercodeBtn1();
+			step2Form();
+			vercodeBtn2();
 		});
 	</script>
 </body>
