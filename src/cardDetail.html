@@ -33,7 +33,7 @@
 						<div class="card-num">•••• •••• •••• <span>5679</span></div>
 					</div>
 				</div>
-				<button class="unbund">解除绑定</button>
+				<button id="unBoundbtn" class="unbund">解除绑定</button>
 			</div>
 			<div class="card-info">
 				<div class="item">
@@ -63,13 +63,86 @@
 	@@include('include/footer.html')
 	@@include('include/siteTool.html')
 
+	<!-- 密码模态框 -->
+	<div id="ubPswModal" class="yg-modal unbind-passw-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title">解绑银行卡</div>
+					<button class="close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="tip"><i class="tip-icon"></i>你确定解绑此银行卡[ <span class="wr">尾号<b>1058</b></span> ]?</div>
+					<div class="ub-passw">
+						<input id="rel-psw" type="tel" maxlength="6">
+						<div class="pw-wrap">
+							<span class="txt">交易密码：</span>
+							<div class="pw-box">
+								<input class="item" type="password" maxlength="1" disabled>
+								<input class="item" type="password" maxlength="1" disabled>
+								<input class="item" type="password" maxlength="1" disabled>
+								<input class="item" type="password" maxlength="1" disabled>
+								<input class="item" type="password" maxlength="1" disabled>
+								<input class="item" type="password" maxlength="1" disabled>
+							</div>
+							<div class="forget"><a href="#">忘记交易密码?</a></div>
+						</div>
+					</div>
+					<div class="input-tip">请输入6位数的交易密码</div>
+					<button id="submit" class="primary btn">确认</button>
+				</div>
+				<!-- <div class="modal-footer"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 密码模态框 END-->
+
 	<!-- build:js js/cardDetail.js -->
 	<script src="lib/jquery.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
 	<script type="text/javascript">
 		var curTitle = '银行卡详情';
+		// 解绑银行卡密码框 事件初始化
+		function passwModalInit() {
+			// 密码框显示
+			$("#unBoundbtn").click(function() {
+				ygModalShow("#ubPswModal");
+				$("#rel-psw").focus();
+			})
+			// 输入密码事件
+			$("#ubPswModal #rel-psw").on('keyup', function () {
+				var pwd = $(this).val().trim();
+				var $input = $(".pw-box>.item");
+				var len = pwd.length;
+
+				// input 输入值
+				for (var i = 0; i < pwd.length; i++) {
+					$input.eq(i).val(pwd[i])
+				}
+
+				// 将有值的当前input后的所有input清空
+				$input.each(function () {
+					var index = $(this).index();
+					if (index >= len) {
+						$(this).val("");
+					}
+				});
+			})
+			$(".pw-wrap").click(function () {
+				$("#rel-psw").focus();
+			})
+
+			// 确定,密码提交
+			$("#submit").click(function() {
+				// ...ajax提交
+			})
+		}
+		$(function () {
+			passwModalInit();
+		});
 	</script>
+
 </body>
 
 </html>

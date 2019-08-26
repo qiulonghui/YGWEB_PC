@@ -1,0 +1,37 @@
+.no-page{
+	width: 1200px;
+	height: 804px;
+	border-radius:4px;
+	overflow: hidden;
+	margin-bottom: 80px; 
+	background: url("../img/ren.png") no-repeat;
+	background-color: #fff;
+	background-size: 300px 230px;
+	background-position: center 123px;
+	.tip{
+		margin-top: 360px;
+		margin-bottom: 12px;
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+		.wr{
+			color: #FF4C4C;
+		}
+	}
+	.site-list{
+		font-size: 16px;
+		text-align: center;
+		span{
+			display: inline-block;
+			width: 100px;
+			line-height: 1;
+			border-right: 1px solid #DBDBDB;
+			&:last-of-type{
+				border-right: none;
+			}
+			a{
+				color: #1A8CFF;
+			}
+		}
+	}
+}

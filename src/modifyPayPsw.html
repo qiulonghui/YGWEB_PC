@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/modifyPayPsw.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/customerService.css" rel="stylesheet">
+	<link href="css/modifyPayPsw.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+</head>
+
+<body>
+	@@include('include/header.html')
+
+	<div class="container center-block customer-service">
+		@@include('include/custServerSidebar.html')
+
+		<div class="content modify-pay-psw">
+			<div class="title"><span>密码申诉</span></div>
+			<ul class="appeal-type-wrap">
+				<li class="item">
+					<a href="./resetLoginPsw.html">重置登录密码</a>
+				</li>
+				<li class="item active">
+					<a href="./modifyPayPsw.html">修改支付密码</a>
+				</li>
+				<li class="item">
+					<a href="./resetPayPsw.html">重置支付密码</a>
+				</li>
+			</ul>
+			<!-- 步骤一 -->
+			<div id="firstBox" class="form-wrap">
+				<div class="item">
+					<label for="country_area">国家/地区:</label>
+					<select class="input-box" id="country_area">
+						<option class="placeholder" value='' selected style='display:none;'>国家/地区</option>
+						<option value="volvo">Volvo</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</div>
+
+				<div class="item" id="phoneItem">
+					<label for="tel">绑定的手机号:</label>
+					<input id="tel" type="tel" placeholder="请输入绑定的手机号码">
+				</div>
+
+				<div class="item">
+					<label for="psw">设置新密码:</label>
+					<div class="input-wrap">
+						<input id="psw" type="password" placeholder="新的支付密码"
+							oninput="if(value.length>6)value=value.slice(0,6)">
+						<i class="icon-eyes"></i>
+					</div>
+				</div>
+				<div class="item">
+					<label for="confirmPsw">确认新密码:</label>
+					<div class="input-wrap">
+						<input id="confirmPsw" type="password" placeholder="再次输入密码"
+							oninput="if(value.length>6)value=value.slice(0,6)">
+						<i class="icon-eyes"></i>
+					</div>
+				</div>
+
+				<div class="item">
+					<label for="verCode">验证码:</label>
+					<input id="verCode" type="text" placeholder="请输入验证码" maxlength="6">
+					<button id="codeBtn" class="code-btn">获取验证码</button>
+				</div>
+
+				
+				<button id="firstBtn" class="primary submit">确定</button>
+			</div>
+			<!-- 步骤一 END-->
+
+
+			<!-- 设置成功提示 -->
+			<div class="success-tip" style="display:none">
+				<span class="warning">恭喜您，支付密码修改成功！</span>
+			</div>
+			<!-- 设置成功提示END -->
+		</div>
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/modifyPayPsw.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+
+	<script type="text/javascript">
+		// 步骤一表单验证
+		function step1Form() {
+			$("#firstBtn").click(function () {
+				var nationInput = $("#country_area");
+				var telInput = $("#tel");
+				var pswInput = $("#psw");
+				var pswConfirmInput = $("#confirmPsw");
+				var vercodeInput = $("#verCode");
+
+				var eInfoDom = ''; // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+
+				if (!verification(nationInput.val(), 'require')) {
+					eInfoDom = errorInfo('请选择国家/地区');
+					nationInput.parent().append(eInfoDom);
+					return;
+				} else if (!verification(telInput.val(), 'require')) {
+					eInfoDom = errorInfo('请填写绑定的手机号码');
+					telInput.parent().append(eInfoDom);
+					return;
+				} else if (!verification(pswInput.val(), 'require')) {
+					eInfoDom = errorInfo('请输入新的支付密码');
+					pswInput.parents('.item').append(eInfoDom); // 输入提示插入到input末尾
+					return;
+				} else if (isNaN(Number(pswInput.val()))) {
+					eInfoDom = errorInfo('支付密码为6位纯数字');
+					pswInput.parents('.item').append(eInfoDom);
+					return;
+				} else if (pswInput.val() !== pswConfirmInput.val()) {
+					eInfoDom = errorInfo('两次输入不一致');
+					pswConfirmInput.parents('.item').append(eInfoDom);
+					return;
+				}else if (!verification(vercodeInput.val(), 'require')) {
+					eInfoDom = errorInfo('请输入验证码');
+					vercodeInput.parent().append(eInfoDom);
+					return;
+				} else {
+					// ajax 提交成功后到下一步
+					$("#firstBox").hide();
+					$(".success-tip").show();
+				}
+			})
+		}
+
+		// 获取验证码事件绑定
+		function vercodeBtn() {
+			// 验证码倒计时
+			function vercodeTime() {
+				var btn = $("#codeBtn");
+				var time = 60;
+				var timeUnit = 's';
+				btn.html(time + timeUnit + "后重发");
+				btn.attr("disabled", true);
+				var timer = setInterval(function () {
+					time--;
+					btn.html(time + timeUnit + "后重发");
+					if (time <= 0) {
+						btn.removeAttr('disabled');
+						btn.html('获取验证码');
+						clearInterval(timer);
+					}
+				}, 1000)
+			}
+
+			$("#codeBtn").click(function () {
+				var phone = $("#tel").val();
+				var nation = $("#country_area").val();
+				var reasonInput = $("#reason");
+				if (!verification(nation, 'require')) {
+					ygToast('请选择国家/地区');
+					return;
+				} else if (!verification(phone, 'require')) {
+					ygToast('请输入绑定的手机号码');
+					return;
+				} else {
+					vercodeTime();
+					//alert("验证码已发送");
+				}
+			})
+		}
+
+		// 密码显示隐藏状态切换
+		function pswStatusToggle() {
+			$(".icon-eyes").click(function () {
+				var inputType = $(this).siblings("input").attr("type");
+				var curInputType = inputType === "password" ? "text" : "password";
+				$(this).toggleClass("on").siblings("input").attr("type", curInputType);
+			})
+		}
+
+		$(function () {
+			step1Form();
+			vercodeBtn();
+			pswStatusToggle();
+		});
+	</script>
+</body>
+
+</html>

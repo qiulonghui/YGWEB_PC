@@ -1,4 +1,4 @@
-.swiper-container {
+.banner {
 	background-color: #1A8CFF;
 	min-width: 1200px;
 	height: 580px;
@@ -39,88 +39,101 @@
 	z-index: 10;
 
 	.login {
-		padding: 20px;
-	}
-
-	.item {
+		padding: 10px 20px;
+		display: block;
 		background-color: #fff;
 		height: 266px;
 		width: 284px;
 		margin-right: 20px;
 		border-radius: 4px;
+	}
 
-
-		&:last-child {
-			margin-right: 0;
-		}
-
-		.pic-wrap {
-			position: relative;
-			height: 174px;
-			overflow: hidden;
-
-			.mask {
-				position: absolute;
-				top: -174px;
-				left: 0;
-				z-index: 10;
-				width: 100%;
+	
+	.platform-wrap{
+		display: flex;
+		width: 892px;
+		overflow: hidden;
+		.item {
+			display: block;
+			background-color: #fff;
+			height: 266px;
+			width: 284px;
+			border-radius: 4px;
+	
+			&:last-child {
+				margin-right: 0;
+			}
+	
+			.pic-wrap {
+				position: relative;
 				height: 174px;
-				text-align: center;
-				background-color: rgba(0, 0, 0, 0.5);
-				transition: all 0.5s;
-
-				button {
-					margin-top: 66px;
-					width: 108px;
-					height: 30px;
+				overflow: hidden;
+	
+				.mask {
+					position: absolute;
+					top: -174px;
+					left: 0;
+					z-index: 10;
+					width: 100%;
+					height: 174px;
+					text-align: center;
+					background-color: rgba(0, 0, 0, 0.5);
+					transition: all 0.5s;
+	
+					button {
+						margin-top: 66px;
+						width: 108px;
+						height: 30px;
+					}
 				}
 			}
+	
+			.item-bottom {
+				padding: 20px;
+				height: 92px;
+			}
 		}
-
-		.item-bottom {
-			padding: 20px;
-			height: 92px;
+	
+		.item:hover {
+			box-shadow: 0 2px 6px 1px #e5e5e5;
+			.mask {
+				top: 0;
+			}
 		}
-	}
-
-	.item:hover {
-		.mask {
-			top: 0;
+	
+		.pt-title {
+			line-height: 18px;
+			position: relative;
+			font-size: 18px;
+			color: #333333;
+			font-weight: bold;
+			margin-bottom: 22px;
+	
+			&:after {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 38px;
+				height: 2px;
+				background-color: #1A8CFF;
+				bottom: -6px;
+			}
 		}
-	}
-
-	.pt-title {
-		line-height: 18px;
-		position: relative;
-		font-size: 18px;
-		color: #333333;
-		font-weight: bold;
-		margin-bottom: 22px;
-
-		&:after {
-			content: "";
-			position: absolute;
-			display: block;
-			width: 38px;
-			height: 2px;
-			background-color: #1A8CFF;
-			bottom: -6px;
+	
+		.sub-title {
+			line-height: 12px;
+			font-size: 14px;
+			font-weight: 400;
+			color: #B3B3B3;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
-	}
-
-	.sub-title {
-		line-height: 12px;
-		font-size: 14px;
-		font-weight: 400;
-		color: #B3B3B3;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 }
 
 .login-after {
+	background-color: #fff;
 	padding: 20px;
 	font-size: 12px;
 
@@ -291,6 +304,7 @@
 			color: #666666;
 			margin-bottom: 10px;
 			border-bottom: 1px solid #E6E6E6;
+			overflow: hidden;
 
 			&::before {
 				content: "";
@@ -400,7 +414,7 @@
 }
 
 .game-area {
-	margin-bottom: 58px;
+	margin-bottom: 40px;
 
 	.header {
 		text-align: justify;
@@ -461,12 +475,27 @@
 
 	.content {
 		display: flex;
-
+		flex-wrap: wrap;
 		.item {
 			width: 284px;
 			height: 232px;
 			background-color: #fff;
 			margin-right: 21px;
+			margin-bottom: 18px;
+			&:hover{
+				box-shadow: 0 2px 6px 1px #e5e5e5;
+			}
+			&:nth-of-type(4n){
+				margin-right: 0;
+			}
+
+			.img-container{
+				width: 284px;
+				height: 168px;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
 		}
 
 		.item-bottom {

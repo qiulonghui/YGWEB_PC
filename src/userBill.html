@@ -47,24 +47,36 @@
 			</div>
 			<div class="content">
 				<div class="datepicker-group">
-					<div class="item">
-						<label>游戏</label>
-						<select class="input-box" id="game">
-							<option class="placeholder" value='' disabled selected style='display:none;'>选择游戏</option>
-							<option value="1">百家乐</option>
-							<option value="2">牛牛</option>
-							<option value="3">三公</option>
-						</select>
+					<div class="row">
+						<div class="item zone-wrap">
+							<label>时区</label>
+							<label class="radio-wrap"><input type="radio" value="md" checked name="zone">美东时间</label>
+							<label class="radio-wrap"><input type="radio" value="bj" name="zone">北京时间</label>
+						</div>
+						<div class="item">
+							<label>游戏</label>
+							<select class="input-box" id="game">
+								<option class="placeholder" value='' disabled selected style='display:none;'>选择游戏
+								</option>
+								<option value="1">百家乐</option>
+								<option value="2">牛牛</option>
+								<option value="3">三公</option>
+							</select>
+						</div>
 					</div>
-					<div class="item">
-						<label>开始时间</label>
-						<input class="input-box time-box" id="startTime" type="text">
+					<div class="row">
+						<div class="item">
+							<label>开始时间</label>
+							<input class="input-box time-box" id="startTime" type="text">
+						</div>
+						<div class="item">
+							<label>结束时间</label>
+							<input class="input-box time-box" id="endTime" type="text">
+						</div>
 					</div>
-					<div class="item">
-						<label>结束时间</label>
-						<input class="input-box time-box" id="endTime" type="text">
+					<div class="row">
+						<button class="primary search">查询</button>
 					</div>
-					<button class="primary search">查询</button>
 				</div>
 				<div class="record">
 					<ul class="r-list">
@@ -108,63 +120,91 @@
 
 	<script type="text/javascript">
 		var curTitle = '财务账单'
+		var dur            = ""
+		var zone           = "";
+		var startTimeInput = $("#startTime");
+		var endTimeInput = $("#endTime");
+		var startTime = "";
+		var endTime = "";
+
+		var tb = {
+			nowDay:   function (zone) {
+				startTime = getDate('nowDayStart',zone);
+				endTime   = getDate('nowDayEnd',zone);
+			},
+			nowWeek:   function(zone) {
+				startTime = getDate('weekStartDate',zone);
+				endTime   = getDate('weekEndDate',zone);
+			},
+			lastWeek:  function(zone) {
+				startTime = getDate('lastWeekStartDate',zone);
+				endTime   = getDate('lastWeekEndDate',zone);
+			},
+			lastMonth: function(zone) {
+				startTime = getDate('lastMonthStartDate',zone);
+				endTime   = getDate('lastMonthEndDate',zone);
+			},
+			nowMonth:  function(zone) {
+				startTime = getDate('nowMonthStartDate',zone);
+				endTime   = getDate('nowMonthEndDate',zone);
+			}
+		}
+
+		// 日期选择器发送改变时的操作
+		function datepickerChange() {
+			$("#startTime, #endTime").change(function() {
+				$(".record-sidebar .item").removeClass("active");
+			})
+		}
+
 		// 时间选择器初始化
 		function DatepickerInit() {
-			var initDate = getDate('nowDayStart');
+			var initStartDate = getDate('nowDayStart');
+			var initEndDate   = getDate('nowDayEnd');
 
 			$('#startTime').fdatepicker({
-				format: 'yyyy-mm-dd',
-				initialDate: initDate
+				format: 'yyyy-mm-dd hh:ii:ss',
+				pickTime: true,
+				initialDate: initStartDate
 			});
 			$('#endTime').fdatepicker({
-				format: 'yyyy-mm-dd',
-				initialDate: initDate
+				format: 'yyyy-mm-dd hh:ii:ss',
+				pickTime: true,
+				initialDate: initEndDate
 			});
+		}
+
+		// 切换时区
+		function zoneToggle() {
+			$(".zone-wrap input[type='radio']").click(function () {
+				dur = $(".record-sidebar .item.active").attr("id");
+				zone = $(this).val();
+				tb[dur](zone);
+				startTimeInput.val(startTime);
+				endTimeInput.val(endTime);
+			})
 		}
 
 		// 记录侧边栏选择时间切换
 		function timeSiderBarToggle() {
-			var startTimeInput     = $("#startTime");
-			var endTimeInput       = $("#endTime");
-			var dur                = "";
-			var startTime          = "";
-			var endTime            = "";
 
-			var tb = {
-				nowDay:function() {
-					startTime = getDate('nowDayStart', "local").substring(0,11);
-					endTime   = getDate('nowDayStart', "local").substring(0,11);
-				},
-				nowWeek: function() {
-					startTime = getDate('weekStartDate', "local").substring(0,11);
-					endTime   = getDate('weekEndDate', "local").substring(0,11);
-				},
-				lastWeek: function() {
-					startTime = getDate('lastWeekStartDate', "local").substring(0,11);
-					endTime   = getDate('lastWeekEndDate', "local").substring(0,11);
-				},
-				lastMonth: function() {
-					startTime = getDate('lastMonthStartDate', "local").substring(0,11);
-					endTime   = getDate('lastMonthEndDate', "local").substring(0,11);
-				},
-				nowMonth: function() {
-					startTime = getDate('nowMonthStartDate', "local").substring(0,11);
-					endTime   = getDate('nowMonthEndDate', "local").substring(0,11);
-				}
-			}
+			$(".record-sidebar .item").click(function () {
+				$(this).addClass('active').siblings().removeClass('active');
 
-			$(".record-sidebar .item").click(function(){
-				$(this).addClass('active').siblings().removeClass('active');	
-				dur = $(this).attr("id");	
-				tb[dur]();
+				zone = $(".zone-wrap input[type='radio']:checked").val();
+				dur = $(this).attr("id");
+				tb[dur](zone);
+
 				startTimeInput.val(startTime);
-				endTimeInput  .val(endTime);
+				endTimeInput.val(endTime);
 			})
-			
+
 		}
 		$(function () {
 			DatepickerInit();
+			zoneToggle();
 			timeSiderBarToggle();
+			datepickerChange();
 		})
 	</script>
 </body>

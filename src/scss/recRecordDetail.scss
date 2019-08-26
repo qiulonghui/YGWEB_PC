@@ -20,12 +20,31 @@
 				font-weight: bold;
 			}
 			.status{
-				color: #FF701A;
 				font-weight: bold;
 			}
+			.dfk,.clz{
+				color: #FF701A;
+			}
+			.ywc{
+				color: #39DD00;
+			}
+			.wtg{
+				color: #E83A3A;
+			}
+			.yqx{
+				color: #666666;
+			}
+
 		}
 		.label{
 			color: #808080;
 		}
+	}
+	.comp-btn{
+		display: block;
+		width: 100px;
+		height: 38px;
+		margin: 0 auto;
+		margin-top:60px;
 	}
 }

@@ -1,0 +1,110 @@
+.modify-pay-psw {
+	.appeal-type-wrap {
+		display: flex;
+		justify-content: center;
+		height: 50px;
+		line-height: 50px;
+
+		.item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 160px;
+			border: 1px solid #F5F5F5;
+			text-align: center;
+			font-size: 14px;
+			user-select: none;
+			cursor: pointer;
+
+			&.active {
+				border-color: #FF701A;
+				color: #FF701A;
+			}
+
+		}
+	}
+
+	.form-wrap {
+		margin-top: 50px;
+
+		.item {
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			margin-left: 245px;
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: inline-block;
+			width: 90px;
+			text-align: right;
+		}
+
+		input,
+		select {
+			width: 264px;
+			height: 36px;
+			margin-left: 20px;
+			border-radius: 4px;
+			vertical-align: middle;
+		}
+
+		#verCode {
+			width: 172px;
+			margin-right: 6px;
+		}
+
+		.input-wrap {
+			position: relative;
+
+			input {
+				padding-right: 38px;
+			}
+		}
+
+		.icon-eyes {
+			position: absolute;
+			top: 8px;
+			right: 12px;
+			display: block;
+			width: 20px;
+			height: 20px;
+			background-image: url("../img/commonsprite.png");
+			background-repeat: no-repeat;
+			background-position: 0px 0px;
+			cursor: pointer;
+		}
+
+		.icon-eyes.on {
+			background-position: -25px 0px;
+		}
+
+		.code-btn {
+			width: 82px;
+			height: 36px;
+			color: #1A8CFF;
+			vertical-align: middle;
+		}
+
+	}
+
+	.submit {
+		width: 112px;
+		height: 36px;
+		margin-left: 415px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+		font-size: 12px;
+		line-height: 1;
+	}
+
+	.success-tip {
+		text-align: center;
+		margin-top: 55px;
+	}
+}
+
+#secondBox {
+	.item {}
+}

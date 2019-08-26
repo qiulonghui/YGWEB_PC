@@ -12,6 +12,7 @@
 	<!-- build:css css/game.css -->
 	<link href="css/normalize.css" rel="stylesheet">
 	<link href="css/common.css" rel="stylesheet">
+	<link href="lib/swiper-4.4.6/dist/css/swiper.css" rel="stylesheet">
 	<link href="css/game.css" rel="stylesheet">
 	<!-- endbuild -->
 	<!--[if lte IE 9]>
@@ -22,8 +23,27 @@
 <body>
 	@@include('include/header.html')
 	<div class="banner">
-		<div class="b-info">
-			<p>最新消息:新会员福利，首存即送28元;天天返水 高达3%[ 2018/12/17 21:47:50 ]</p>
+		<div id="swiper1" class="banner swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" style="background-image: url(img/index/banner1.png);">
+					<a href=""></a>
+				</div>
+			</div>
+			<!-- 如果需要分页器 -->
+			<!-- <div class="swiper-pagination"></div> -->
+		</div>
+		<div id="swiper2" class="b-info">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<a href="111">最新消息:新会员福利，首存即送28元;天天返水 高达3%[ 2018/12/17 21:47:50 ]</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="">1111111</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="">222222</a>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="game">
@@ -79,8 +99,29 @@
 
 	<!-- build:js js/game.js -->
 	<script src="lib/jquery.js"></script>
+	<script src="lib/swiper-4.4.6/dist/js/swiper.js"></script>
 	<script src="js/common.js"></script>
 	<!-- endbuild -->
+	<script type="text/javascript">
+		$(function () {
+			var swiper1 = new Swiper('#swiper1', {
+				loop: false, // 循环模式选项
+				resistanceRatio : 0,
+				autoplay: true,
+				// 如果需要分页器
+				pagination: {
+					el: '.swiper-pagination',
+				}
+			})
+
+			var swiper2 = new Swiper('#swiper2', {
+				loop: true,
+				direction: 'vertical',
+				simulateTouch: false,
+				autoplay: true
+			})
+		})
+	</script>
 </body>
 
 </html>

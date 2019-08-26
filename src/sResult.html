@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/sResult.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/sResult.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+</head>
+
+<body>
+	@@include('include/header.html')
+
+	<div class="container center-block sResult">
+		<!-- 没有结果 -->
+		<!-- <div class="no-result">
+			很抱歉，没有<span class="wr">“百家乐”</span>的搜索结果
+		</div> -->
+		<!-- 没有结果 END -->
+
+		<div class="content">
+			<div class="res-text">搜索<span class="wr">“百家乐”</span>总共找到3个相关结果</div>
+			<ul class="result-list">
+				<li class="item">
+					<a href="#">
+						<div class="img-wrap">
+							<img src="./img/index/zhuoqiu.png" alt="">
+						</div>
+						<div class="btm">
+							<div class="text">
+								<div class="tit">腾讯桌球</div>
+								<div class="des">经典百家乐，美美女荷美女荷美女荷女荷官</div>
+							</div>
+							<!-- <button class="btn"><a href="">进入游戏</a></button> -->
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="#">
+						<div class="img-wrap">
+							<img src="./img/index/zhuoqiu.png" alt="">
+						</div>
+						<div class="btm">
+							<div class="text">
+								<div class="tit">腾讯桌球</div>
+								<div class="des">经典百家乐，美美女荷美女荷美女荷女荷官</div>
+							</div>
+							<!-- <button class="btn"><a href="">进入游戏</a></button> -->
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="#">
+						<div class="img-wrap">
+							<img src="./img/index/zhuoqiu.png" alt="">
+						</div>
+						<div class="btm">
+							<div class="text">
+								<div class="tit">腾讯桌球</div>
+								<div class="des">经典百家乐，美美女荷美女荷美女荷女荷官</div>
+							</div>
+							<!-- <button class="btn"><a href="">进入游戏</a></button> -->
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="#">
+						<div class="img-wrap">
+							<img src="./img/index/zhuoqiu.png" alt="">
+						</div>
+						<div class="btm">
+							<div class="text">
+								<div class="tit">腾讯桌球</div>
+								<div class="des">经典百家乐，美美女荷美女荷美女荷女荷官</div>
+							</div>
+							<!-- <button class="btn"><a href="">进入游戏</a></button> -->
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="#">
+						<div class="img-wrap">
+							<img src="./img/index/zhuoqiu.png" alt="">
+						</div>
+						<div class="btm">
+							<div class="text">
+								<div class="tit">腾讯桌球</div>
+								<div class="des">经典百家乐，美美女荷美女荷美女荷女荷官</div>
+							</div>
+							<!-- <button class="btn"><a href="">进入游戏</a></button> -->
+						</div>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/sResult.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+
+	<script type="text/javascript">
+		function layoutInit() {
+			var itemNum = $(".result-list>.item").length;
+			if (itemNum === 1) {
+				$(".result-list>.item").css("margin", "auto");
+			}
+		}
+		$(function () {
+			layoutInit();
+		});
+	</script>
+</body>
+
+</html>

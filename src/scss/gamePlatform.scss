@@ -116,13 +116,21 @@
 					margin-right: 0;
 				}
 
-				.game-pic {
+				.img-wrap { 
+					width: 110px;
+					height: 110px;
 					border-radius: 20px;
 					box-shadow: 0 4px 8px 0 rgba(123, 133, 151, 0.5);
-
+					overflow: hidden;
 					&:hover {
 						box-shadow: 0 4px 14px 0 rgba(123, 133, 151, 1);
 					}
+				}
+
+				.game-pic {
+					display: block;
+					width: 100%;
+					height: 100%;
 				}
 
 				.game-name {

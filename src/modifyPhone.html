@@ -54,7 +54,7 @@
 					<div id="step1" class="form-wrap first">
 						<div class="input-wrap">
 							<label for="oldTel">手机号:</label>
-							<input id="oldTel" type="number" placeholder="请输入您的手机号">
+							<input id="oldTel" type="number" disabled value="121212121">
 						</div>
 						<div class="input-wrap">
 							<label for="verCode">验证码:</label>
@@ -67,6 +67,16 @@
 
 					<!-- 步骤二 -->
 					<div id="step2" class="form-wrap second" style="display:none;">
+						<div class="input-wrap">
+							<label for="country_area">国家/地区:</label>
+							<select class="input-box" id="country_area">
+								<option class="placeholder" value='' selected style='display:none;'>国家/地区</option>
+								<option value="volvo">Volvo</option>
+								<option value="saab">Saab</option>
+								<option value="opel">Opel</option>
+								<option value="audi">Audi</option>
+							</select>
+						</div>
 						<div class="input-wrap">
 							<label for="nTel">新的手机号:</label>
 							<input id="nTel" type="number" placeholder="请输入您的手机号">

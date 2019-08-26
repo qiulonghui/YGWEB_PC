@@ -46,18 +46,29 @@
 			background-color: #fff;
 
 			.datepicker-group {
-				display: flex;
-				align-items: center;
-				height: 100px;
-				padding: 0 100px;
-				border-bottom: 1px solid #E6E6E6;
+				height: 160px;
+				padding: 15px 100px;
+					border-bottom: 1px solid #E6E6E6;
+
+				.row {
+					display: flex;
+					align-items: center;
+					margin-bottom: 15px;
+				}
+
+				.search{
+					display: block;
+					margin: 0 auto;
+				}
 
 				.item {
 					display: flex;
 					align-items: center;
+					min-width: 240px;
 					margin-right: 40px;
 
 					label {
+						width: 60px;
 						font-size: 14px;
 						margin-right: 13px;
 					}
@@ -69,6 +80,15 @@
 
 					.time-box {
 						width: 150px;
+						font-size: 13px;
+					}
+
+					.radio-wrap {
+						display: flex;
+						width: 70px;
+						align-items: center;
+						margin-right: 10px;
+						font-size: 14px;
 					}
 
 				}

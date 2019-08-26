@@ -212,7 +212,9 @@ header {
 					padding: 0 8px;
 					border-right: 1px solid rgba(255, 255, 255, 0.2);
 				}
-
+				.acc {
+					color: #A02F2F;
+				}
 				.info-num {
 					color: #A02F2F;
 				}
@@ -375,7 +377,7 @@ header {
 
 						.all-game-item {
 							display: block;
-							width: 16.6666%;
+							width: 19.6666%;
 							margin-bottom: 20px;
 
 							a {
@@ -897,6 +899,7 @@ footer {
 }
 
 .login {
+	padding-bottom: 20px;
 	.title {
 		font-size: 16px;
 		color: #333333;
@@ -915,7 +918,7 @@ footer {
 		background-image: url("../img/logininputSprite.png");
 
 		&:first-child {
-			margin-bottom: 14px;
+			margin-bottom: 12px;
 		}
 	}
 
@@ -926,6 +929,12 @@ footer {
 	.pw {
 		background-position: 10px -132px;
 	}
+	.nation {
+		background-image: url("../img/dizhi-icon.png");
+		background-repeat: no-repeat;
+		background-position: 10px 6px;
+	}
+
 
 	.zh:focus {
 		background-position: 10px 8px;
@@ -933,6 +942,10 @@ footer {
 
 	.pw:focus {
 		background-position: 10px -202px;
+	}
+
+	.nation:focus{
+		background-image: url("../img/dizhi-icon-pressed.png");
 	}
 
 	.btn {

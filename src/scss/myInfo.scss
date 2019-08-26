@@ -1,6 +1,6 @@
 .my-info {
 
-	padding: 0 30px;
+	padding: 0 102px;
 
 	.btn-group {
 		display: flex;
@@ -47,14 +47,97 @@
 					margin-bottom: 7px;
 				}
 			}
-
-			.go-detail {
-				color: #FF701A;
-			}
 		}
 
 		.item.selected {
 			background-color: #FFF8EE;
+		}
+
+		.r-item {
+			display: flex;
+			align-items: center;
+			height: 185px;
+			margin: 0 auto;
+			background: #F8F8F8;
+			color: #333333;
+			border-radius: 4px;
+			padding: 0 24px;
+			font-size: 12px;
+			margin-bottom: 16px;
+
+			&.selected {
+				background-color: #FFF8EE;
+			}
+		}
+
+		.rec-wrap {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			flex: 1;
+			height: 185px;
+			margin-left: 23px;
+
+			div {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.status {
+					font-weight: bold;
+				}
+			}
+
+			.top {
+				height: 50px;
+				border-bottom: 1px solid #e6e6e6;
+			}
+
+			.bottom {
+				height: 50px;
+				border-top: 1px solid #e6e6e6;
+
+				button {
+					width: 60px;
+					height: 30px;
+					color: #9A9A9A;
+				}
+			}
+
+			.sn {
+				font-weight: bold;
+			}
+		}
+
+		.unpaid,
+		.Processing {
+			.status {
+				color: #FF701A;
+			}
+
+		}
+
+		.go-detail {
+			color: #1A8CFF;
+		}
+
+
+		.completed {
+			.status {
+				color: #39DD00;
+			}
+		}
+
+		.notpass {
+			.status {
+				color: #E83A3A;
+			}
+		}
+
+		.cancelled {
+			.status {
+				color: #666666;
+			}
 		}
 	}
 }

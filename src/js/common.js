@@ -61,7 +61,9 @@ function searchBox() {
 		$(".search-wrap .search-rec").show();
 	})
 	$(".search-wrap input").blur(function () {
-		$(".search-wrap .search-rec").hide();
+		setTimeout(function() {
+			$(".search-wrap .search-rec").hide();	
+		},800)
 	})
 	$(".search-rec .s-item").hover(function () {
 		$(this).siblings("li").find("a").hide();
@@ -302,7 +304,7 @@ function verification(inputVal, type) {
 }
 
 
-// 获取时间getDate()，格式YYYY-MM-DD。
+// 获取时间getDate()，格式YYYY-MM-DD hh:ii:ss。
 // 默认以美东时间计算 北京时间+12小时
 // 客户端时间-（用户时区+4）= 美东时间
 // nowDayStart nowDayEnd 当天开始结束时间
@@ -324,13 +326,13 @@ function getDate(type, zone) {
 	var nowMothFirstDate = new Date();
 	nowMothFirstDate.setDate(1);  // 本月第一天
 	nowMothFirstDate.setMonth(nowMonth);
-	nowMonthFirstOfWeek = nowMothFirstDate.getDay(); // 本月第一天是周几
+	var nowMonthFirstOfWeek = nowMothFirstDate.getDay(); // 本月第一天是周几
 	var nowMonthStartDay = 1;
 
 	var nowMothEndDate = new Date();
 	nowMothEndDate.setDate(getMonthDays(nowMonth));  // 本月最后一天
 	nowMothEndDate.setMonth(nowMonth);
-	nowMonthEndOfWeek = nowMothEndDate.getDay(); // 本月最后一天是周几
+	var nowMonthEndOfWeek = nowMothEndDate.getDay(); // 本月最后一天是周几
 	var nowMonthEndDay = getMonthDays(nowMonth);
 
 	var lastMonth = nowMonth-1; // 上月
@@ -350,14 +352,13 @@ function getDate(type, zone) {
 	var nTimezone = -now.getTimezoneOffset() / 60; // 获取当前时区
 	var mdHour = nowHour - (nTimezone + 4); // 根据当前时区 小时 转换成 美东时区 小时
 
-	if(zone === "md") {
-		if (mdHour < 0) {
-			nowDay = nowDay - 1; //mdHour < 0,美东时间要减一天
-		}
-		if (mdHour >= 24) {
-			nowDay = nowDay + 1; //mdHour > 24 美东时间要加一天
-		}
+	if (mdHour < 0) {
+		nowDay = nowDay - 1; //mdHour < 0,美东时间要减一天
 	}
+	if (mdHour >= 24) {
+		nowDay = nowDay + 1; //mdHour > 24 美东时间要加一天
+	}
+	
 
 
 	if (zone === "bj") {

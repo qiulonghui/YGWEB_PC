@@ -73,7 +73,9 @@
 		flex: 1;
 		background-color: #fff;
 		border-radius: 4px;
-
+		img{
+			max-width: 100%;
+		}
 		.title {
 			padding-left: 30px;
 			padding-top: 37px;

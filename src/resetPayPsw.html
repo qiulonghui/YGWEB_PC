@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="">
+	<title>永高娱乐</title>
+	<meta name="viewport" content="width=1366, initial-scale=1">
+	<!-- build:css css/resetPayPsw.css -->
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/customerService.css" rel="stylesheet">
+	<link href="css/resetPayPsw.css" rel="stylesheet">
+	<!-- endbuild -->
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">您的浏览器版本不支持, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+		<![endif]-->
+</head>
+
+<body>
+	@@include('include/header.html')
+
+	<div class="container center-block customer-service">
+		@@include('include/custServerSidebar.html')
+
+		<div class="content reset-pay-psw">
+			<div class="title"><span>密码申诉</span></div>
+			<ul class="appeal-type-wrap">
+				<li class="item">
+					<a href="./resetLoginPsw.html">重置登录密码</a>
+				</li>
+				<li class="item">
+					<a href="./modifyPayPsw.html">修改支付密码</a>
+				</li>
+				<li class="item active">
+					<a href="./resetPayPsw.html">重置支付密码</a>
+				</li>
+			</ul>
+			<!-- 步骤一 -->
+			<div id="firstBox" class="form-wrap">
+				<div class="item">
+					<label for="oldPsw">输入旧密码:</label>
+					<div class="input-wrap">
+						<input id="oldPsw" type="password" placeholder="旧密码" oninput="if(value.length>6)value=value.slice(0,6)">
+						<i class="icon-eyes"></i>
+					</div>
+				</div>
+				<div class="item">
+					<label for="psw">设置新密码:</label>
+					<div class="input-wrap">
+						<input id="psw" type="password" placeholder="新的6位数支付密码" oninput="if(value.length>6)value=value.slice(0,6)">
+						<i class="icon-eyes"></i>
+					</div>
+				</div>
+				<div class="item">
+					<label for="confirmPsw">确认新密码:</label>
+					<div class="input-wrap">
+						<input id="confirmPsw" type="password" placeholder="再次输入密码" oninput="if(value.length>6)value=value.slice(0,6)">
+						<i class="icon-eyes"></i>
+					</div>
+				</div>
+				<button id="firstBtn" class="primary submit">确定</button>
+			</div>
+			<!-- 步骤一 END-->
+
+
+			<!-- 设置成功提示 -->
+			<div class="success-tip" style="display:none">
+				<span class="warning">恭喜您，支付密码重置成功！</span>
+			</div>
+			<!-- 设置成功提示END -->
+		</div>
+	</div>
+	@@include('include/footer.html')
+	@@include('include/siteTool.html')
+
+	<!-- build:js js/resetPayPsw.js -->
+	<script src="lib/jquery.js"></script>
+	<script src="js/common.js"></script>
+	<!-- endbuild -->
+
+	<script type="text/javascript">
+		// 表单验证提交
+		function step1Form() {
+			$("#firstBtn").click(function () {
+				var oldPswInput = $("#oldPsw");
+				var pswInput = $("#psw");
+				var pswConfirmInput = $("#confirmPsw");
+				var eInfoDom = ''; // 错误提示
+				$('.yg-error').remove(); //重置所有错误提示
+				if (!verification(oldPswInput.val(), 'require')) {
+					eInfoDom = errorInfo('请输入旧的密码');
+					oldPswInput.parents('.item').append(eInfoDom); // 输入提示插入到input末尾
+					return;
+				} else if (!verification(pswInput.val(), 'require')) {
+					eInfoDom = errorInfo('请输入新的支付密码');
+					pswInput.parents('.item').append(eInfoDom);
+					return;
+				} else if (isNaN(Number(pswInput.val()))) {
+					eInfoDom = errorInfo('支付密码为6位纯数字');
+					pswInput.parents('.item').append(eInfoDom);
+					return;
+				} else if (pswInput.val() !== pswConfirmInput.val()) {
+					eInfoDom = errorInfo('两次输入不一致');
+					pswConfirmInput.parents('.item').append(eInfoDom);
+					return;
+				} else {
+					// ajax 提交成功后到下一步
+					$("#firstBox").hide();
+					$(".success-tip").show();
+				}
+			})
+		}
+
+		// 密码显示隐藏状态切换
+		function pswStatusToggle() {
+			$(".icon-eyes").click(function () {
+				var inputType = $(this).siblings("input").attr("type");
+				var curInputType = inputType === "password" ? "text" : "password";
+				$(this).toggleClass("on").siblings("input").attr("type", curInputType);
+			})
+		}
+
+		$(function () {
+			step1Form();
+			pswStatusToggle();
+		});
+	</script>
+</body>
+
+</html>

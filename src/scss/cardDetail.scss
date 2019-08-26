@@ -20,6 +20,8 @@
 				width: 282px;
 				height: 98px;
 				background-color: #517ACD;
+				background-size: cover;
+				background-repeat: no-repeat;
 				color: #fff;
 				box-shadow: 0px 2px 8px 0px rgba(26, 40, 87, 0.2);
 				border-radius: 6px;
@@ -63,17 +65,141 @@
 				font-size: 14px;
 			}
 		}
-		.card-info{
+
+		.card-info {
 			margin-top: 18px;
 			color: #333333;
-			.item{
+
+			.item {
 				display: flex;
 				justify-content: space-between;
 				height: 45px;
 				line-height: 45px;
 				font-size: 14px;
-				border-bottom: 1px solid #E9E9E9; 
+				border-bottom: 1px solid #E9E9E9;
 			}
 		}
 	}
+}
+
+.unbind-passw-modal {
+	background-color: rgba(0, 0, 0, 0.4);
+
+	.modal-dialog {
+		width: 600px;
+		height: 300px;
+		padding-top: 0;
+
+		.modal-content {
+			width: 100%;
+
+			.modal-header {
+				height: 42px;
+				line-height: 42px;
+				text-align: center;
+				margin-bottom: 0;
+				border-bottom: 1px solid #E6E6E6;
+
+				.modal-title {
+					font-weight: 400;
+				}
+
+				.close {
+					top: 12px;
+				}
+			}
+
+			.modal-body {
+				.tip {
+					display: flex;
+					align-items: center;
+					height: 40px;
+					line-height: 40px;
+					padding-left: 30px;
+					font-size: 12px;
+					background-color: #FFFEC8;
+					.wr{
+						color: #FF701A;
+					}
+				}
+				.tip-icon{
+					display: inline-block;
+					width: 15px;
+					height: 15px;
+					background-image: url('../img/commonsprite.png');
+					background-repeat:  no-repeat;
+					background-position: 0px -25px;
+					margin-right: 10px;
+				}
+			}
+
+			.ub-passw {
+				.pw-wrap {
+					display: flex;
+					align-items: center;
+					margin-top: 38px;
+					margin-left: 108px;
+					font-size: 12px;
+
+					.forget {
+						margin-left: 20px;
+						color: #1A8CFF;
+					}
+
+					.txt {
+						margin-right: 30px;
+					}
+				}
+
+				.pw-box {
+					display: flex;
+					justify-content: center;
+
+					.item {
+						display: block;
+						width: 36px;
+						height: 36px;
+						padding-bottom: 5px;
+						text-align: center;
+						font-size: 28px;
+						border: 1px solid #E7E7E7;
+						border-right: none;
+						outline: none;
+						color: transparent;
+						text-shadow: 0 0 0 #000;
+
+						&:last-of-type {
+							border-right: 1px solid #E7E7E7;
+						}
+					}
+
+					.item:disabled {
+						background-color: #fff;
+					}
+
+				}
+
+				#rel-psw {
+					position: absolute;
+					opacity: 0;
+				}
+			}
+
+			.input-tip {
+				margin-left: 200px;
+				margin-top: 6px;
+				font-size: 12px;
+				color: #999999;
+			}
+
+			.btn {
+				width: 70px;
+				height: 30px;
+				margin-left: 200px;
+				margin-top: 16px;
+			}
+
+		}
+	}
+
 }

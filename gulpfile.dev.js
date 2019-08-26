@@ -8,7 +8,11 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     fileinclude = require('gulp-file-include'),
 	sourcemap = require('gulp-sourcemaps'),
-	spritesmith=require('gulp.spritesmith')
+	spritesmith=require('gulp.spritesmith'),
+	autoprefixer = require('gulp-autoprefixer'),
+	csso = require('gulp-csso'); // 压缩优化css
+
+
 
 module.exports = function dev() {
     gulp.task('serve', function () {
@@ -44,7 +48,17 @@ module.exports = function dev() {
             .pipe(sourcemap.write('./maps')) //生成sourcemap文件，路径为./maps
             .pipe(gulp.dest("dist/css"))
             .pipe(browserSync.stream()); //文件有更新自动执行
-    });
+	});
+	
+	gulp.task('css_main', function(){
+		return gulp.src('./dist/css/*.css')
+			.pipe(autoprefixer({
+                browsers: ['last 10 versions', 'Firefox >= 20', 'Opera >= 36', 'ie >= 9', 'Android >= 4.0'] // 浏览器版本
+            }))
+			.pipe(csso()) 
+			.pipe(gulp.dest('abc'));
+	});
+
 
     gulp.task('js', function () {
         return gulp.src('src/js/**/*.js')
