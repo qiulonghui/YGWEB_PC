@@ -37,20 +37,24 @@
 	display: flex;
 	margin-top: -174px;
 	z-index: 10;
-
-	.login {
-		padding: 10px 20px;
-		display: block;
-		background-color: #fff;
-		height: 266px;
+	.left{
 		width: 284px;
+		height: 550px;
+		background-color: #fff;
 		margin-right: 20px;
 		border-radius: 4px;
+	}
+	.login {
+		padding: 10px 20px;
+		.title{
+			text-align: center;
+		}
 	}
 
 	
 	.platform-wrap{
 		display: flex;
+		flex-wrap: wrap;
 		width: 892px;
 		overflow: hidden;
 		.item {
@@ -59,8 +63,9 @@
 			height: 266px;
 			width: 284px;
 			border-radius: 4px;
-	
-			&:last-child {
+			margin-right: 20px;
+			margin-bottom: 18px;
+			&:nth-of-type(3n) {
 				margin-right: 0;
 			}
 	
@@ -133,9 +138,12 @@
 }
 
 .login-after {
+	width: 284px;
 	background-color: #fff;
 	padding: 20px;
 	font-size: 12px;
+	margin-right: 20px;
+	border-radius:4px;
 
 	.led-user-wrap {
 		display: flex;
